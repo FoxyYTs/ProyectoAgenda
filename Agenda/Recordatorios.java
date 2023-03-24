@@ -13,7 +13,7 @@ public class Recordatorios {
         return mensaje;
     }
 
-    public LocalDateTime getfechaHora(){
+    public LocalDateTime getFechaHora(){
         return fechaHora;
     }
 
