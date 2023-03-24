@@ -5,6 +5,7 @@ public class Pruebas {
         LocalDateTime fechaYHora = LocalDateTime.now();
         for (int i = 0; i < 100; i++) {
             System.out.println(fechaYHora);
+            System.out.println("Hola buenas");
         }
     }
 }
