@@ -45,7 +45,7 @@ public class Contactos {
     }
 
     @Override
-    public String toString() {
+    public String toString() {//a
         return "Contacto [nombre: " + nombre + ", apellido: " + apellido + ", telefono: " + telefono + ", correo: " + correo + "]";
     }
 }
