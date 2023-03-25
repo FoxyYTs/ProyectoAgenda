@@ -1,13 +1,11 @@
-import java.time.LocalDateTime;
+import java.time.*;
 
 public class Pruebas {
     public static void main(String[] args) {
         System.out.println("Hola mundo");
         System.out.println("5");
-        LocalDateTime fechaYHora = LocalDateTime.now();
-        for (int i = 0; i < 100; i++) {
-            System.out.println(fechaYHora);
-            
-        }
+        LocalDate fecha =LocalDate.parse("2022-03-21");
+
+        DataTimeFormatter formato = DataTimeFormatter.ofPattern("dd/MM/yyyy")
     }
 }
