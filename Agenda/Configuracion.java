@@ -1,3 +1,5 @@
+import java.time.format.*;
+
 public class Configuracion {
     private String formatoFecha;
     private String idioma;
@@ -12,7 +14,9 @@ public class Configuracion {
     }
 
     public void setFormatoFecha(String formaFecha) {
-        this.formatoFecha = formatoFecha;
+        DateTimeFormatter formatoFechaHora = DateTimeFormatter.ofPattern(formaFecha);
+        //"dd/MM/yyyy HH:mm"
+        
     }
 
 }

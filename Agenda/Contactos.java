@@ -4,12 +4,14 @@ public class Contactos {
     private String apellido;
     private String correo;
     private String telefono;
+    public Contactos next;
 
     public Contactos(String nombre, String apellido, String correo, String telefono) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
         this.telefono = telefono;
+        this.next = null;
     }
 
     public String getNombre() {
