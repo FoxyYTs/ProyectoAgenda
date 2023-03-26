@@ -4,10 +4,12 @@ public class Grupos {
 
     private String nombre;
     private ArrayList<Contactos> contactos;
+    public Grupos next;
 
     public Grupos(String nombre) {
         this.nombre = nombre;
         contactos = new ArrayList<>();
+        this.next = null;
     }
 
     public String getNombre() {
@@ -29,5 +31,5 @@ public class Grupos {
     public ArrayList<Contactos> getContactos() {
         return contactos;
     }
-    
+
 }
