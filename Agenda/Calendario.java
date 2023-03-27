@@ -3,12 +3,12 @@ import java.time.LocalDateTime;
 
 public class Calendario {
 
-    public Eventos headEvento = eventos;
+    public Eventos headEvento;
     public Eventos pointerEvento = headEvento;
-    public Recordatorios headRecordatorio = recordatorios;
+    public Recordatorios headRecordatorio;
     public Recordatorios pointerRecordatorio = headRecordatorio;
 
-    public void insertarEvento(String titulo, LocalDateTime fechaHoraInicio, LocalDateTime fechaHoraFin) {
+    public void insertarEventos(String titulo, LocalDateTime fechaHoraInicio, LocalDateTime fechaHoraFin) {
         Eventos nuevo = new Eventos(titulo, fechaHoraInicio, fechaHoraFin);
         if (headEvento == null) {
             headEvento = nuevo;
@@ -21,7 +21,7 @@ public class Calendario {
         }
     }
 
-    public void mostrar() {
+    public void mostrarEventos() {
         Eventos pointerEventos = headEvento;
         while (pointerEventos != null) {
             System.out.print("Evento [titulo: " + pointerEventos.getTitulo() + ", Fecha y Hora de inicio: "
@@ -31,13 +31,4 @@ public class Calendario {
         }
         System.out.println();
     }
-
-    public ArrayList getEvento() {
-        return eventos;
-    }
-
-    public ArrayList getRecordatorio() {
-        return recordatorios;
-    }
-
 }

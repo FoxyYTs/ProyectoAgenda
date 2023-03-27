@@ -5,15 +5,9 @@ public class Grupos {
     public Contactos pointer = head;
     public Grupos next;
 
-<<<<<<< HEAD
     public void insertar(String nombre, String apellido, String correo, String telefono) {
         Contactos nuevo = new Contactos(nombre, apellido, correo, telefono);
         if (head == null) {
-=======
-    public void insertarContacto (String nombre,String apellido,String correo,String telefono){
-        Contactos nuevo = new Contactos(nombre,apellido,correo,telefono);
-        if(head == null){
->>>>>>> 377e1370ec0ad9c88bc295a1a4c3ea30a5f0d5dc
             head = nuevo;
         } else {
             Contactos pointer = head;
@@ -24,11 +18,6 @@ public class Grupos {
         }
     }
 
-<<<<<<< HEAD
-    public void eliminar(String nombre) {
-        while (pointer.getNombre() == nombre && pointer.next != null) {
-
-=======
     public void eliminarContacto (String nombre){
         if (head == null) {
             return;
@@ -43,7 +32,6 @@ public class Grupos {
         }
         if (pointer.next != null) {
             pointer.next = pointer.next.next;
->>>>>>> 377e1370ec0ad9c88bc295a1a4c3ea30a5f0d5dc
         }
     }
 
