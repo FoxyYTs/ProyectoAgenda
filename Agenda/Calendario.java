@@ -2,8 +2,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class Calendario {
-    private ArrayList<Eventos> eventos;
-    private ArrayList<Recordatorios> recordatorios;
+    public Eventos headEvento = eventos;
+    public Eventos pointerEvento = headEvento;
+    public Recordatorios headRecordatorio = recordatorios;
+    public Recordatorios pointerRecordatorio = headRecordatorio;
 
     public Calendario() {
         eventos = new ArrayList<>();
