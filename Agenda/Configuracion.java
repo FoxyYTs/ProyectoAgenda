@@ -1,3 +1,5 @@
+import java.time.LocalDateTime;
+
 public class Configuracion {
     private String formatoFecha;
     private String idioma;
@@ -15,7 +17,7 @@ public class Configuracion {
         this.formatoFecha = formatoFecha;
     }
 
-    private void name() {
+    private void cambiarFormato(LocalDateTime fechaHora) {
         
     }
 
