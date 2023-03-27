@@ -3,12 +3,41 @@ import java.util.ArrayList;
 public class Grupos {
 
     private String nombre;
-    private ArrayList<Contactos> contactos;
+    public Contactos head;
+    public Contactos pointer = head;
     public Grupos next;
+
+    public void insertar (String nombre,String apellido,String correo,String telefono){
+        Contactos nuevo = new Contactos(nombre,apellido,correo,telefono);
+        if(head == null){
+            head = nuevo;
+        }else{
+            Contactos pointer = head;
+            while(pointer.next != null){
+                pointer = pointer.next;
+            }
+            pointer.next = nuevo;
+        }
+    }
+
+    public void eliminar (String nombre){
+        while(pointer.getNombre() == nombre && pointer.next != null){
+
+        }
+    }
+
+    public void mostrar() {
+        Contactos pointer = head;
+        while (pointer != null) {
+            System.out.print("Contacto [nombre: " + pointer.getNombre() + ", apellido: " + pointer.getApellido() + ", telefono: " + pointer.getTelefono() + ", correo: " + pointer.getCorreo() + "]");
+            pointer = pointer.next;
+        }
+        System.out.println();
+    }
 
     public Grupos(String nombre) {
         this.nombre = nombre;
-        contactos = new ArrayList<>();
+        this.head = null;
         this.next = null;
     }
 
@@ -18,18 +47,6 @@ public class Grupos {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public void agregarContacto(Contactos contacto) {
-        contactos.add(contacto);
-    }
-
-    public void eliminarContacto(Contactos contacto) {
-        contactos.remove(contacto);
-    }
-
-    public ArrayList<Contactos> getContactos() {
-        return contactos;
     }
 
 }
