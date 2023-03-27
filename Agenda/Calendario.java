@@ -21,6 +21,23 @@ public class Calendario {
         }
     }
 
+    public void eliminarEvento(String titulo) {
+        if (headEvento == null) {
+            return;
+        }
+        if (headEvento.getTitulo() == titulo) {
+            headEvento = headEvento.next;
+            return;
+        }
+        Eventos pointerEvento = headEvento;
+        while (pointerEvento.next.getTitulo() != titulo && pointerEvento.next != null) {
+            pointerEvento = pointerEvento.next;
+        }
+        if (pointerEvento.next != null) {
+            pointerEvento.next = pointerEvento.next.next;
+        }
+    }
+
     public void mostrarEventos() {
         Eventos pointerEventos = headEvento;
         while (pointerEventos != null) {
@@ -31,4 +48,45 @@ public class Calendario {
         }
         System.out.println();
     }
+
+    public void insertarRecordatorios(String mensaje, LocalDateTime fechaHora) {
+        Recordatorios nuevo = new Recordatorios(mensaje, fechaHora);
+        if (headRecordatorio == null) {
+            headRecordatorio = nuevo;
+        } else {
+            Recordatorios pointerRecordatorio = headRecordatorio;
+            while (pointerRecordatorio.next != null) {
+                pointerRecordatorio = pointerRecordatorio.next;
+            }
+            pointerRecordatorio.next = nuevo;
+        }
+    }
+
+    public void eliminarRecordatorios(String mensaje) {
+        if (headRecordatorio == null) {
+            return;
+        }
+        if (headRecordatorio.getMensaje() == mensaje) {
+            headRecordatorio = headRecordatorio.next;
+            return;
+        }
+        Recordatorios pointerRecordatorio = headRecordatorio;
+        while (pointerRecordatorio.next.getMensaje() != mensaje && pointerRecordatorio.next != null) {
+            pointerRecordatorio = pointerRecordatorio.next;
+        }
+        if (pointerRecordatorio.next != null) {
+            pointerRecordatorio.next = pointerRecordatorio.next.next;
+        }
+    }
+
+    public void mostrarRecordatorio() {
+        Recordatorios pointerRecordatorio = headRecordatorio;
+        while (pointerRecordatorio != null) {
+            System.out.print("Recordatorio [mensaje: " + pointerRecordatorio.getMensaje() + ", Fecha y Hora: "
+                    + pointerRecordatorio.getFechaHora() + "]");
+            pointerRecordatorio = pointerRecordatorio.next;
+        }
+        System.out.println();
+    }
+
 }
