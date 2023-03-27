@@ -1,10 +1,7 @@
-import java.util.ArrayList;
 import java.util.Calendar;
 
 public class Calendario {
 
-
-    
     public Eventos headEvento = eventos;
     public Eventos pointerEvento = headEvento;
     public Recordatorios headRecordatorio = recordatorios;
