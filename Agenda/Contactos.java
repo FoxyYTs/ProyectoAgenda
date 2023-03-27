@@ -46,8 +46,4 @@ public class Contactos {
         this.telefono = telefono;
     }
 
-    @Override
-    public String toString() {
-        return "Contacto [nombre: " + nombre + ", apellido: " + apellido + ", telefono: " + telefono + ", correo: " + correo + "]";
-    }
 }
