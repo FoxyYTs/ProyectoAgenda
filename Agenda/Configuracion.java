@@ -1,7 +1,9 @@
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Configuracion {
-    private String formatoFecha;
+    private String formatoFecha = "dd/MM/yyyy HH:mm";
+    private DateTimeFormatter formatoFechaHora;
     private String idioma;
 
     public Configuracion(String formatoFecha, String idioma) {
@@ -14,11 +16,11 @@ public class Configuracion {
     }
 
     public void setFormatoFecha(String formaFecha) {
-        this.formatoFecha = formatoFecha;
+        formatoFechaHora = DateTimeFormatter.ofPattern(formatoFecha);
     }
 
-    private void cambiarFormato(LocalDateTime fechaHora) {
-        
+    public String cambiarHora(LocalDateTime fechaHora){
+        String fechaHoraFormateada = fechaHora.format(formatoFechaHora);
+        return fechaHoraFormateada;
     }
-
 }
