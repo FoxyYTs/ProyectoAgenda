@@ -1,4 +1,4 @@
-public class Grupos {
+public class Grupos extends Agenda{
 
     private String nombre;
     public Contactos head;
@@ -38,8 +38,7 @@ public class Grupos {
     public void mostrarContacto () {
         Contactos pointer = head;
         while (pointer != null) {
-            System.out.print("Contacto [nombre: " + pointer.getNombre() + ", apellido: " + pointer.getApellido()
-                    + ", telefono: " + pointer.getTelefono() + ", correo: " + pointer.getCorreo() + "]");
+            configuracion.gruposMostrarContactos(pointer.getNombre(), pointer.getApellido(), pointer.getTelefono(), pointer.getCorreo());
             pointer = pointer.next;
         }
         System.out.println();
