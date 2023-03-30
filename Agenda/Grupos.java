@@ -18,16 +18,16 @@ public class Grupos {
         }
     }
 
-    public void eliminarContacto (String nombre){
+    public void eliminarContacto(String nombre) {
         if (head == null) {
             return;
-        }          
+        }
         if (head.getNombre() == nombre) {
             head = head.next;
             return;
         }
         Contactos pointer = head;
-        while(pointer.next.getNombre() != nombre && pointer.next != null){
+        while (pointer.next.getNombre() != nombre && pointer.next != null) {
             pointer = pointer.next;
         }
         if (pointer.next != null) {
@@ -35,7 +35,7 @@ public class Grupos {
         }
     }
 
-    public void mostrarContacto () {
+    public void mostrarContacto() {
         Contactos pointer = head;
         while (pointer != null) {
             System.out.print("Contacto [nombre: " + pointer.getNombre() + ", apellido: " + pointer.getApellido()
@@ -58,5 +58,4 @@ public class Grupos {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
 }

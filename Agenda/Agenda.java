@@ -102,4 +102,33 @@ public class Agenda {
         System.out.println();
     }
 
+    String apellido, correo, telefono;
+
+    public void agregarContactoAGrupo(String nombre) {
+        if (headGrupos == null) {
+            return;
+        }
+        if (headGrupos.getNombre() == nombre) {
+            System.out.println(headGrupos.getNombre());
+        }
+        Grupos pointerGrupos = headGrupos;
+        while (pointerGrupos.next.getNombre() != nombre && pointerGrupos.next != null) {
+            pointerGrupos = pointerGrupos.next;
+            pointerGrupos.insertarContacto(nombre, apellido, correo, telefono);
+        }
+    }
+
+    public void elimininarContactoDeGrupo(String nombre) {
+        if (headGrupos == null) {
+            return;
+        }
+        if (headGrupos.getNombre() == nombre) {
+            System.out.println(headGrupos.getNombre());
+        }
+        Grupos pointerGrupos = headGrupos;
+        while (pointerGrupos.next.getNombre() != nombre && pointerGrupos.next != null) {
+            pointerGrupos = pointerGrupos.next;
+            pointerGrupos.eliminarContacto(nombre);
+        }
+    }
 }
