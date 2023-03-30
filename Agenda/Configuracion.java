@@ -35,13 +35,22 @@ public class Configuracion {
         return fechaHoraFormateada;
     }
 
-    public void calendarioMostrarEvento(){
-        String saludo = null;
-        if (idioma == "es"){
-            System.out.print("Evento [titulo: " + calendario.pointerEventos.getTitulo() + ", Fecha y Hora de inicio: " + pointerEventos.getFechaHoraInicio() + ", Fecha y hora de Fin: " + pointerEventos.getFechaHoraFin() + "]");
-        }else if(idioma == "en"){
-            saludo = "Hello";
+    public void calendarioMostrarEvento(String titulo,LocalDateTime fechaHoraInicio, LocalDateTime fechaHoraFinal){
+        if (idioma == "en"){
+            System.out.print("Event [title: " + titulo + ", Start date and time: " + fechaHoraInicio + ", End date and time: " + fechaHoraFinal + "]");
+        }else{
+            System.out.print("Evento [titulo: " + titulo + ", Fecha y Hora de inicio: " + fechaHoraInicio + ", Fecha y hora de Fin: " + fechaHoraFinal + "]");
         }
     }
+
+    public void calendarioMostrarRecordatorios(String mensaje, LocalDateTime fechaHora){
+        if (idioma == "en"){
+            System.out.println("");
+        }else{
+            System.out.print("Recordatorio [mensaje: " + mensaje + ", Fecha y Hora: " + fechaHora + "]");
+        }
+    }
+
+    gru
 
 }
