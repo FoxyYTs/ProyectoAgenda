@@ -5,7 +5,7 @@ public class Grupos {
     public Contactos pointer = head;
     public Grupos next;
 
-    public void insertar(String nombre, String apellido, String correo, String telefono) {
+    public void insertarContacto(String nombre, String apellido, String correo, String telefono) {
         Contactos nuevo = new Contactos(nombre, apellido, correo, telefono);
         if (head == null) {
             head = nuevo;

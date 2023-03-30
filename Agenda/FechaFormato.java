@@ -6,11 +6,12 @@ public class FechaFormato {
     
 
     public static void main(String[] args) {
-        String formato = "dd/MM/yyyy HH:mm:ss",idioma = "es";
-        Configuracion confi = new Configuracion(formato, idioma);
-        System.out.println(confi.saludo());
-        confi.setIdioma("en");
-        System.out.println(confi.saludo());
+        String hola = null;
+        System.out.println(hola);
+        hola = "hola";
+        System.out.println(hola);
+        hola = null;
+        System.out.println(hola);
     }
 
 

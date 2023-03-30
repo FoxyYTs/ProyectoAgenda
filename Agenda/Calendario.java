@@ -1,9 +1,7 @@
 import java.util.Calendar;
 import java.time.LocalDateTime;
 
-public class Calendario {
-
-    Configuracion confi = new Configuracion(null, null)
+public class Calendario extends Agenda{
 
     public Eventos headEvento;
     public Eventos pointerEvento = headEvento;
@@ -43,9 +41,7 @@ public class Calendario {
     public void mostrarEventos() {
         Eventos pointerEventos = headEvento;
         while (pointerEventos != null) {
-            System.out.print("Evento [titulo: " + pointerEventos.getTitulo() + ", Fecha y Hora de inicio: "
-                    + pointerEventos.getFechaHoraInicio() + ", Fecha y hora de Fin: " + pointerEventos.getFechaHoraFin()
-                    + "]");
+            configuracion.calendarioMostrarEvento(pointerEventos.getTitulo(), pointerEventos.getFechaHoraInicio(), pointerEventos.getFechaHoraFin());
             pointerEventos = pointerEventos.next;
         }
         System.out.println();
@@ -84,8 +80,7 @@ public class Calendario {
     public void mostrarRecordatorio() {
         Recordatorios pointerRecordatorio = headRecordatorio;
         while (pointerRecordatorio != null) {
-            System.out.print("Recordatorio [mensaje: " + pointerRecordatorio.getMensaje() + ", Fecha y Hora: "
-                    + pointerRecordatorio.getFechaHora() + "]");
+            configuracion.calendarioMostrarRecordatorios(pointerRecordatorio.getMensaje(), pointerRecordatorio.getFechaHora());
             pointerRecordatorio = pointerRecordatorio.next;
         }
         System.out.println();

@@ -6,6 +6,8 @@ public class Configuracion {
     private DateTimeFormatter formatoFechaHora;
     private static String idioma;
 
+    Calendario calendario = new Calendario();
+
     public Configuracion(String formatoFecha, String idioma) {
         this.formatoFecha = formatoFecha;
         this.idioma = idioma;
@@ -33,14 +35,22 @@ public class Configuracion {
         return fechaHoraFormateada;
     }
 
-    public String saludo(){
-        String saludo = null;
-        if (idioma == "es"){
-            saludo = "Hola";
-        }else if(idioma == "en"){
-            saludo = "Hello";
+    public void calendarioMostrarEvento(String titulo,LocalDateTime fechaHoraInicio, LocalDateTime fechaHoraFinal){
+        if (idioma == "en"){
+            System.out.print("Event [title: " + titulo + ", Start date and time: " + fechaHoraInicio + ", End date and time: " + fechaHoraFinal + "]");
+        }else{
+            System.out.print("Evento [titulo: " + titulo + ", Fecha y Hora de inicio: " + fechaHoraInicio + ", Fecha y hora de Fin: " + fechaHoraFinal + "]");
         }
-        return saludo;
     }
+
+    public void calendarioMostrarRecordatorios(String mensaje, LocalDateTime fechaHora){
+        if (idioma == "en"){
+            System.out.println("");
+        }else{
+            System.out.print("Recordatorio [mensaje: " + mensaje + ", Fecha y Hora: " + fechaHora + "]");
+        }
+    }
+
+    gru
 
 }
