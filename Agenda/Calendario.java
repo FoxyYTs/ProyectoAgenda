@@ -3,6 +3,8 @@ import java.time.LocalDateTime;
 
 public class Calendario {
 
+    Configuracion confi = new Configuracion(null, null)
+
     public Eventos headEvento;
     public Eventos pointerEvento = headEvento;
     public Recordatorios headRecordatorio;
