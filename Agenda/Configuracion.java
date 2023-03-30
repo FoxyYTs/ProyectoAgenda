@@ -47,9 +47,36 @@ public class Configuracion {
 
     public void calendarioMostrarRecordatorios(String mensaje, LocalDateTime fechaHora) {
         if (idioma == "en") {
-            System.out.println("");
+            System.out.println("Recordatorio [message: " + mensaje + ", date and time: " + fechaHora + "]");
         } else {
             System.out.print("Recordatorio [mensaje: " + mensaje + ", Fecha y Hora: " + fechaHora + "]");
+        }
+    }
+
+    public void gruposMostrarContactos(String nombre, String apellido, String telefono, String correo) {
+        if (idioma == "en") {
+            System.out.println("Contacto [name: " + nombre + ", lastname: " + apellido + ", telefono: " + telefono
+                    + ", mail: " + correo + "]");
+        } else {
+            System.out.print("Contacto [nombre: " + nombre + ", apellido: " + apellido + ", telefono: " + telefono
+                    + ", correo: " + correo + "]");
+        }
+    }
+
+    public void agendaMostrarContactos(String nombre, String apellido, String telefono, String correo) {
+        if (idioma == "en") {
+
+        } else {
+            System.out.print("Contacto [nombre: " + nombre + ", apellido: " + apellido + ", telefono: " + telefono
+                    + ", correo: " + correo + "]");
+        }
+    }
+
+    public void agendaMostrarGrupo(String nombre) {
+        if (idioma == "en") {
+
+        } else {
+            System.out.print("Contacto [nombre: " + nombre + "]");
         }
     }
 

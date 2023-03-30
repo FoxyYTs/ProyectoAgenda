@@ -54,10 +54,7 @@ public class Agenda {
     public void mostrarContactos() {
         Contactos pointerContactos = headContactos;
         while (pointerContactos != null) {
-            System.out.print("Contacto [nombre: " + pointerContactos.getNombre() + ", apellido: "
-                    + pointerContactos.getApellido()
-                    + ", telefono: " + pointerContactos.getTelefono() + ", correo: " + pointerContactos.getCorreo()
-                    + "]");
+            configuracion.agendaMostrarContactos(pointerContactos.getNombre(), pointerContactos.getApellido(), pointerContactos.getTelefono(), pointerContactos.getCorreo());
             pointerContactos = pointerContactos.next;
         }
         System.out.println();
@@ -96,7 +93,7 @@ public class Agenda {
     public void mostrarGrupos() {
         Grupos pointerGrupos = headGrupos;
         while (pointerGrupos != null) {
-            System.out.print("Contacto [nombre: " + pointerGrupos.getNombre() + "]");
+            configuracion.agendaMostrarGrupo(pointerGrupos.getNombre());
             pointerGrupos = pointerGrupos.next;
         }
         System.out.println();
