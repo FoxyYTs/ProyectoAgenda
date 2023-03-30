@@ -59,4 +59,20 @@ public class Configuracion {
         }
     }
 
+    public void agendaMostrarContactos(String nombre, String apellido, String telefono, String correo){
+        if (idioma == "en"){
+            
+        }else{
+            System.out.print("Contacto [nombre: " + nombre + ", apellido: "+ apellido + ", telefono: " + telefono + ", correo: " + correo + "]");
+        }
+    }
+
+    public void agendaMostrarGrupo(String nombre){
+        if (idioma == "en"){
+            
+        }else{
+            System.out.print("Contacto [nombre: " + nombre + "]");
+        }
+    }
+
 }
