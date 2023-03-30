@@ -16,7 +16,7 @@ public class Configuracion {
     public String getFormatoFecha() {
         return formatoFecha;
     }
-    
+
     public String getIdioma() {
         return idioma;
     }
@@ -29,28 +29,28 @@ public class Configuracion {
         this.idioma = idioma;
     }
 
-    public static String fechaHora(LocalDateTime fechaHoraActual){
+    public static String fechaHora(LocalDateTime fechaHoraActual) {
         DateTimeFormatter formatoFechaHora = DateTimeFormatter.ofPattern(formatoFecha);
         String fechaHoraFormateada = fechaHoraActual.format(formatoFechaHora);
         return fechaHoraFormateada;
     }
 
-    public void calendarioMostrarEvento(String titulo,LocalDateTime fechaHoraInicio, LocalDateTime fechaHoraFinal){
-        if (idioma == "en"){
-            System.out.print("Event [title: " + titulo + ", Start date and time: " + fechaHoraInicio + ", End date and time: " + fechaHoraFinal + "]");
-        }else{
-            System.out.print("Evento [titulo: " + titulo + ", Fecha y Hora de inicio: " + fechaHoraInicio + ", Fecha y hora de Fin: " + fechaHoraFinal + "]");
+    public void calendarioMostrarEvento(String titulo, LocalDateTime fechaHoraInicio, LocalDateTime fechaHoraFinal) {
+        if (idioma == "en") {
+            System.out.print("Event [title: " + titulo + ", Start date and time: " + fechaHoraInicio
+                    + ", End date and time: " + fechaHoraFinal + "]");
+        } else {
+            System.out.print("Evento [titulo: " + titulo + ", Fecha y Hora de inicio: " + fechaHoraInicio
+                    + ", Fecha y hora de Fin: " + fechaHoraFinal + "]");
         }
     }
 
-    public void calendarioMostrarRecordatorios(String mensaje, LocalDateTime fechaHora){
-        if (idioma == "en"){
+    public void calendarioMostrarRecordatorios(String mensaje, LocalDateTime fechaHora) {
+        if (idioma == "en") {
             System.out.println("");
-        }else{
+        } else {
             System.out.print("Recordatorio [mensaje: " + mensaje + ", Fecha y Hora: " + fechaHora + "]");
         }
     }
-
-    gru
 
 }
