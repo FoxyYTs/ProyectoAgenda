@@ -1,9 +1,9 @@
 public class Agenda {
 
-    public Eventos headContactos;
-    public Eventos pointerContactos = headContactos;
-    public Recordatorios headGrupos;
-    public Recordatorios pointerGrupos = headGrupos;
+    public Contactos headContactos;
+    public Contactos pointerContactos = headContactos;
+    public Grupos headGrupos;
+    public Grupos pointerGrupos = headGrupos;
     public Calendario calendario;
     public Configuracion configuracion;
 
@@ -12,7 +12,7 @@ public class Agenda {
         if (headContactos == null) {
             headContactos = nuevo;
         } else {
-            Eventos pointerContactos = headContactos;
+            Contactos pointerContactos = headContactos;
             while (pointerContactos.next != null) {
                 pointerContactos = pointerContactos.next;
             }
@@ -24,12 +24,12 @@ public class Agenda {
         if (headContactos == null) {
             return;
         }
-        if (headContactos.getTitulo() == nombre) {
+        if (headContactos.getNombre() == nombre) {
             headContactos = headContactos.next;
             return;
         }
-        Eventos pointerContactos = headContactos;
-        while (pointerContactos.next.getTitulo() != nombre && pointerContactos.next != null) {
+        Contactos pointerContactos = headContactos;
+        while (pointerContactos.next.getNombre() != nombre && pointerContactos.next != null) {
             pointerContactos = pointerContactos.next;
         }
         if (pointerContactos.next != null) {
