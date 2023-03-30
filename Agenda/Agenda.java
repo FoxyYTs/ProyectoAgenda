@@ -50,4 +50,56 @@ public class Agenda {
             pointerContactos = pointerContactos.next;
         }
     }
+
+    public void mostrarContactos() {
+        Contactos pointerContactos = headContactos;
+        while (pointerContactos != null) {
+            System.out.print("Contacto [nombre: " + pointerContactos.getNombre() + ", apellido: "
+                    + pointerContactos.getApellido()
+                    + ", telefono: " + pointerContactos.getTelefono() + ", correo: " + pointerContactos.getCorreo()
+                    + "]");
+            pointerContactos = pointerContactos.next;
+        }
+        System.out.println();
+    }
+
+    public void agregarGrupos(String nombre) {
+        Grupos nuevo = new Grupos(nombre);
+        if (headGrupos == null) {
+            headGrupos = nuevo;
+        } else {
+            Grupos pointerGrupos = headGrupos;
+            while (pointerContactos.next != null) {
+                pointerGrupos = pointerGrupos.next;
+            }
+            pointerGrupos.next = nuevo;
+        }
+    }
+
+    public void eliminarGrupos(String nombre) {
+        if (headGrupos == null) {
+            return;
+        }
+        if (headGrupos.getNombre() == nombre) {
+            headGrupos = headGrupos.next;
+            return;
+        }
+        Grupos pointerGrupos = headGrupos;
+        while (pointerGrupos.next.getNombre() != nombre && pointerGrupos.next != null) {
+            pointerGrupos = pointerGrupos.next;
+        }
+        if (pointerGrupos.next != null) {
+            pointerGrupos.next = pointerGrupos.next.next;
+        }
+    }
+
+    public void mostrarGrupos() {
+        Grupos pointerGrupos = headGrupos;
+        while (pointerGrupos != null) {
+            System.out.print("Contacto [nombre: " + pointerGrupos.getNombre() + "]");
+            pointerGrupos = pointerGrupos.next;
+        }
+        System.out.println();
+    }
+
 }

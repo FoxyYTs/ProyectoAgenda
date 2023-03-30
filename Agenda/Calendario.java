@@ -45,6 +45,7 @@ public class Calendario extends Agenda {
                     pointerEventos.getFechaHoraFin());
             pointerEventos = pointerEventos.next;
         }
+        System.out.println();
     }
 
     public void insertarRecordatorios(String mensaje, LocalDateTime fechaHora) {
