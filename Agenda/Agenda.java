@@ -20,7 +20,7 @@ public class Agenda {
         }
     }
 
-    public void eliminarContacto(String nombre) {
+    public void eliminarContactos(String nombre) {
         if (headContactos == null) {
             return;
         }
@@ -34,6 +34,20 @@ public class Agenda {
         }
         if (pointerContactos.next != null) {
             pointerContactos.next = pointerContactos.next.next;
+        }
+    }
+
+    public void buscarContactos(String nombre) {
+        if (headContactos == null) {
+            return;
+        }
+        if (headContactos.getNombre() == nombre) {
+            System.out.println(headContactos.getNombre() + headContactos.getApellido() + headContactos.getCorreo()
+                    + headContactos.getTelefono());
+        }
+        Contactos pointerContactos = headContactos;
+        while (pointerContactos.next.getNombre() != nombre && pointerContactos.next != null) {
+            pointerContactos = pointerContactos.next;
         }
     }
 }
