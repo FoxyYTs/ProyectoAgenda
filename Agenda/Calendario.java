@@ -3,7 +3,7 @@ import java.time.LocalDateTime;
 
 public class Calendario {
 
-    Configuracion confi = new Configuracion(null, null)
+    Configuracion confi = new Configuracion(null, null);
 
     public Eventos headEvento;
     public Eventos pointerEvento = headEvento;
@@ -43,6 +43,7 @@ public class Calendario {
     public void mostrarEventos() {
         Eventos pointerEventos = headEvento;
         while (pointerEventos != null) {
+            confi.calendarioMostrarEvento();
             System.out.print("Evento [titulo: " + pointerEventos.getTitulo() + ", Fecha y Hora de inicio: "
                     + pointerEventos.getFechaHoraInicio() + ", Fecha y hora de Fin: " + pointerEventos.getFechaHoraFin()
                     + "]");
