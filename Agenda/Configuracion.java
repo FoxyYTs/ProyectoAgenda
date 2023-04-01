@@ -6,8 +6,6 @@ public class Configuracion {
     private DateTimeFormatter formatoFechaHora;
     private static String idioma;
 
-    Calendario calendario = new Calendario();
-
     public Configuracion(String formatoFecha, String idioma) {
         this.formatoFecha = formatoFecha;
         this.idioma = idioma;
@@ -37,46 +35,41 @@ public class Configuracion {
 
     public void calendarioMostrarEvento(String titulo, LocalDateTime fechaHoraInicio, LocalDateTime fechaHoraFinal) {
         if (idioma == "en") {
-            System.out.print("Event [title: " + titulo + ", Start date and time: " + fechaHoraInicio
-                    + ", End date and time: " + fechaHoraFinal + "]");
+            System.out.println("Event [title: " + titulo + ", Start date and time: " + fechaHoraInicio + ", End date and time: " + fechaHoraFinal + "]");
         } else {
-            System.out.print("Evento [titulo: " + titulo + ", Fecha y Hora de inicio: " + fechaHoraInicio
-                    + ", Fecha y hora de Fin: " + fechaHoraFinal + "]");
+            System.out.println("Evento [titulo: " + titulo + ", Fecha y Hora de inicio: " + fechaHoraInicio + ", Fecha y hora de Fin: " + fechaHoraFinal + "]");
         }
     }
 
     public void calendarioMostrarRecordatorios(String mensaje, LocalDateTime fechaHora) {
         if (idioma == "en") {
-            System.out.println("Recordatorio [message: " + mensaje + ", date and time: " + fechaHora + "]");
+            System.out.println("Reminder [message: " + mensaje + ", Date and Time: " + fechaHora + "]");
         } else {
-            System.out.print("Recordatorio [mensaje: " + mensaje + ", Fecha y Hora: " + fechaHora + "]");
+            System.out.println("Recordatorio [mensaje: " + mensaje + ", Fecha y Hora: " + fechaHora + "]");
         }
     }
 
     public void gruposMostrarContactos(String nombre, String apellido, String telefono, String correo) {
         if (idioma == "en") {
-            System.out.println("Contacto [name: " + nombre + ", lastname: " + apellido + ", telefono: " + telefono
-                    + ", mail: " + correo + "]");
+            System.out.println("Contact [name: " + nombre + ", last name: " + apellido + ", phone: " + telefono + ", email: " + correo + "]");
         } else {
-            System.out.print("Contacto [nombre: " + nombre + ", apellido: " + apellido + ", telefono: " + telefono
-                    + ", correo: " + correo + "]");
+            System.out.println("Contacto [nombre: " + nombre + ", apellido: " + apellido + ", telefono: " + telefono + ", correo: " + correo + "]");
         }
     }
 
     public void agendaMostrarContactos(String nombre, String apellido, String telefono, String correo) {
         if (idioma == "en") {
-
+            System.out.println("Contact [name: " + nombre + ", last name: " + apellido + ", phone: " + telefono + ", email: " + correo + "]");
         } else {
-            System.out.print("Contacto [nombre: " + nombre + ", apellido: " + apellido + ", telefono: " + telefono
-                    + ", correo: " + correo + "]");
+            System.out.println("Contacto [nombre: " + nombre + ", apellido: " + apellido + ", telefono: " + telefono + ", correo: " + correo + "]");
         }
     }
 
     public void agendaMostrarGrupo(String nombre) {
         if (idioma == "en") {
-
+            System.out.println("Contact [name: " + nombre + "]");
         } else {
-            System.out.print("Contacto [nombre: " + nombre + "]");
+            System.out.println("Contacto [nombre: " + nombre + "]");
         }
     }
 

@@ -1,11 +1,21 @@
+import java.util.Scanner;
 public class Agenda {
 
     public Contactos headContactos;
     public Contactos pointerContactos = headContactos;
     public Grupos headGrupos;
     public Grupos pointerGrupos = headGrupos;
-    public Calendario calendario;
-    public Configuracion configuracion;
+    public Calendario calendario = new Calendario();
+    public Configuracion configuracion = new Configuracion("dd/MM/yyyy HH:mm:ss", "es");
+
+    public Agenda() {
+        headContactos = null;
+        headGrupos = null;
+    }
+
+    public void menu(){
+        System.out.println("Holas");
+    }
 
     public void agregarContactos(String nombre, String apellido, String correo, String telefono) {
         Contactos nuevo = new Contactos(nombre, apellido, correo, telefono);
