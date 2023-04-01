@@ -2,9 +2,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Configuracion {
-    private static String formatoFecha;
-    private DateTimeFormatter formatoFechaHora;
-    private static String idioma;
+    private String formatoFecha = "";
+    private String idioma;
 
     public Configuracion(String formatoFecha, String idioma) {
         this.formatoFecha = formatoFecha;
@@ -27,7 +26,7 @@ public class Configuracion {
         this.idioma = idioma;
     }
 
-    public static String fechaHora(LocalDateTime fechaHoraActual) {
+    public String fechaHora(LocalDateTime fechaHoraActual) {
         DateTimeFormatter formatoFechaHora = DateTimeFormatter.ofPattern(formatoFecha);
         String fechaHoraFormateada = fechaHoraActual.format(formatoFechaHora);
         return fechaHoraFormateada;
