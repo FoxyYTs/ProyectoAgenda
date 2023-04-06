@@ -1,18 +1,11 @@
 import java.time.LocalDateTime;
 
-public class Calendario extends Agenda{
+public class Calendario{
 
     public Eventos headEvento;
     public Eventos pointerEvento;
     public Recordatorios headRecordatorio;
     public Recordatorios pointerRecordatorio;
-
-    public Calendario(){
-        headEvento = null;
-        headRecordatorio = null;
-        pointerEvento = headEvento;
-        pointerRecordatorio = headRecordatorio;
-    }
 
     public void insertarEventos(String titulo, LocalDateTime fechaHoraInicio, LocalDateTime fechaHoraFin) {
         Eventos nuevo = new Eventos(titulo, fechaHoraInicio, fechaHoraFin);
@@ -47,8 +40,7 @@ public class Calendario extends Agenda{
     public void mostrarEventos() {
         Eventos pointerEventos = headEvento;
         while (pointerEventos != null) {
-            configuracion.calendarioMostrarEvento(pointerEventos.getTitulo(), pointerEventos.getFechaHoraInicio(),
-                    pointerEventos.getFechaHoraFin());
+            //configuracion.calendarioMostrarEvento(pointerEventos.getTitulo(), pointerEventos.getFechaHoraInicio(),pointerEventos.getFechaHoraFin());
             pointerEventos = pointerEventos.next;
         }
         System.out.println();
@@ -66,7 +58,7 @@ public class Calendario extends Agenda{
             pointerRecordatorio.next = nuevo;
         }
     }
-
+    
     public void eliminarRecordatorios(String mensaje) {
         if (headRecordatorio == null) {
             return;
@@ -83,12 +75,11 @@ public class Calendario extends Agenda{
             pointerRecordatorio.next = pointerRecordatorio.next.next;
         }
     }
-
+    
     public void mostrarRecordatorios() {
         Recordatorios pointerRecordatorio = headRecordatorio;
         while (pointerRecordatorio != null) {
-            configuracion.calendarioMostrarRecordatorios(pointerRecordatorio.getMensaje(),
-                    pointerRecordatorio.getFechaHora());
+            //configuracion.calendarioMostrarRecordatorios(pointerRecordatorio.getMensaje(),pointerRecordatorio.getFechaHora());
             pointerRecordatorio = pointerRecordatorio.next;
         }
         System.out.println();
