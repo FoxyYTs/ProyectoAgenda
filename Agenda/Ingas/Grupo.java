@@ -54,7 +54,6 @@ public class Grupo extends Agenda{
         Contacto pointer = head;
         while (pointer != null) {
             configuracion.imprimirMostrarContactos(pointer.getNombre(), pointer.getApellido(), pointer.getTelefono(), pointer.getCorreo());
-            System.out.println("Papo");
             pointer = pointer.next;
         }
         System.out.println();

@@ -26,12 +26,12 @@ public class Calendario extends Agenda{
         if (headEvento == null) {
             return;
         }
-        if (headEvento.getTitulo() == titulo) {
+        if (headEvento.getTitulo().equals(titulo)) {
             headEvento = headEvento.next;
             return;
         }
         Eventos pointerEvento = headEvento;
-        while (pointerEvento.next.getTitulo() != titulo && pointerEvento.next != null) {
+        while (!pointerEvento.next.getTitulo().equals(titulo) && pointerEvento.next != null) {
             pointerEvento = pointerEvento.next;
         }
         if (pointerEvento.next != null) {
@@ -65,12 +65,12 @@ public class Calendario extends Agenda{
         if (headRecordatorio == null) {
             return;
         }
-        if (headRecordatorio.getMensaje() == mensaje) {
+        if (headRecordatorio.getMensaje().equals(mensaje)) {
             headRecordatorio = headRecordatorio.next;
             return;
         }
         Recordatorios pointerRecordatorio = headRecordatorio;
-        while (pointerRecordatorio.next.getMensaje() != mensaje && pointerRecordatorio.next != null) {
+        while (!pointerRecordatorio.next.getMensaje().equals(mensaje) && pointerRecordatorio.next != null) {
             pointerRecordatorio = pointerRecordatorio.next;
         }
         if (pointerRecordatorio.next != null) {
