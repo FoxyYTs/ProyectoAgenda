@@ -1,3 +1,5 @@
+package Trabajo(no sirve);
+
 public class Agenda {
 
     public Contactos headContactos;

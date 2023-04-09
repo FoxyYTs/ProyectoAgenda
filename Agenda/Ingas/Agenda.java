@@ -41,23 +41,12 @@ public class Agenda {
             insertarAGrupo(nameG, "nombre" + i, "apellido" + i);
         }
 
-        for (int j = 1; j <= 5; j++){
-            nameG = "grupo"+j;
-            for (int i = 1; i <= 5; i++) {
-                eliminarDeGrupo(nameG, "nombre" + i, "apellido" + i);
-            }
-        }
-        
-        int i = 2;
+        eliminarDeGrupo("grupo3", "nombre3", "apellido3");
 
-        System.out.println("Hola muno\n");
-        eliminarDeGrupo("grupo2", "nombre" + i, "apellido" + i);
-        System.out.println("\nPerro\n");
-        /*
-        for (int j = 1; j <= 5; j++) {
-            System.out.println("Grupo " + j);
-            mostrarGrupo("grupo" + j);
-        }*/
+        System.out.println("a");
+
+        mostrarContactosEnGrupo("grupo3");
+
 
     }
     //Funciones Contactos
@@ -171,7 +160,7 @@ public class Agenda {
         Grupo pGrupo = hGrupo;
         while (pGrupo != null) {
             if(pGrupo.getNombre().equals(nombreG)){
-                pGrupo.eliminarContactoGrupo(buscarContacto(nombreC, apellido));
+                pGrupo.eliminarContactoGrupo(nombreC, apellido);
                 return;
             }
             pGrupo = pGrupo.next;
@@ -191,5 +180,17 @@ public class Agenda {
         }
         return;
     } 
+
+    public static void mostrarContactosEnGrupo(String nombreG){
+        Grupo pGrupo = hGrupo;
+        while (pGrupo != null) {
+            if(pGrupo.getNombre().equals(nombreG)){
+                pGrupo.mostrarContactoGrupo();
+                return;
+            }
+            pGrupo = pGrupo.next;
+        }
+        return;
+    }
 }
 
