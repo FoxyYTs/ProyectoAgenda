@@ -171,7 +171,7 @@ public class Agenda {
         Grupo pGrupo = hGrupo;
         while (pGrupo != null) {
             if(pGrupo.getNombre().equals(nombreG)){
-                pGrupo.buscarContactoGrupo(nombreC, apellido);
+                pGrupo.eliminarContactoGrupo(buscarContacto(nombreC, apellido));
                 return;
             }
             pGrupo = pGrupo.next;
