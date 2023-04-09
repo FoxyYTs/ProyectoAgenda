@@ -36,12 +36,12 @@ public class Grupo extends Agenda{
         if (head == null) {
             return;
         }
-        if (head.equals(conta)) {
+        if (head == conta) {
             head = head.next;
             return;
         }
         Contacto pointer = head;
-        while (!pointer.next.equals(conta) && pointer.next != null) {
+        while (pointer.next != conta && pointer.next != null) {
             pointer = pointer.next;
         }
 
