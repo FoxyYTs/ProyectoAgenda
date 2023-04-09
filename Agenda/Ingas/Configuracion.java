@@ -66,4 +66,12 @@ public class Configuracion {
             System.out.println("Grupo [nombre: " + nombre + "]");
         }
     }
+
+    public void listaNulo(){
+        if (idioma == "en"){
+            System.out.println("The list not exist");
+        } else {
+            System.out.println("La lista no existe");
+        }
+    }
 }

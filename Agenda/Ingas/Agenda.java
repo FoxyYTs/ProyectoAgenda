@@ -7,6 +7,7 @@ public class Agenda {
     private static Grupo hGrupo;
     private static String formatoFechaHora = "dd/MM/yyyy", idioma = "es";
     public static Configuracion configuracion = new Configuracion(formatoFechaHora, idioma);
+    public static Calendario calendario = new Calendario();
     public static Scanner leer = new Scanner (System.in);
 
     public Agenda(){
@@ -83,6 +84,7 @@ public class Agenda {
     public static void mostrarContacto() {
         if (hContacto == null){
             System.out.println("No existe");
+            return;
         }
         Contacto pContacto = hContacto;
         while (pContacto != null) {
@@ -192,5 +194,9 @@ public class Agenda {
         }
         return;
     }
+
+    //Funciones Eventos
+
+    calendario.insertarEventos(titulo, fechaHoraInicio, fechaHoraFin);
 }
 

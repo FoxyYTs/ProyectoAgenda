@@ -4,10 +4,8 @@ import java.time.LocalDateTime;
 
 public class Calendario extends Agenda{
 
-    public Eventos headEvento;
-    public Eventos pointerEvento;
-    public Recordatorios headRecordatorio;
-    public Recordatorios pointerRecordatorio;
+    private Eventos headEvento;
+    private Recordatorios headRecordatorio;
 
     public void insertarEventos(String titulo, LocalDateTime fechaHoraInicio, LocalDateTime fechaHoraFin) {
         Eventos nuevo = new Eventos(titulo, fechaHoraInicio, fechaHoraFin);
