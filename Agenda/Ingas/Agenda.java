@@ -1,24 +1,21 @@
 package Ingas;
 
-
-
 public class Agenda {
     public static Contacto hContacto;
     private static Grupo hGrupo;
-    private static String formatoFechaHora = "dd/MM/yyyy", idioma = "es";
+    private static String formatoFechaHora = "dd/MM/yyyy", idioma = "en";
     public static Configuracion configuracion = new Configuracion(formatoFechaHora, idioma);
     public static Calendario calendario = new Calendario();
-    
 
-    public Agenda(){
+    public Agenda() {
         Agenda.hContacto = null;
     }
-    
-    public void menu(){
+
+    public void menu() {
         configuracion.menu();
     }
-    
-    //Funciones Contactos
+
+    // Funciones Contactos
     public static void insertarContacto(String nombre, String apellido, String correo, String telefono) {
         Contacto nuevo = new Contacto(nombre, apellido, correo, telefono);
         if (hContacto == null) {
@@ -41,7 +38,8 @@ public class Agenda {
             return;
         }
         Contacto pContacto = hContacto;
-        while (!pContacto.next.getNombre().equals(nombre) && !pContacto.next.getApellido().equals(apellido) && pContacto.next != null) {
+        while (!pContacto.next.getNombre().equals(nombre) && !pContacto.next.getApellido().equals(apellido)
+                && pContacto.next != null) {
             pContacto = pContacto.next;
         }
         if (pContacto.next != null) {
@@ -50,26 +48,27 @@ public class Agenda {
     }
 
     public static void mostrarContacto() {
-        if (hContacto == null){
+        if (hContacto == null) {
             System.out.println("No existe");
             return;
         }
         Contacto pContacto = hContacto;
         while (pContacto != null) {
-            configuracion.imprimirMostrarContactos(pContacto.getNombre(), pContacto.getApellido(), pContacto.getTelefono(), pContacto.getCorreo());
+            configuracion.imprimirMostrarContactos(pContacto.getNombre(), pContacto.getApellido(),
+                    pContacto.getTelefono(), pContacto.getCorreo());
             pContacto = pContacto.next;
         }
         System.out.println();
     }
 
-    public static Contacto buscarContacto(String nombre, String apellido){
-        if (hContacto == null){
+    public static Contacto buscarContacto(String nombre, String apellido) {
+        if (hContacto == null) {
             System.out.println("No existe");
             return null;
         }
         Contacto pContacto = hContacto;
         while (pContacto != null) {
-            if(pContacto.getNombre().equals(nombre) && pContacto.getApellido().equals(apellido)){
+            if (pContacto.getNombre().equals(nombre) && pContacto.getApellido().equals(apellido)) {
                 return pContacto;
             }
             pContacto = pContacto.next;
@@ -77,7 +76,7 @@ public class Agenda {
         return null;
     }
 
-    //Funciones Grupos
+    // Funciones Grupos
 
     public static void agregarGrupos(String nombre) {
         Grupo nuevo = new Grupo(nombre);
@@ -118,22 +117,22 @@ public class Agenda {
         System.out.println();
     }
 
-    public static void insertarAGrupo(String nombreG, String nombreC, String apellido){
+    public static void insertarAGrupo(String nombreG, String nombreC, String apellido) {
         Grupo pGrupo = hGrupo;
         while (pGrupo != null) {
-            if(pGrupo.getNombre().equals(nombreG)){
-                pGrupo.agregarContactoGrupo(buscarContacto(nombreC, apellido)); 
+            if (pGrupo.getNombre().equals(nombreG)) {
+                pGrupo.agregarContactoGrupo(buscarContacto(nombreC, apellido));
                 return;
             }
             pGrupo = pGrupo.next;
         }
         return;
     }
-    
-    public static void eliminarDeGrupo(String nombreG, String nombreC, String apellido){
+
+    public static void eliminarDeGrupo(String nombreG, String nombreC, String apellido) {
         Grupo pGrupo = hGrupo;
         while (pGrupo != null) {
-            if(pGrupo.getNombre().equals(nombreG)){
+            if (pGrupo.getNombre().equals(nombreG)) {
                 pGrupo.eliminarContactoGrupo(nombreC, apellido);
                 return;
             }
@@ -141,11 +140,11 @@ public class Agenda {
         }
         return;
     }
-    
-    public static void mostrarGrupo(String nombreG){
+
+    public static void mostrarGrupo(String nombreG) {
         Grupo pGrupo = hGrupo;
         while (pGrupo != null) {
-            if(pGrupo.getNombre().equals(nombreG)){
+            if (pGrupo.getNombre().equals(nombreG)) {
                 configuracion.agendaMostrarGrupo(pGrupo.getNombre());
                 pGrupo.mostrarContactoGrupo();
                 return;
@@ -153,12 +152,12 @@ public class Agenda {
             pGrupo = pGrupo.next;
         }
         return;
-    } 
+    }
 
-    public static void mostrarContactosEnGrupo(String nombreG){
+    public static void mostrarContactosEnGrupo(String nombreG) {
         Grupo pGrupo = hGrupo;
         while (pGrupo != null) {
-            if(pGrupo.getNombre().equals(nombreG)){
+            if (pGrupo.getNombre().equals(nombreG)) {
                 pGrupo.mostrarContactoGrupo();
                 return;
             }
@@ -167,4 +166,3 @@ public class Agenda {
         return;
     }
 }
-
