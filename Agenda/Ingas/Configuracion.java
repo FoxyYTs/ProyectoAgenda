@@ -130,12 +130,13 @@ public class Configuracion {
     }
 
     public static void menuContactos(int opcion){
+        Boolean seguir = true;
+        String nombre, apellido, correo, telefono;
+        Contacto conta;
+        
         if (idioma == "en") {
             
         } else {
-            Boolean seguir = true;
-            String nombre, apellido, correo, telefono;
-            Contacto conta;
             while (seguir) {
                 System.out.print("\033[H\033[2J");
                 System.out.println("Escribe la opcion que desea\n1) Ingresar Contacto\n2) Buscar Contacto\n3) Mostrar Contacto\n4) Eliminar Contactor\n5) Regresar \nEleccion: ");
@@ -193,6 +194,14 @@ public class Configuracion {
                 }
             }
             System.out.flush(); 
+        }
+    }
+
+    public static void menuGrupo(){
+        if (idioma == "en"){
+
+        } else {
+
         }
     }
 }
