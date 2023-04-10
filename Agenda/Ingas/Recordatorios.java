@@ -3,7 +3,7 @@ package Ingas;
 import java.time.LocalDateTime;
 
 public class Recordatorios {
-    private String mensaje,titulo;
+    private String mensaje, titulo;
     private LocalDateTime fechaHora;
     public Recordatorios next;
 
@@ -26,7 +26,7 @@ public class Recordatorios {
         return fechaHora;
     }
 
-    public void setTitulo(){
+    public void setTitulo(String titulo){
         this.titulo = titulo;
     }
 
