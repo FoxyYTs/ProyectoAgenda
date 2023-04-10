@@ -3,7 +3,7 @@ package Ingas;
 public class Agenda {
     public static Contacto hContacto;
     private static Grupo hGrupo;
-    private static String formatoFechaHora = "dd/MM/yyyy", idioma = "es";
+    private static String formatoFechaHora = "dd/MM/yyyy HH:mm:ss", idioma = "en";
     public static Configuracion configuracion = new Configuracion(formatoFechaHora, idioma);
     public static Calendario calendario = new Calendario();
 
@@ -112,6 +112,7 @@ public class Agenda {
         Grupo pointerGrupos = hGrupo;
         while (pointerGrupos != null) {
             configuracion.agendaMostrarGrupo(pointerGrupos.getNombre());
+            mostrarGrupo(pointerGrupos.getNombre());
             pointerGrupos = pointerGrupos.next;
         }
         System.out.println();
