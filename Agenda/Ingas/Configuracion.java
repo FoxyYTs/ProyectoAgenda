@@ -103,6 +103,7 @@ public class Configuracion {
                         System.out.print("\033[H\033[2J"); 
                         System.out.println("Ingresando al menu de Grupos");
                         leer.nextLine();
+                        menuGrupo(opcion);
                         break;
                     case 3:
                         System.out.print("\033[H\033[2J"); 
@@ -197,11 +198,125 @@ public class Configuracion {
         }
     }
 
-    public static void menuGrupo(){
+    public static void menuGrupo(int opcion){
+        Boolean seguir = true;
+        String nombreG;
         if (idioma == "en"){
 
         } else {
+            while (seguir) {
+                System.out.print("\033[H\033[2J");
+                System.out.println("Escribe la opcion que desea\n1) Crear Grupo\n2) Mostrar Grupos\n3) Eliminar Grupo\n4) Gestor de Contactos\n5) Regresar \nEleccion: ");
+                opcion = Integer.parseInt(leer.nextLine());
+                switch (opcion) {
+                    case 1:
+                        System.out.print("\033[H\033[2J");
+                        System.out.print("Creando Grupo\nIngresa nombre: ");
+                        Agenda.agregarGrupos(leer.nextLine());
+                        break;
+                    case 2:
+                        System.out.print("\033[H\033[2J");
+                        System.out.println("Lista de Grupos");
+                        Agenda.mostrarGrupos();
+                        leer.nextLine();
+                        break;
+                    case 3:
+                        System.out.print("\033[H\033[2J");
+                        System.out.print("Eliminando Grupos\nIngrese el nombre: ");
+                        Agenda.eliminarGrupos(leer.nextLine());
+                        break;
+                    case 4:
+                        System.out.print("\033[H\033[2J");
+                        System.out.println("Ingresando al gestor de Contactos...");
+                        leer.nextLine();
+                        gestorContactos(opcion);
+                        break;
+                    case 5:
+                        System.out.print("\033[H\033[2J");
+                        System.out.println("Regresando...");
+                        seguir = false;
+                        leer.nextLine();
+                        break;
+                
+                    default:
+                        System.out.println("Opcion no valida");
+                        break;
+                }
+            }
+        }
+    }
 
+    public static void gestorContactos(int opcion){
+        Boolean seguir = true;
+        String nombreG = "",nombreC = "",apellidoC = "";
+        if (idioma == "en"){
+
+        } else {
+            while (seguir) {
+                System.out.print("\033[H\033[2J");
+                System.out.println("Escribe la opcion que desea\n1) Agregar Contacto a Grupo\n2) Sacar Contacto de Grupo\n3) Regresar \nEleccion: ");
+                opcion = Integer.parseInt(leer.nextLine());
+                switch (opcion) {
+                    case 1:
+                        System.out.print("\033[H\033[2J");
+                        System.out.print("Ingresando Contacto a Grupo\nIngresa el nombre del Grupo: ");
+                        nombreG = leer.nextLine();
+                        System.out.println("Ingresa el nombre del Contacto: ");
+                        nombreC = leer.nextLine();
+                        System.out.println("Ingresa el apellido del Contacto: ");
+                        apellidoC = leer.nextLine();
+                        Agenda.insertarAGrupo(nombreG, nombreC, apellidoC);
+                        leer.nextLine();
+                        break;
+                    case 2:
+                        System.out.print("\033[H\033[2J");
+                        System.out.println("Sacando Contacto de Grupo\nIngresa el nombre del Grupo: ");
+                        nombreG = leer.nextLine();
+                        System.out.println("Ingresa el nombre del Contacto: ");
+                        nombreC = leer.nextLine();
+                        System.out.println("Ingresa el apellido del Contacto: ");
+                        apellidoC = leer.nextLine();
+                        Agenda.eliminarDeGrupo(nombreG, nombreC, apellidoC);
+                        leer.nextLine();
+                        break;
+                    case 3:
+                        System.out.print("\033[H\033[2J");
+                        System.out.println("Regresando...");
+                        seguir = false;
+                        leer.nextLine();
+                        break;
+                    default:
+                        System.out.println("Opcion no valida");
+                        break;
+                }
+            }
+        }
+    }
+
+    public static void menuConfiguracion(int opcion){
+        Boolean seguir = true;
+        if (idioma == "en"){
+
+        } else {
+            System.out.print("\033[H\033[2J");
+            System.out.println("Escribe la opcion que desea\n1) Elegir Idioma\n2) Elegir Formato de Fecha y Hora\n3) Regresar \nEleccion: ");
+            opcion = Integer.parseInt(leer.nextLine());
+            switch (opcion) {
+                case 1:
+                    
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    System.out.print("\033[H\033[2J");
+                    System.out.println("Regresando...");
+                    seguir = false;
+                    leer.nextLine();
+                    break;
+                default:
+                    System.out.println("Opcion no valida");
+                    break;
+            }
         }
     }
 }
