@@ -130,61 +130,69 @@ public class Configuracion {
     }
 
     public static void menuContactos(int opcion){
-        Boolean seguir = true;
-        String nombre, apellido, correo, telefono;
-        Contacto conta;
-        while (seguir) {
-            System.out.print("\033[H\033[2J");
-            System.out.println("Escribe la opcion que desea\n1) Ingresar Contacto\n2) Buscar Contacto\n3) Mostrar Contacto\n4) Eliminar Contactor\n5) Regresar \nEleccion: ");
-            opcion = Integer.parseInt(leer.nextLine());
-            switch (opcion) {
-                case 1:
-                    System.out.print("\033[H\033[2J");
-                    System.out.print("Creando contacto\nIngresa el nombre: ");
-                    nombre = leer.nextLine();
-                    System.out.print("Ingresar el apellido: ");
-                    apellido = leer.nextLine();
-                    System.out.print("Ingresa el correo: ");
-                    correo = leer.nextLine();
-                    System.out.print("Ingresa el telefono: ");
-                    telefono = leer.nextLine();
-                    Agenda.insertarContacto(nombre, apellido, correo, telefono);
-                    break;
-                case 2:
-                    System.out.print("\033[H\033[2J");
-                    System.out.print("Buscando contacto\nIngresa el nombre: ");
-                    nombre = leer.nextLine();
-                    System.out.print("Ingresar el apellido: ");
-                    apellido = leer.nextLine();
-                    conta = Agenda.buscarContacto(nombre, apellido);
-                    imprimirMostrarContactos(conta.getNombre(),conta.getApellido(),conta.getCorreo(),conta.getTelefono());
-                    leer.nextLine();
-                    break;
-                case 3:
-                    System.out.print("\033[H\033[2J");
-                    System.out.println("Lista de contactos");
-                    Agenda.mostrarContacto();
-                    leer.nextLine();
-                    break;
-                case 4:
-                    System.out.print("\033[H\033[2J");
-                    System.out.print("Eliminando contactos\nIngresa el nombre: ");
-                    nombre = leer.nextLine();
-                    System.out.print("Ingresar el apellido: ");
-                    apellido = leer.nextLine();
-                    Agenda.eliminarContacto(nombre, apellido);
-                    break;
-                case 5:
-                    System.out.print("\033[H\033[2J");
-                    System.out.println("Regresando...");
-                    seguir = false;
-                    leer.nextLine();
-                    break;
+        if (idioma == "en") {
             
-                default:
-                    System.out.println("Opcion no valida");
-                    break;
+        } else {
+            Boolean seguir = true;
+            String nombre, apellido, correo, telefono;
+            Contacto conta;
+            while (seguir) {
+                System.out.print("\033[H\033[2J");
+                System.out.println("Escribe la opcion que desea\n1) Ingresar Contacto\n2) Buscar Contacto\n3) Mostrar Contacto\n4) Eliminar Contactor\n5) Regresar \nEleccion: ");
+                opcion = Integer.parseInt(leer.nextLine());
+                switch (opcion) {
+                    case 1:
+                        System.out.print("\033[H\033[2J");
+                        System.out.print("Creando contacto\nIngresa el nombre: ");
+                        nombre = leer.nextLine();
+                        System.out.print("Ingresar el apellido: ");
+                        apellido = leer.nextLine();
+                        System.out.print("Ingresa el correo: ");
+                        correo = leer.nextLine();
+                        System.out.print("Ingresa el telefono: ");
+                        telefono = leer.nextLine();
+                        Agenda.insertarContacto(nombre, apellido, correo, telefono);
+                        break;
+                    case 2:
+                        System.out.print("\033[H\033[2J");
+                        System.out.print("Buscando contacto\nIngresa el nombre: ");
+                        nombre = leer.nextLine();
+                        System.out.print("Ingresar el apellido: ");
+                        apellido = leer.nextLine();
+                        conta = Agenda.buscarContacto(nombre, apellido);
+                        if (conta != null){
+                            imprimirMostrarContactos(conta.getNombre(),conta.getApellido(),conta.getCorreo(),conta.getTelefono());
+                        }
+                        leer.nextLine();
+                        break;
+                    case 3:
+                        System.out.print("\033[H\033[2J");
+                        System.out.println("Lista de contactos");
+                        Agenda.mostrarContacto();
+                        leer.nextLine();
+                        break;
+                    case 4:
+                        System.out.print("\033[H\033[2J");
+                        System.out.print("Eliminando contactos\nIngresa el nombre: ");
+                        nombre = leer.nextLine();
+                        System.out.print("Ingresar el apellido: ");
+                        apellido = leer.nextLine();
+                        Agenda.eliminarContacto(nombre, apellido);
+                        System.out.println("Eliminando...");
+                        break;
+                    case 5:
+                        System.out.print("\033[H\033[2J");
+                        System.out.println("Regresando...");
+                        seguir = false;
+                        leer.nextLine();
+                        break;
+                
+                    default:
+                        System.out.println("Opcion no valida");
+                        break;
+                }
             }
+            System.out.flush(); 
         }
     }
 }

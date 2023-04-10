@@ -63,6 +63,10 @@ public class Agenda {
     }
 
     public static Contacto buscarContacto(String nombre, String apellido){
+        if (hContacto == null){
+            System.out.println("No existe");
+            return null;
+        }
         Contacto pContacto = hContacto;
         while (pContacto != null) {
             if(pContacto.getNombre().equals(nombre) && pContacto.getApellido().equals(apellido)){
