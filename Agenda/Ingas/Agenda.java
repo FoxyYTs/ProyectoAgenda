@@ -1,6 +1,6 @@
 package Ingas;
 
-import java.util.Scanner;
+
 
 public class Agenda {
     public static Contacto hContacto;
@@ -8,48 +8,16 @@ public class Agenda {
     private static String formatoFechaHora = "dd/MM/yyyy", idioma = "es";
     public static Configuracion configuracion = new Configuracion(formatoFechaHora, idioma);
     public static Calendario calendario = new Calendario();
-    public static Scanner leer = new Scanner (System.in);
+    
 
     public Agenda(){
         Agenda.hContacto = null;
     }
     
     public void menu(){
-
-        String nameG,nameC,lastname,email,phone;
-        System.out.print("Vamos a crear los grupos");
-        for (int i = 1; i <= 5; i++){
-            agregarGrupos("grupo" + i);
-        }
-        System.out.println("\nLista de grupos");
-        mostrarGrupos();
-
-        System.out.println("Ahora vamos a crear los contactos");
-        for (int i = 1; i <= 5; i++) {
-            nameC = "nombre" + i;
-            lastname = "apellido" + i;
-            phone = "telefono" + i;
-            email = "correo" + i;
-            insertarContacto(nameC, lastname, phone, email);
-        }
-        System.out.println("La lista de contactos es: ");
-        mostrarContacto();
-
-        System.out.println("====================");
-
-        nameG = "grupo"+3;
-        for (int i = 1; i <= 5; i++) {
-            insertarAGrupo(nameG, "nombre" + i, "apellido" + i);
-        }
-
-        eliminarDeGrupo("grupo3", "nombre3", "apellido3");
-
-        System.out.println("a");
-
-        mostrarContactosEnGrupo("grupo3");
-
-
+        configuracion.menu();
     }
+    
     //Funciones Contactos
     public static void insertarContacto(String nombre, String apellido, String correo, String telefono) {
         Contacto nuevo = new Contacto(nombre, apellido, correo, telefono);
@@ -194,9 +162,5 @@ public class Agenda {
         }
         return;
     }
-
-    //Funciones Eventos
-
-    calendario.insertarEventos(titulo, fechaHoraInicio, fechaHoraFin);
 }
 
