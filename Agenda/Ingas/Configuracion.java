@@ -37,7 +37,7 @@ public class Configuracion {
     }
 
     public static LocalDateTime horaFecha(String fechaYHora){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(formatoFechayHora);
         LocalDateTime dateTime = LocalDateTime.parse(fechaYHora, formatter);
         return dateTime;
     }
@@ -404,7 +404,7 @@ public class Configuracion {
                     titulo = leer.nextLine();
                     System.out.print("Ingrese el Mensaje del Recordatorio: ");
                     mensaje = leer.nextLine();
-                    System.out.print("Ingrese la fecha del Recordatorio en formato " + formatoFechayHora + ": ");
+                    System.out.print("Ingrese la fecha del Recordatorio en formato '" + formatoFechayHora + "' : ");
                     fechaReco = horaFecha(leer.nextLine());
                     Agenda.calendario.insertarRecordatorios(titulo, mensaje, fechaReco);
                 } else if (opcion.equals("4")){
@@ -417,6 +417,7 @@ public class Configuracion {
                     Agenda.calendario.mostrarEventos();
                     System.out.println("===================\nLista de Recordatorios");
                     Agenda.calendario.mostrarRecordatorios();
+                    leer.nextLine();
                 } else if (opcion.equals("6")){
                     System.out.print("\033[H\033[2J");
                     System.out.println("Regresando...");
