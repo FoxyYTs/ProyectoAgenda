@@ -46,8 +46,8 @@ public class Calendario extends Agenda{
         System.out.println();
     }
 
-    public void insertarRecordatorios(String mensaje, LocalDateTime fechaHora) {
-        Recordatorios nuevo = new Recordatorios(mensaje, fechaHora);
+    public void insertarRecordatorios(String titulo, String mensaje, LocalDateTime fechaHora) {
+        Recordatorios nuevo = new Recordatorios(titulo, mensaje, fechaHora);
         if (headRecordatorio == null) {
             headRecordatorio = nuevo;
         } else {
@@ -59,16 +59,16 @@ public class Calendario extends Agenda{
         }
     }
     
-    public void eliminarRecordatorios(String mensaje) {
+    public void eliminarRecordatorios(String titulo) {
         if (headRecordatorio == null) {
             return;
         }
-        if (headRecordatorio.getMensaje().equals(mensaje)) {
+        if (headRecordatorio.getTitulo().equals(titulo)) {
             headRecordatorio = headRecordatorio.next;
             return;
         }
         Recordatorios pointerRecordatorio = headRecordatorio;
-        while (!pointerRecordatorio.next.getMensaje().equals(mensaje) && pointerRecordatorio.next != null) {
+        while (!pointerRecordatorio.next.getTitulo().equals(titulo) && pointerRecordatorio.next != null) {
             pointerRecordatorio = pointerRecordatorio.next;
         }
         if (pointerRecordatorio.next != null) {
@@ -79,7 +79,7 @@ public class Calendario extends Agenda{
     public void mostrarRecordatorios() {
         Recordatorios pointerRecordatorio = headRecordatorio;
         while (pointerRecordatorio != null) {
-            configuracion.calendarioMostrarRecordatorios(pointerRecordatorio.getMensaje(),pointerRecordatorio.getFechaHora());
+            configuracion.calendarioMostrarRecordatorios(pointerRecordatorio.getTitulo(),pointerRecordatorio.getMensaje(),pointerRecordatorio.getFechaHora());
             pointerRecordatorio = pointerRecordatorio.next;
         }
         System.out.println();
