@@ -95,8 +95,7 @@ public class Configuracion {
             if (idioma == "en") {
                 System.out.print("\033[H\033[2J");
                 System.out.println("Welcome to the Agenda menu");
-                System.out.print(
-                        "Type the option you want\n1) Contacts Options\n2) Group Options\n3) Calendar Options\n4) Settings\n5) Close Program \nChoice: ");
+                System.out.print("Type the option you want\n1) Contacts Options\n2) Group Options\n3) Calendar Options\n4) Settings\n5) Close Program \nChoice: ");
                 opcion = Integer.parseInt(leer.nextLine());
                 switch (opcion) {
                     case 1:
@@ -134,8 +133,7 @@ public class Configuracion {
             } else {
                 System.out.print("\033[H\033[2J");
                 System.out.println("Bienvenido al menu de Agenda");
-                System.out.print(
-                        "Escribe la opcion que desea\n1) Opciones de Contactos\n2) Opciones de Grupo\n3) Opciones de Calendario\n4) Configuracion\n5) Cerrar Programa \nEleccion: ");
+                System.out.print("Escribe la opcion que desea\n1) Opciones de Contactos\n2) Opciones de Grupo\n3) Opciones de Calendario\n4) Configuracion\n5) Cerrar Programa \nEleccion: ");
                 opcion = Integer.parseInt(leer.nextLine());
                 switch (opcion) {
                     case 1:
@@ -206,8 +204,7 @@ public class Configuracion {
                         System.out.print("Enter last name: ");
                         apellido = leer.nextLine();
                         conta = Agenda.buscarContacto(nombre, apellido);
-                        imprimirMostrarContactos(conta.getNombre(), conta.getApellido(), conta.getCorreo(),
-                                conta.getTelefono());
+                        imprimirMostrarContactos(conta.getNombre(), conta.getApellido(), conta.getCorreo(),conta.getTelefono());
                         leer.nextLine();
                         break;
                     case 3:
@@ -237,8 +234,7 @@ public class Configuracion {
                 }
             } else {
                 System.out.print("\033[H\033[2J");
-                System.out.println(
-                        "Escribe la opcion que desea\n1) Ingresar Contacto\n2) Buscar Contacto\n3) Mostrar Contacto\n4) Eliminar Contactor\n5) Regresar \nEleccion: ");
+                System.out.println("Escribe la opcion que desea\n1) Ingresar Contacto\n2) Buscar Contacto\n3) Mostrar Contacto\n4) Eliminar Contactor\n5) Regresar \nEleccion: ");
                 opcion = Integer.parseInt(leer.nextLine());
                 switch (opcion) {
                     case 1:
@@ -260,8 +256,7 @@ public class Configuracion {
                         System.out.print("Ingresar el apellido: ");
                         apellido = leer.nextLine();
                         conta = Agenda.buscarContacto(nombre, apellido);
-                        imprimirMostrarContactos(conta.getNombre(), conta.getApellido(), conta.getCorreo(),
-                                conta.getTelefono());
+                        imprimirMostrarContactos(conta.getNombre(), conta.getApellido(), conta.getCorreo(),conta.getTelefono());
                         leer.nextLine();
                         break;
                     case 3:
@@ -353,6 +348,7 @@ public class Configuracion {
         while (seguir) {
             if (idioma == "en"){
                 System.out.println("Gringo");
+                
             } else {
                 System.out.print("\033[H\033[2J");
                 System.out.print("Escribe la opcion que deseas\n1) Crear Evento\n2) Eliminar Evento\n3) Crear Recordatorio\n4) Eliminar recordatorio\n5) Mostrar\n6) Regresar\nEleccion: ");
@@ -415,6 +411,7 @@ public class Configuracion {
         while (seguir) {
             if (idioma == "en"){
                 System.out.println("Gringo");
+                return;
             } else {
                 System.out.print("\033[H\033[2J");
                 System.out.print("Escribe la opcion que desea\n1) Elegir Idioma\n2) Elegir Formato de Fecha y Hora\n3) Regresar \nEleccion: ");
@@ -422,7 +419,7 @@ public class Configuracion {
                 switch (opcion) {
                     case 1:
                         System.out.print("\033[H\033[2J");
-                        System.out.println("1) Español\n2) Ingles");
+                        System.out.println("En que idioma quieres\n1) Español\n2) Ingles");
                         id = Integer.parseInt(leer.nextLine());
                         if (id == 1) {
                             idioma = "es";
@@ -433,6 +430,16 @@ public class Configuracion {
                         }
                         break;
                     case 2:
+                        System.out.print("\033[H\033[2J");
+                        System.out.println("1) Español\n2) Ingles");
+                        id = Integer.parseInt(leer.nextLine());
+                        if (id == 1) {
+                            idioma = "es";
+                        } else if (id == 2) {
+                            idioma = "en";
+                        } else {
+                            System.out.println("Opcion no valida");
+                        }
                         break;
                     case 3:
                         System.out.print("\033[H\033[2J");
