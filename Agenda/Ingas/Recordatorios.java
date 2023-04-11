@@ -7,34 +7,34 @@ public class Recordatorios {
     private LocalDateTime fechaHora;
     public Recordatorios next;
 
-    public Recordatorios(String titulo, String mensaje, LocalDateTime fechaHora){
+    public Recordatorios(String titulo, String mensaje, LocalDateTime fechaHora) {
         this.titulo = titulo;
         this.mensaje = mensaje;
         this.fechaHora = fechaHora;
         this.next = null;
     }
 
-    public String getTitulo(){
+    public String getTitulo() {
         return titulo;
     }
 
-    public String getMensaje(){
+    public String getMensaje() {
         return mensaje;
     }
 
-    public LocalDateTime getFechaHora(){
+    public LocalDateTime getFechaHora() {
         return fechaHora;
     }
 
-    public void setTitulo(String titulo){
+    public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
 
-    public void setMensaje(String mensaje){
+    public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
     }
 
-    public void setFechaHora(LocalDateTime fechaHora){
+    public void setFechaHora(LocalDateTime fechaHora) {
         this.fechaHora = fechaHora;
     }
 }

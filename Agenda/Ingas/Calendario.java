@@ -2,7 +2,7 @@ package Ingas;
 
 import java.time.LocalDateTime;
 
-public class Calendario extends Agenda{
+public class Calendario extends Agenda {
 
     private Eventos headEvento;
     private Recordatorios headRecordatorio;
@@ -40,7 +40,8 @@ public class Calendario extends Agenda{
     public void mostrarEventos() {
         Eventos pEventos = headEvento;
         while (pEventos != null) {
-            configuracion.calendarioMostrarEvento(pEventos.getTitulo(), pEventos.getFechaHoraInicio(),pEventos.getFechaHoraFin());
+            configuracion.calendarioMostrarEvento(pEventos.getTitulo(), pEventos.getFechaHoraInicio(),
+                    pEventos.getFechaHoraFin());
             pEventos = pEventos.next;
         }
         System.out.println();
@@ -58,7 +59,7 @@ public class Calendario extends Agenda{
             pRecordatorio.next = nuevo;
         }
     }
-    
+
     public void eliminarRecordatorios(String titulo) {
         if (headRecordatorio == null) {
             return;
@@ -75,11 +76,12 @@ public class Calendario extends Agenda{
             pRecordatorio.next = pRecordatorio.next.next;
         }
     }
-    
+
     public void mostrarRecordatorios() {
         Recordatorios pRecordatorio = headRecordatorio;
         while (pRecordatorio != null) {
-            configuracion.calendarioMostrarRecordatorios(pRecordatorio.getTitulo(),pRecordatorio.getMensaje(),pRecordatorio.getFechaHora());
+            configuracion.calendarioMostrarRecordatorios(pRecordatorio.getTitulo(), pRecordatorio.getMensaje(),
+                    pRecordatorio.getFechaHora());
             pRecordatorio = pRecordatorio.next;
         }
         System.out.println();
