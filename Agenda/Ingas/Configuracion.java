@@ -37,17 +37,16 @@ public class Configuracion {
     }
 
     public static LocalDateTime horaFecha(String fechaYHora){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(formatoFechayHora);
-        LocalDateTime dateTime = LocalDateTime.parse(fechaYHora, formatter);
-        return dateTime;
+        DateTimeFormatter formatoFechaHora = DateTimeFormatter.ofPattern(formatoFechayHora);
+        LocalDateTime fechaHoraFormateada = LocalDateTime.parse(fechaYHora, formatoFechaHora);
+        return fechaHoraFormateada;
     }
 
     public void calendarioMostrarEvento(String titulo, LocalDateTime fechaHoraInicio, LocalDateTime fechaHoraFinal) {
         if (idioma == "en") {
             System.out.println("Event [title: " + titulo + ", Start date and time: " + fechaHoraInicio + ", End date and time: " + fechaHoraFinal + "]");
         } else {
-            System.out.println("Evento [titulo: " + titulo + ", Fecha y Hora de inicio: " + fechaHoraInicio
-                    + ", Fecha y hora de Fin: " + fechaHoraFinal + "]");
+            System.out.println("Evento [titulo: " + titulo + ", Fecha y Hora de inicio: " + fechaHoraInicio + ", Fecha y hora de Fin: " + fechaHoraFinal + "]");
         }
     }
 
@@ -61,10 +60,9 @@ public class Configuracion {
 
     public static void imprimirMostrarContactos(String nombre, String apellido, String telefono, String correo) {
         if (idioma == "en") {
-            System.out.println("Contact [name: " + nombre + ", last name: " + apellido + ", phone: " + telefono + ", email: " + correo + "]");
+            System.out.println("Contact [name: " + nombre + ", last name: " + apellido + ", email: " + correo + ", phone: " + telefono + "]");
         } else {
-            System.out.println("Contacto [nombre: " + nombre + ", apellido: " + apellido + ", telefono: " + telefono
-                    + ", correo: " + correo + "]");
+            System.out.println("Contacto [nombre: " + nombre + ", apellido: " + apellido + ", correo: " + correo + ", telefono: " + telefono + "]");
         }
     }
 
@@ -226,7 +224,6 @@ public class Configuracion {
                 System.out.print("Escribe la opcion que desea\n1) Ingresar Contacto\n2) Buscar Contacto\n3) Mostrar Contacto\n4) Eliminar Contactor\n5) Regresar \nEleccion: ");
                 opcion = leer.nextLine();
                 if (opcion.equals("1")){
-                    /*
                     System.out.print("\033[H\033[2J");
                     System.out.print("Creando contacto\nIngresa el nombre: ");
                     nombre = leer.nextLine();
@@ -236,7 +233,7 @@ public class Configuracion {
                     correo = leer.nextLine();
                     System.out.print("Ingresa el telefono: ");
                     telefono = leer.nextLine();
-                    Agenda.insertarContacto(nombre, apellido, correo, telefono);*/
+                    Agenda.insertarContacto(nombre, apellido, correo, telefono);
                     for (int i = 1; i <= 5; i++) {
                         Agenda.insertarContacto("nombre" + i, "apellido" + i, "correo" + i, "telefono" + i);
                     }
