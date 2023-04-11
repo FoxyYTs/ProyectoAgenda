@@ -2,12 +2,12 @@ package Ingas;
 
 public class Grupo extends Agenda {
     private String nombre;
-    private Contacto head;
+    private static Contacto head;
     public Grupo next;
 
     public Grupo(String nombre) {
         this.nombre = nombre;
-        this.head = null;
+        Grupo.head = null;
         this.next = null;
     }
 
@@ -54,7 +54,7 @@ public class Grupo extends Agenda {
     public void mostrarContactoGrupo() {
         Contacto pointer = head;
         while (pointer != null) {
-            configuracion.imprimirMostrarContactos(pointer.getNombre(), pointer.getApellido(), pointer.getTelefono(),
+            Configuracion.imprimirMostrarContactos(pointer.getNombre(), pointer.getApellido(), pointer.getTelefono(),
                     pointer.getCorreo());
             pointer = pointer.next;
         }
@@ -65,7 +65,7 @@ public class Grupo extends Agenda {
         Contacto pContacto = hContacto;
         while (pContacto != null) {
             if (pContacto.getNombre().equals(nombre) && pContacto.getApellido().equals(apellido)) {
-                configuracion.imprimirMostrarContactos(pContacto.getNombre(), pContacto.getApellido(),
+                Configuracion.imprimirMostrarContactos(pContacto.getNombre(), pContacto.getApellido(),
                         pContacto.getTelefono(), pContacto.getCorreo());
             }
             pContacto = pContacto.next;

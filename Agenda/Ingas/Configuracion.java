@@ -6,12 +6,12 @@ import java.time.format.DateTimeFormatter;
 
 public class Configuracion {
     public static Scanner leer = new Scanner(System.in);
-    private String formatoFechayHora;
+    private static String formatoFechayHora;
     private static String idioma;
 
     public Configuracion(String formatoFechaHora, String idioma) {
-        this.formatoFechayHora = formatoFechaHora;
-        this.idioma = idioma;
+        Configuracion.formatoFechayHora = formatoFechaHora;
+        Configuracion.idioma = idioma;
     }
 
     public String getFormatoFechaHora() {
@@ -19,7 +19,7 @@ public class Configuracion {
     }
 
     public void setFormatoFechaHora(String formatoFechaHora) {
-        this.formatoFechayHora = formatoFechaHora;
+        Configuracion.formatoFechayHora = formatoFechaHora;
     }
 
     public String getIdioma() {
@@ -27,7 +27,7 @@ public class Configuracion {
     }
 
     public void setIdioma(String idioma) {
-        this.idioma = idioma;
+        Configuracion.idioma = idioma;
     }
 
     public String fechaHora(LocalDateTime fechaHoraActual) {
@@ -36,28 +36,32 @@ public class Configuracion {
         return fechaHoraFormateada;
     }
 
+    public static LocalDateTime horaFecha(String fechaYHora){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(formatoFechayHora);
+        LocalDateTime dateTime = LocalDateTime.parse(fechaYHora, formatter);
+        return dateTime;
+    }
+
     public void calendarioMostrarEvento(String titulo, LocalDateTime fechaHoraInicio, LocalDateTime fechaHoraFinal) {
         if (idioma == "en") {
-            System.out.println("Event [title: " + titulo + ", Start date and time: " + fechaHoraInicio
-                    + ", End date and time: " + fechaHoraFinal + "]");
+            System.out.println("Event [title: " + titulo + ", Start date and time: " + fechaHoraInicio + ", End date and time: " + fechaHoraFinal + "]");
         } else {
             System.out.println("Evento [titulo: " + titulo + ", Fecha y Hora de inicio: " + fechaHoraInicio
                     + ", Fecha y hora de Fin: " + fechaHoraFinal + "]");
         }
     }
 
-    public void calendarioMostrarRecordatorios(String mensaje, LocalDateTime fechaHora) {
+    public void calendarioMostrarRecordatorios(String titulo, String mensaje, LocalDateTime fechaHora) {
         if (idioma == "en") {
-            System.out.println("Reminder [message: " + mensaje + ", Date and Time: " + fechaHora + "]");
+            System.out.println("Reminder [title: " + titulo + ", message: " + mensaje + ", Date and Time: " + fechaHora + "]");
         } else {
-            System.out.println("Recordatorio [mensaje: " + mensaje + ", Fecha y Hora: " + fechaHora + "]");
+            System.out.println("Recordatorio [titulo: " + titulo + ", mensaje: " + mensaje + ", Fecha y Hora: " + fechaHora + "]");
         }
     }
 
     public static void imprimirMostrarContactos(String nombre, String apellido, String telefono, String correo) {
         if (idioma == "en") {
-            System.out.println("Contact [name: " + nombre + ", last name: " + apellido + ", phone: " + telefono
-                    + ", email: " + correo + "]");
+            System.out.println("Contact [name: " + nombre + ", last name: " + apellido + ", phone: " + telefono + ", email: " + correo + "]");
         } else {
             System.out.println("Contacto [nombre: " + nombre + ", apellido: " + apellido + ", telefono: " + telefono
                     + ", correo: " + correo + "]");
@@ -80,211 +84,397 @@ public class Configuracion {
         }
     }
 
+    public void Nulo(){
+        if (idioma == "en") {
+            System.out.println("Not Exist");
+        } else {
+            System.out.println("No Existe");
+        }
+    }
+
     public void menu() {
         Boolean seguir = true;
-        int opcion = 0;
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-        if (idioma == "en") {
-            while (seguir) {
+        String opcion;
+        while (seguir) {
+            if (idioma == "en") {
                 System.out.print("\033[H\033[2J");
-                System.out.println("Welcome to the Agenda menu");
-                System.out.print(
-                        "Type the option you want\n1) Contacts Options\n2) Group Options\n3) Calendar Options\n4) Settings\n5) Close Program \nChoice: ");
-                opcion = Integer.parseInt(leer.nextLine());
-                switch (opcion) {
-                    case 1:
-                        System.out.print("\033[H\033[2J");
-                        System.out.println("Entering the Contacts menu");
-                        leer.nextLine();
-                        menuContactos(opcion);
-                        break;
-                    case 2:
-                        System.out.print("\033[H\033[2J");
-                        System.out.println("Entering the Groups menu");
-                        leer.nextLine();
-                        break;
-                    case 3:
-                        System.out.print("\033[H\033[2J");
-                        System.out.println("Entering the Calendar menu");
-                        leer.nextLine();
-                        break;
-                    case 4:
-                        System.out.print("\033[H\033[2J");
-                        System.out.println("Entering the Settings menu");
-                        leer.nextLine();
-                        break;
-                    case 5:
-                        System.out.print("\033[H\033[2J");
-                        System.out.println("Closing...");
-                        leer.nextLine();
-                        seguir = false;
-                        break;
-
-                    default:
-                        System.out.println("Invalid option");
-                        break;
+                System.out.flush();
+                System.out.print("Welcome to the Agenda menu\n========================================\nType the option you want\n1) Contacts Options\n2) Group Options\n3) Calendar Options\n4) Settings\n5) Close Program \nChoice: ");
+                opcion = leer.nextLine();
+                if (opcion.equals("1")){
+                    System.out.print("\033[H\033[2J");
+                    System.out.println("Entering the Contacts menu");
+                    leer.nextLine();
+                    menuContactos();
+                } else if (opcion.equals("2")){
+                    System.out.print("\033[H\033[2J");
+                    System.out.println("Entering the Groups menu");
+                    leer.nextLine();
+                } else if (opcion.equals("3")){
+                    System.out.print("\033[H\033[2J");
+                    System.out.println("Entering the Calendar menu");
+                    leer.nextLine();
+                } else if (opcion.equals("4")){
+                    System.out.print("\033[H\033[2J");
+                    System.out.println("Entering the Settings menu");
+                    leer.nextLine();
+                } else if (opcion.equals("5")){
+                    System.out.print("\033[H\033[2J");
+                    System.out.println("Closing...");
+                    seguir = false;
+                    leer.nextLine();
+                } else {
+                    System.out.println("Opcion no valida");
+                    leer.nextLine();
                 }
-            }
-        } else {
-            while (seguir) {
+            } else {
                 System.out.print("\033[H\033[2J");
-                System.out.println("Bienvenido al menu de Agenda");
-                System.out.print(
-                        "Escribe la opcion que desea\n1) Opciones de Contactos\n2) Opciones de Grupo\n3) Opciones de Calendario\n4) Configuracion\n5) Cerrar Programa \nEleccion: ");
-                opcion = Integer.parseInt(leer.nextLine());
-                switch (opcion) {
-                    case 1:
-                        System.out.print("\033[H\033[2J");
-                        System.out.println("Ingresando al menu de Contactos");
-                        leer.nextLine();
-                        menuContactos(opcion);
-                        break;
-                    case 2:
-                        System.out.print("\033[H\033[2J");
-                        System.out.println("Ingresando al menu de Grupos");
-                        leer.nextLine();
-                        break;
-                    case 3:
-                        System.out.print("\033[H\033[2J");
-                        System.out.println("Ingresando al menu de Calendario");
-                        leer.nextLine();
-                        break;
-                    case 4:
-                        System.out.print("\033[H\033[2J");
-                        System.out.println("Ingresando al menu de Configuracion");
-                        leer.nextLine();
-                        break;
-                    case 5:
-                        System.out.print("\033[H\033[2J");
-                        System.out.println("Cerrando...");
-                        leer.nextLine();
-                        seguir = false;
-                        break;
-
-                    default:
-                        System.out.println("Opcion no valida");
-                        break;
+                System.out.flush();
+                System.out.print("Bienvenido al menu de Agenda\n========================================\nEscribe la opcion que desea\n1) Opciones de Contactos\n2) Opciones de Grupo\n3) Opciones de Calendario\n4) Configuracion\n5) Cerrar Programa \nEleccion: ");
+                opcion = leer.nextLine();
+                if (opcion.equals("1")){
+                    System.out.print("\033[H\033[2J");
+                    System.out.println("Ingresando al menu de Contactos");
+                    leer.nextLine();
+                    menuContactos();
+                } else if (opcion.equals("2")){
+                    System.out.print("\033[H\033[2J");
+                    System.out.println("Ingresando al menu de Grupos");
+                    leer.nextLine();
+                    menuGrupo();
+                } else if (opcion.equals("3")){
+                    System.out.print("\033[H\033[2J");
+                    System.out.println("Ingresando al menu de Calendario");
+                    leer.nextLine();
+                    menuCalendario();
+                } else if (opcion.equals("4")){
+                    System.out.print("\033[H\033[2J");
+                    System.out.println("Ingresando al menu de Configuracion");
+                    leer.nextLine();
+                    menuConfiguracion();
+                } else if (opcion.equals("5")){
+                    System.out.print("\033[H\033[2J");
+                    System.out.println("Cerrando...");
+                    seguir = false;
+                    leer.nextLine();
+                } else {
+                    System.out.println("Opcion no valida");
+                    leer.nextLine();
                 }
             }
         }
     }
 
-    public static void menuContactos(int opcion) {
+    public static void menuContactos() {
+        String opcion;
         Boolean seguir = true;
         String nombre, apellido, correo, telefono;
         Contacto conta;
-        if (idioma == "en") {
-            while (seguir) {
+        while (seguir) {
+            if (idioma == "en") {
                 System.out.print("\033[H\033[2J");
+                System.out.print("Type the option you want\n1) Enter Contact\n2) Search Contact\n3) Show Contact\n4) Remove Contactor\n5) Return to \nElection: ");
+                opcion = leer.nextLine();
+                if (opcion.equals("1")){
+                    System.out.print("\033[H\033[2J");
+                    System.out.print("Creating contact\nEnter the name: ");
+                    nombre = leer.nextLine();
+                    System.out.print("Enter last name: ");
+                    apellido = leer.nextLine();
+                    System.out.print("Enter your email address: ");
+                    correo = leer.nextLine();
+                    System.out.print("Enter the phone number: ");
+                    telefono = leer.nextLine();
+                    Agenda.insertarContacto(nombre, apellido, correo, telefono);
 
-                System.out.println(
-                        "Type the option you want\n1) Enter Contact\n2) Search Contact\n3) Show Contact\n4) Remove Contactor\n5) Return to \nElection: ");
-                opcion = Integer.parseInt(leer.nextLine());
-                switch (opcion) {
-                    case 1:
-                        System.out.print("\033[H\033[2J");
-                        System.out.print("Creating contact\nEnter the name: ");
-                        nombre = leer.nextLine();
-                        System.out.print("Enter last name: ");
-                        apellido = leer.nextLine();
-                        System.out.print("Enter your email address: ");
-                        correo = leer.nextLine();
-                        System.out.print("Enter the phone number: ");
-                        telefono = leer.nextLine();
-                        Agenda.insertarContacto(nombre, apellido, correo, telefono);
-                        break;
-                    case 2:
-                        System.out.print("\033[H\033[2J");
-                        System.out.print("Seeking contact\nEnter the name: ");
-                        nombre = leer.nextLine();
-                        System.out.print("Enter last name: ");
-                        apellido = leer.nextLine();
-                        conta = Agenda.buscarContacto(nombre, apellido);
-                        imprimirMostrarContactos(conta.getNombre(), conta.getApellido(), conta.getCorreo(),
-                                conta.getTelefono());
-                        leer.nextLine();
-                        break;
-                    case 3:
-                        System.out.print("\033[H\033[2J");
-                        System.out.println("Contact list");
-                        Agenda.mostrarContacto();
-                        leer.nextLine();
-                        break;
-                    case 4:
-                        System.out.print("\033[H\033[2J");
-                        System.out.print("Deleting contacts\nEnter the name: ");
-                        nombre = leer.nextLine();
-                        System.out.print("Enter last name: ");
-                        apellido = leer.nextLine();
-                        Agenda.eliminarContacto(nombre, apellido);
-                        break;
-                    case 5:
-                        System.out.print("\033[H\033[2J");
-                        System.out.println("Returning...");
-                        seguir = false;
-                        leer.nextLine();
-                        break;
+                } else if (opcion.equals("2")){
+                    System.out.print("\033[H\033[2J");
+                    System.out.print("Seeking contact\nEnter the name: ");
+                    nombre = leer.nextLine();
+                    System.out.print("Enter last name: ");
+                    apellido = leer.nextLine();
+                    conta = Agenda.buscarContacto(nombre, apellido);
+                    imprimirMostrarContactos(conta.getNombre(), conta.getApellido(), conta.getCorreo(),conta.getTelefono());
+                    leer.nextLine();
 
-                    default:
-                        System.out.println("Invalid option");
-                        break;
+                } else if (opcion.equals("3")){
+                    System.out.print("\033[H\033[2J");
+                    System.out.println("Contact list");
+                    Agenda.mostrarContacto();
+                    leer.nextLine();
+
+                } else if (opcion.equals("4")){
+                    System.out.print("\033[H\033[2J");
+                    System.out.print("Deleting contacts\nEnter the name: ");
+                    nombre = leer.nextLine();
+                    System.out.print("Enter last name: ");
+                    apellido = leer.nextLine();
+                    Agenda.eliminarContacto(nombre, apellido);
+
+                } else if (opcion.equals("5")){
+                    System.out.print("\033[H\033[2J");
+                    System.out.println("Returning...");
+                    seguir = false;
+                    leer.nextLine();
+
+                } else {
+                    System.out.println("Invalid option");
+                    leer.nextLine();
+                }
+            } else {
+                System.out.print("\033[H\033[2J");
+                System.out.print("Escribe la opcion que desea\n1) Ingresar Contacto\n2) Buscar Contacto\n3) Mostrar Contacto\n4) Eliminar Contactor\n5) Regresar \nEleccion: ");
+                opcion = leer.nextLine();
+                if (opcion.equals("1")){
+                    /*
+                    System.out.print("\033[H\033[2J");
+                    System.out.print("Creando contacto\nIngresa el nombre: ");
+                    nombre = leer.nextLine();
+                    System.out.print("Ingresar el apellido: ");
+                    apellido = leer.nextLine();
+                    System.out.print("Ingresa el correo: ");
+                    correo = leer.nextLine();
+                    System.out.print("Ingresa el telefono: ");
+                    telefono = leer.nextLine();
+                    Agenda.insertarContacto(nombre, apellido, correo, telefono);*/
+                    for (int i = 1; i <= 5; i++) {
+                        Agenda.insertarContacto("nombre" + i, "apellido" + i, "correo" + i, "telefono" + i);
+                    }
+                } else if (opcion.equals("2")){
+                    System.out.print("\033[H\033[2J");
+                    System.out.print("Buscando contacto\nIngresa el nombre: ");
+                    nombre = leer.nextLine();
+                    System.out.print("Ingresar el apellido: ");
+                    apellido = leer.nextLine();
+                    conta = Agenda.buscarContacto(nombre, apellido);
+                    imprimirMostrarContactos(conta.getNombre(), conta.getApellido(), conta.getCorreo(),conta.getTelefono());
+                    leer.nextLine();
+                } else if (opcion.equals("3")){
+                    System.out.print("\033[H\033[2J");
+                    System.out.println("Lista de contactos");
+                    Agenda.mostrarContacto();
+                    leer.nextLine();
+                } else if (opcion.equals("4")){
+                    System.out.print("\033[H\033[2J");
+                    System.out.print("Eliminando contactos\nIngresa el nombre: ");
+                    nombre = leer.nextLine();
+                    System.out.print("Ingresar el apellido: ");
+                    apellido = leer.nextLine();
+                    Agenda.eliminarContacto(nombre, apellido);
+                } else if (opcion.equals("5")){
+                    System.out.print("\033[H\033[2J");
+                    System.out.println("Regresando...");
+                    seguir = false;
+                    leer.nextLine();
+                } else {
+                    System.out.println("Opcion no valida");
+                    leer.nextLine();
                 }
             }
-        } else {
-            while (seguir) {
-                System.out.print("\033[H\033[2J");
-                System.out.println(
-                        "Escribe la opcion que desea\n1) Ingresar Contacto\n2) Buscar Contacto\n3) Mostrar Contacto\n4) Eliminar Contactor\n5) Regresar \nEleccion: ");
-                opcion = Integer.parseInt(leer.nextLine());
-                switch (opcion) {
-                    case 1:
-                        System.out.print("\033[H\033[2J");
-                        System.out.print("Creando contacto\nIngresa el nombre: ");
-                        nombre = leer.nextLine();
-                        System.out.print("Ingresar el apellido: ");
-                        apellido = leer.nextLine();
-                        System.out.print("Ingresa el correo: ");
-                        correo = leer.nextLine();
-                        System.out.print("Ingresa el telefono: ");
-                        telefono = leer.nextLine();
-                        Agenda.insertarContacto(nombre, apellido, correo, telefono);
-                        break;
-                    case 2:
-                        System.out.print("\033[H\033[2J");
-                        System.out.print("Buscando contacto\nIngresa el nombre: ");
-                        nombre = leer.nextLine();
-                        System.out.print("Ingresar el apellido: ");
-                        apellido = leer.nextLine();
-                        conta = Agenda.buscarContacto(nombre, apellido);
-                        imprimirMostrarContactos(conta.getNombre(), conta.getApellido(), conta.getCorreo(),
-                                conta.getTelefono());
-                        leer.nextLine();
-                        break;
-                    case 3:
-                        System.out.print("\033[H\033[2J");
-                        System.out.println("Lista de contactos");
-                        Agenda.mostrarContacto();
-                        leer.nextLine();
-                        break;
-                    case 4:
-                        System.out.print("\033[H\033[2J");
-                        System.out.print("Eliminando contactos\nIngresa el nombre: ");
-                        nombre = leer.nextLine();
-                        System.out.print("Ingresar el apellido: ");
-                        apellido = leer.nextLine();
-                        Agenda.eliminarContacto(nombre, apellido);
-                        break;
-                    case 5:
-                        System.out.print("\033[H\033[2J");
-                        System.out.println("Regresando...");
-                        seguir = false;
-                        leer.nextLine();
-                        break;
+        }
+    }
 
-                    default:
+    public static void menuGrupo(){
+        String opcion;
+        Boolean seguir = true;
+        
+        while (seguir) {
+            if (idioma == "en"){
+                System.out.println("Gringo");
+            } else {
+                System.out.print("\033[H\033[2J");
+                System.out.print("Escribe la opcion que desea\n1) Crear Grupo\n2) Mostrar Grupos\n3) Eliminar Grupo\n4) Gestor de Contactos\n5) Regresar \nEleccion: ");
+                opcion = leer.nextLine();
+                if (opcion.equals("1")){
+                    System.out.print("\033[H\033[2J");
+                    System.out.print("Creando Grupo\nIngresa nombre: ");
+                    Agenda.agregarGrupos(leer.nextLine());
+
+                } else if (opcion.equals("2")){
+                    System.out.print("\033[H\033[2J");
+                    System.out.println("Lista de Grupos");
+                    Agenda.mostrarGrupos();
+                    leer.nextLine();
+
+                } else if (opcion.equals("3")){
+                    System.out.print("\033[H\033[2J");
+                    System.out.print("Eliminando Grupos\nIngrese el nombre: ");
+                    Agenda.eliminarGrupos(leer.nextLine());
+                    leer.nextLine();
+
+                } else if (opcion.equals("4")){
+                    System.out.print("\033[H\033[2J");
+                    System.out.println("Ingresando al gestor de Contactos...");
+                    leer.nextLine();
+                    gestorContactos();
+
+                } else if (opcion.equals("5")){
+                    System.out.print("\033[H\033[2J");
+                    System.out.println("Regresando...");
+                    seguir = false;
+                    leer.nextLine();
+
+                } else {
+                    System.out.println("Opcion no valida");
+                    leer.nextLine();
+                }
+            }
+        }
+    }
+
+    public static void gestorContactos(){
+        String opcion;
+        Boolean seguir = true;
+        String nombreG ,nombreC ,apellidoC ;
+        
+        while (seguir) {
+            if (idioma == "en"){
+                System.out.println("Gringo");
+            } else {
+                System.out.print("\033[H\033[2J");
+                System.out.print("Escribe la opcion que desea\n1) Mostrar Contactos\n2) Agregar Contacto a Grupo\n3) Sacar Contacto de Grupo\n4) Regresar \nEleccion: ");
+                opcion = leer.nextLine();
+                if (opcion.equals("1")){
+                    System.out.print("\033[H\033[2J");
+                    System.out.println("Lista de Contactos");
+                    Agenda.mostrarContacto();
+                    leer.nextLine();
+                } else if (opcion.equals("2")){
+                    System.out.print("\033[H\033[2J");
+                    System.out.print("Ingresando Contacto a Grupo\nIngresa el nombre del Grupo: ");
+                    nombreG = leer.nextLine();
+                    System.out.print("Ingresa el nombre del Contacto: ");
+                    nombreC = leer.nextLine();
+                    System.out.print("Ingresa el apellido del Contacto: ");
+                    apellidoC = leer.nextLine();
+                    Agenda.insertarAGrupo(nombreG, nombreC, apellidoC);
+                    leer.nextLine();
+                } else if (opcion.equals("3")){
+                    System.out.print("\033[H\033[2J");
+                    System.out.print("Sacando Contacto de Grupo\nIngresa el nombre del Grupo: ");
+                    nombreG = leer.nextLine();
+                    System.out.print("Ingresa el nombre del Contacto: ");
+                    nombreC = leer.nextLine();
+                    System.out.print("Ingresa el apellido del Contacto: ");
+                    apellidoC = leer.nextLine();
+                    Agenda.eliminarDeGrupo(nombreG, nombreC, apellidoC);
+                    leer.nextLine();
+                } else if (opcion.equals("4")){
+                    System.out.print("\033[H\033[2J");
+                    System.out.println("Regresando...");
+                    seguir = false;
+                    leer.nextLine();
+                } else {
+                    System.out.println("Opcion no valida");
+                    leer.nextLine();
+                }
+            }
+        }
+    }
+
+    public static void menuCalendario(){
+        String opcion;
+        Boolean seguir = true;
+        String titulo, mensaje;
+        LocalDateTime fechaInicio,fechaFin,fechaReco;
+        while (seguir) {
+            if (idioma == "en"){
+                System.out.println("Gringo");
+                
+            } else {
+                System.out.print("\033[H\033[2J");
+                System.out.print("Escribe la opcion que deseas\n1) Crear Evento\n2) Eliminar Evento\n3) Crear Recordatorio\n4) Eliminar recordatorio\n5) Mostrar\n6) Regresar\nEleccion: ");
+                opcion = leer.nextLine();
+                if (opcion.equals("1")){
+                    System.out.print("\033[H\033[2J");
+                    System.out.print("Creando Evento\nIngresa el Titulo del evento: ");
+                    titulo = leer.nextLine();
+                    System.out.print("Ingrese la fecha de inicio en formato " + formatoFechayHora + ": ");
+                    fechaInicio = horaFecha(leer.nextLine());
+                    System.out.print("Ingrese la fecha de Fin en formato " + formatoFechayHora + ": ");
+                    fechaFin = horaFecha(leer.nextLine());
+                    Agenda.calendario.insertarEventos(titulo, fechaInicio, fechaFin);
+                } else if (opcion.equals("2")){
+                    System.out.print("\033[H\033[2J");
+                    System.out.print("Eliminando Evento\nIngrese el Titulo del Evento: ");
+                    Agenda.calendario.eliminarEvento(leer.nextLine());
+                } else if (opcion.equals("3")){
+                    System.out.print("\033[H\033[2J");
+                    System.out.print("Creando Recordatorio\nIngrese el Titulo del Recordatorio: ");
+                    titulo = leer.nextLine();
+                    System.out.print("Ingrese el Mensaje del Recordatorio: ");
+                    mensaje = leer.nextLine();
+                    System.out.print("Ingrese la fecha del Recordatorio en formato '" + formatoFechayHora + "' : ");
+                    fechaReco = horaFecha(leer.nextLine());
+                    Agenda.calendario.insertarRecordatorios(titulo, mensaje, fechaReco);
+                } else if (opcion.equals("4")){
+                    System.out.print("\033[H\033[2J");
+                    System.out.print("Eliminando Recordatorio\nIngrese el Titulo del Recordatorio: ");
+                    Agenda.calendario.eliminarRecordatorios(leer.nextLine());
+                } else if (opcion.equals("5")){
+                    System.out.print("\033[H\033[2J");
+                    System.out.println("Lista de Eventos");
+                    Agenda.calendario.mostrarEventos();
+                    System.out.println("===================\nLista de Recordatorios");
+                    Agenda.calendario.mostrarRecordatorios();
+                    leer.nextLine();
+                } else if (opcion.equals("6")){
+                    System.out.print("\033[H\033[2J");
+                    System.out.println("Regresando...");
+                    seguir = false;
+                    leer.nextLine();
+                } else {
+                    System.out.println("Opcion no valida");
+                    leer.nextLine();
+                }
+            }
+        }
+    }
+
+    public static void menuConfiguracion(){
+        String opcion;
+        Boolean seguir = true;
+        int id = 0;
+        while (seguir) {
+            if (idioma == "en"){
+                System.out.println("Gringo");
+                return;
+            } else {
+                System.out.print("\033[H\033[2J");
+                System.out.print("Escribe la opcion que desea\n1) Elegir Idioma\n2) Elegir Formato de Fecha y Hora\n3) Regresar \nEleccion: ");
+                opcion = leer.nextLine();
+                if (opcion.equals("1")){
+                    System.out.print("\033[H\033[2J");
+                    System.out.println("En que idioma quieres\n1) Español\n2) Ingles");
+                    id = Integer.parseInt(leer.nextLine());
+                    if (id == 1) {
+                        idioma = "es";
+                    } else if (id == 2) {
+                        idioma = "en";
+                    } else {
                         System.out.println("Opcion no valida");
-                        break;
+                    }
+                } else if (opcion.equals("2")){
+                    System.out.print("\033[H\033[2J");
+                    System.out.println("Que formato de fecha prefieres \n1) dd/mm/aaaa\n2) mm/dd/aaaa");
+                    id = Integer.parseInt(leer.nextLine());
+                    if (id == 1) {
+                        formatoFechayHora = "dd/MM/yyyy HH:mm:ss";
+                    } else if (id == 2) {
+                        formatoFechayHora = "MM/dd/yyyy HH:mm:ss";
+                    } else {
+                        System.out.println("Opcion no valida");
+                    }
+
+                } else if (opcion.equals("3")){
+                    System.out.print("\033[H\033[2J");
+                    System.out.println("Regresando...");
+                    seguir = false;
+                    leer.nextLine();
+                    
+                } else {
+                    System.out.println("Opcion no valida");
+                    leer.nextLine();
                 }
             }
         }

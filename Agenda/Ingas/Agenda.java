@@ -3,7 +3,7 @@ package Ingas;
 public class Agenda {
     public static Contacto hContacto;
     private static Grupo hGrupo;
-    private static String formatoFechaHora = "dd/MM/yyyy", idioma = "en";
+    private static String formatoFechaHora = "dd/MM/yyyy HH:mm", idioma = "es";
     public static Configuracion configuracion = new Configuracion(formatoFechaHora, idioma);
     public static Calendario calendario = new Calendario();
 
@@ -38,8 +38,7 @@ public class Agenda {
             return;
         }
         Contacto pContacto = hContacto;
-        while (!pContacto.next.getNombre().equals(nombre) && !pContacto.next.getApellido().equals(apellido)
-                && pContacto.next != null) {
+        while (!pContacto.next.getNombre().equals(nombre) && !pContacto.next.getApellido().equals(apellido)&& pContacto.next != null) {
             pContacto = pContacto.next;
         }
         if (pContacto.next != null) {
@@ -49,13 +48,12 @@ public class Agenda {
 
     public static void mostrarContacto() {
         if (hContacto == null) {
-            System.out.println("No existe");
+            configuracion.Nulo();
             return;
         }
         Contacto pContacto = hContacto;
         while (pContacto != null) {
-            configuracion.imprimirMostrarContactos(pContacto.getNombre(), pContacto.getApellido(),
-                    pContacto.getTelefono(), pContacto.getCorreo());
+            Configuracion.imprimirMostrarContactos(pContacto.getNombre(), pContacto.getApellido(),pContacto.getTelefono(), pContacto.getCorreo());
             pContacto = pContacto.next;
         }
         System.out.println();
@@ -63,7 +61,7 @@ public class Agenda {
 
     public static Contacto buscarContacto(String nombre, String apellido) {
         if (hContacto == null) {
-            System.out.println("No existe");
+            configuracion.Nulo();
             return null;
         }
         Contacto pContacto = hContacto;
@@ -83,11 +81,11 @@ public class Agenda {
         if (hGrupo == null) {
             hGrupo = nuevo;
         } else {
-            Grupo pointerGrupos = hGrupo;
-            while (pointerGrupos.next != null) {
-                pointerGrupos = pointerGrupos.next;
+            Grupo pGrupos = hGrupo;
+            while (pGrupos.next != null) {
+                pGrupos = pGrupos.next;
             }
-            pointerGrupos.next = nuevo;
+            pGrupos.next = nuevo;
         }
     }
 
@@ -99,20 +97,21 @@ public class Agenda {
             hGrupo = hGrupo.next;
             return;
         }
-        Grupo pointerGrupos = hGrupo;
-        while (!pointerGrupos.next.getNombre().equals(nombre) && pointerGrupos.next != null) {
-            pointerGrupos = pointerGrupos.next;
+        Grupo pGrupos = hGrupo;
+        while (!pGrupos.next.getNombre().equals(nombre) && pGrupos.next != null) {
+            pGrupos = pGrupos.next;
         }
-        if (pointerGrupos.next != null) {
-            pointerGrupos.next = pointerGrupos.next.next;
+        if (pGrupos.next != null) {
+            pGrupos.next = pGrupos.next.next;
         }
     }
 
     public static void mostrarGrupos() {
-        Grupo pointerGrupos = hGrupo;
-        while (pointerGrupos != null) {
-            configuracion.agendaMostrarGrupo(pointerGrupos.getNombre());
-            pointerGrupos = pointerGrupos.next;
+        Grupo pGrupos = hGrupo;
+        while (pGrupos != null) {
+            configuracion.agendaMostrarGrupo(pGrupos.getNombre());
+            mostrarGrupo(pGrupos.getNombre());
+            pGrupos = pGrupos.next;
         }
         System.out.println();
     }
@@ -145,7 +144,6 @@ public class Agenda {
         Grupo pGrupo = hGrupo;
         while (pGrupo != null) {
             if (pGrupo.getNombre().equals(nombreG)) {
-                configuracion.agendaMostrarGrupo(pGrupo.getNombre());
                 pGrupo.mostrarContactoGrupo();
                 return;
             }

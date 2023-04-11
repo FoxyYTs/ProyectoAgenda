@@ -31,11 +31,11 @@ public class Eventos {
         this.titulo = titulo;
     }
 
-    public void setFechaHoraInicio() {
+    public void setFechaHoraInicio(LocalDateTime fechaHoraInicio) {
         this.fechaHoraInicio = fechaHoraInicio;
     }
 
-    public void setFechaHoraFin() {
+    public void setFechaHoraFin(LocalDateTime fechaHoraFin) {
         this.fechaHoraFin = fechaHoraFin;
     }
 }
