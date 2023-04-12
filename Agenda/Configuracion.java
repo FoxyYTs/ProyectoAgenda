@@ -265,8 +265,7 @@ public class Configuracion {
                 }
             } else {
                 System.out.print("\033[H\033[2J");
-                System.out.print(
-                        "Escribe la opcion que desea\n1) Ingresar Contacto\n2) Buscar Contacto\n3) Mostrar Contacto\n4) Eliminar Contactor\n5) Regresar \nEleccion: ");
+                System.out.print("Escribe la opcion que desea\n1) Ingresar Contacto\n2) Buscar Contacto\n3) Mostrar Contacto\n4) Eliminar Contactor\n5) Regresar \nEleccion: ");
                 opcion = leer.nextLine();
                 if (opcion.equals("1")) {
                     System.out.print("\033[H\033[2J");
@@ -292,8 +291,7 @@ public class Configuracion {
                     System.out.print("Ingresar el apellido: ");
                     apellido = leer.nextLine();
                     conta = Agenda.buscarContacto(nombre, apellido);
-                    imprimirMostrarContactos(conta.getNombre(), conta.getApellido(), conta.getCorreo(),
-                            conta.getTelefono());
+                    imprimirMostrarContactos(conta.getNombre(), conta.getApellido(), conta.getCorreo(),conta.getTelefono());
                     leer.nextLine();
                 } else if (opcion.equals("3")) {
                     System.out.print("\033[H\033[2J");
