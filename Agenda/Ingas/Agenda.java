@@ -39,7 +39,8 @@ public class Agenda {
             return;
         }
         Contacto pContacto = hContacto;
-        while (!pContacto.next.getNombre().equals(nombre) && !pContacto.next.getApellido().equals(apellido)&& pContacto.next != null) {
+        while (!pContacto.next.getNombre().equals(nombre) && !pContacto.next.getApellido().equals(apellido)
+                && pContacto.next != null) {
             pContacto = pContacto.next;
         }
         if (pContacto.next != null) {
@@ -54,7 +55,8 @@ public class Agenda {
         }
         Contacto pContacto = hContacto;
         while (pContacto != null) {
-            Configuracion.imprimirMostrarContactos(pContacto.getNombre(), pContacto.getApellido(),pContacto.getTelefono(), pContacto.getCorreo());
+            Configuracion.imprimirMostrarContactos(pContacto.getNombre(), pContacto.getApellido(),
+                    pContacto.getCorreo(), pContacto.getTelefono());
             pContacto = pContacto.next;
         }
         System.out.println();
