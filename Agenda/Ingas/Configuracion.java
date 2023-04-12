@@ -42,6 +42,31 @@ public class Configuracion {
         return fechaHoraFormateada;
     }
 
+    public static String formatos(String id){
+        if (idioma.equals("en")){
+            if (id.equals("d/M/y H:m")) {
+                return "day/month/year 24H:minute";
+            } else if (id.equals("M/d/y H:m")) {
+                return "month/day/year 24H:minute";
+            } else if (id.equals("d/M/y h:m a")){
+                return "day/month/year 12H:minute a.m./p.m.";
+            } else if (id.equals("M/d/y h:m a")){
+                return "month/day/year 12H:minute a.m./p.m.";
+            }
+        } else {
+            if (id.equals("d/M/y H:m")) {
+                return "dia/mes/año 24H:minuto";
+            } else if (id.equals("M/d/y H:m")) {
+                return "mes/dia/año 24H:minuto";
+            } else if (id.equals("d/M/y h:m a")){
+                return "dia/mes/año 12H:minuto a.m./p.m.";
+            } else if (id.equals("M/d/y h:m a")){
+                return "mes/dia/año 12H:minuto a.m./p.m.";
+            }
+        }
+        return "";
+    }
+
     public void calendarioMostrarEvento(String titulo, LocalDateTime fechaHoraInicio, LocalDateTime fechaHoraFinal) {
         if (idioma == "en") {
             System.out.println("Event [title: " + titulo + ", Start date and time: " + fechaHora(fechaHoraInicio) + ", End date and time: " + fechaHora(fechaHoraFinal) + "]");
@@ -441,9 +466,9 @@ public class Configuracion {
                     System.out.print("\033[H\033[2J");
                     System.out.print("Creating Event\nEnter the Title of the event: ");
                     titulo = leer.nextLine();
-                    System.out.print("Enter the start date in the following format " + formatoFechayHora + ": ");
+                    System.out.print("Enter the start date in the following format " + formatos(formatoFechayHora) + ": ");
                     fechaInicio = horaFecha(leer.nextLine());
-                    System.out.print("Enter the End date in the format" + formatoFechayHora + ": ");
+                    System.out.print("Enter the End date in the format" + formatos(formatoFechayHora) + ": ");
                     fechaFin = horaFecha(leer.nextLine());
                     Agenda.calendario.insertarEventos(titulo, fechaInicio, fechaFin);
                 } else if (opcion.equals("2")) {
@@ -456,7 +481,7 @@ public class Configuracion {
                     titulo = leer.nextLine();
                     System.out.print("Enter Reminder Message: ");
                     mensaje = leer.nextLine();
-                    System.out.print("Enter the date of the Reminder in the following format '" + formatoFechayHora + "' : ");
+                    System.out.print("Enter the date of the Reminder in the following format '" + formatos(formatoFechayHora) + "' : ");
                     fechaReco = horaFecha(leer.nextLine());
                     Agenda.calendario.insertarRecordatorios(titulo, mensaje, fechaReco);
                 } else if (opcion.equals("4")) {
@@ -487,9 +512,9 @@ public class Configuracion {
                     System.out.print("\033[H\033[2J");
                     System.out.print("Creando Evento\nIngresa el Titulo del evento: ");
                     titulo = leer.nextLine();
-                    System.out.print("Ingrese la fecha de inicio en formato " + formatoFechayHora + ": ");
+                    System.out.print("Ingrese la fecha de inicio en formato " + formatos(formatoFechayHora) + ": ");
                     fechaInicio = horaFecha(leer.nextLine());
-                    System.out.print("Ingrese la fecha de Fin en formato " + formatoFechayHora + ": ");
+                    System.out.print("Ingrese la fecha de Fin en formato " + formatos(formatoFechayHora) + ": ");
                     fechaFin = horaFecha(leer.nextLine());
                     Agenda.calendario.insertarEventos(titulo, fechaInicio, fechaFin);
                 } else if (opcion.equals("2")) {
@@ -502,7 +527,7 @@ public class Configuracion {
                     titulo = leer.nextLine();
                     System.out.print("Ingrese el Mensaje del Recordatorio: ");
                     mensaje = leer.nextLine();
-                    System.out.print("Ingrese la fecha del Recordatorio en formato '" + formatoFechayHora + "' : ");
+                    System.out.print("Ingrese la fecha del Recordatorio en formato '" + formatos(formatoFechayHora) + "' : ");
                     fechaReco = horaFecha(leer.nextLine());
                     Agenda.calendario.insertarRecordatorios(titulo, mensaje, fechaReco);
                 } else if (opcion.equals("4")) {
@@ -551,12 +576,16 @@ public class Configuracion {
                     }
                 } else if (opcion.equals("2")) {
                     System.out.print("\033[H\033[2J");
-                    System.out.println("Which date format do you prefer \n1) dd/mm/yyyy\n2) mm/dd/yyyy");
+                    System.out.println("Which date and time format do you prefer?\n1) dd/mm/yyyy 24H\n2) mm/dd/yyyy 24H\n3) dd/mm/yyyy 12H\n4) mm/dd/yyyy 12H");
                     id = Integer.parseInt(leer.nextLine());
                     if (id == 1) {
-                        formatoFechayHora = "dd/MM/yyyy HH:mm:ss";
+                        formatoFechayHora = "d/M/y H:m";
                     } else if (id == 2) {
-                        formatoFechayHora = "MM/dd/yyyy HH:mm:ss";
+                        formatoFechayHora = "M/d/y H:m";
+                    } else if (id == 3){
+                        formatoFechayHora = "d/M/y h:m a";
+                    } else if (id == 4){
+                        formatoFechayHora = "M/d/y h:m a";
                     } else {
                         System.out.println("Invalid option");
                     }
@@ -588,12 +617,16 @@ public class Configuracion {
                     }
                 } else if (opcion.equals("2")) {
                     System.out.print("\033[H\033[2J");
-                    System.out.println("Que formato de fecha prefieres \n1) dd/mm/aaaa\n2) mm/dd/aaaa");
+                    System.out.println("Que formato de fecha prefieres\n1) dd/mm/yyyy 24H\n2) mm/dd/yyyy 24H\n3) dd/mm/yyyy 12H\n4) mm/dd/yyyy 12H");
                     id = Integer.parseInt(leer.nextLine());
                     if (id == 1) {
-                        formatoFechayHora = "dd/MM/yyyy HH:mm:ss";
+                        formatoFechayHora = "d/M/y H:m";
                     } else if (id == 2) {
-                        formatoFechayHora = "MM/dd/yyyy HH:mm:ss";
+                        formatoFechayHora = "M/d/y H:m";
+                    } else if (id == 3){
+                        formatoFechayHora = "d/M/y h:m a";
+                    } else if (id == 4){
+                        formatoFechayHora = "M/d/y h:m a";
                     } else {
                         System.out.println("Opcion no valida");
                     }
