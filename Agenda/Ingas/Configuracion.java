@@ -116,10 +116,15 @@ public class Configuracion {
     }
 
     public void menu() {
+        
         Boolean seguir = true;
         String opcion;
         while (seguir) {
             if (idioma == "en") {
+                System.out.print("\033[H\033[2J");
+            System.out.flush();
+            System.out.println("Starting Program...");
+            leer.nextLine();
                 System.out.print("\033[H\033[2J");
                 System.out.flush();
                 System.out.print("Welcome to the Agenda menu\n========================================\nType the option you want\n1) Contacts Options\n2) Group Options\n3) Calendar Options\n4) Settings\n5) Close Program \nChoice: ");
@@ -147,6 +152,7 @@ public class Configuracion {
                 } else if (opcion.equals("5")) {
                     System.out.print("\033[H\033[2J");
                     System.out.println("Closing...");
+                    System.out.println("\nCreated by\nJose Manuel and Jose Andres");
                     seguir = false;
                     leer.nextLine();
                 } else {
@@ -154,6 +160,10 @@ public class Configuracion {
                     leer.nextLine();
                 }
             } else {
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
+                System.out.println("Iniciando Programa...");
+                leer.nextLine();
                 System.out.print("\033[H\033[2J");
                 System.out.flush();
                 System.out.print("Bienvenido al menu de Agenda\n========================================\nEscribe la opcion que desea\n1) Opciones de Contactos\n2) Opciones de Grupo\n3) Opciones de Calendario\n4) Configuracion\n5) Cerrar Programa \nEleccion: ");
@@ -181,6 +191,7 @@ public class Configuracion {
                 } else if (opcion.equals("5")) {
                     System.out.print("\033[H\033[2J");
                     System.out.println("Cerrando...");
+                    System.out.println("\nCreado por\nJose Manuel y Jose Andres");
                     seguir = false;
                     leer.nextLine();
                 } else {
