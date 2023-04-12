@@ -186,6 +186,7 @@ public class Configuracion {
                         "Type the option you want\n1) Enter Contact\n2) Search Contact\n3) Show Contact\n4) Remove Contactor\n5) Return to \nElection: ");
                 opcion = leer.nextLine();
                 if (opcion.equals("1")) {
+
                     System.out.print("\033[H\033[2J");
                     System.out.print("Creating contact\nEnter the name: ");
                     nombre = leer.nextLine();
