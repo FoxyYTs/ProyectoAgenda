@@ -5,7 +5,6 @@ public class Grupo extends Agenda {
 
     public Grupo(String nombre) {
         this.nombre = nombre;
-        Grupo.head = null;
         this.next = null;
     }
 

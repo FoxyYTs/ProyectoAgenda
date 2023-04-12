@@ -1,12 +1,11 @@
 public class Agenda {
     public static Contacto hContacto;
-    private static Grupo hGrupo;
+    public static Grupo hGrupo;
     private static String formatoFechaHora = "d/M/y h:m a", idioma = "es";
     public static Configuracion configuracion = new Configuracion(formatoFechaHora, idioma);
     public static Calendario calendario = new Calendario();
 
     public Agenda() {
-        Agenda.hContacto = null;
     }
 
     public void menu() {
