@@ -52,8 +52,7 @@ public class Agenda {
         }
         Contacto pContacto = hContacto;
         while (pContacto != null) {
-            Configuracion.imprimirMostrarContactos(pContacto.getNombre(), pContacto.getApellido(),
-                    pContacto.getCorreo(), pContacto.getTelefono());
+            Configuracion.imprimirMostrarContactos(pContacto.getNombre(), pContacto.getApellido(), pContacto.getCorreo(), pContacto.getTelefono());
             pContacto = pContacto.next;
         }
         System.out.println();

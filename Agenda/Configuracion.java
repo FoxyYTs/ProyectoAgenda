@@ -81,7 +81,7 @@ public class Configuracion {
         }
     }
 
-    public static void imprimirMostrarContactos(String nombre, String apellido, String telefono, String correo) {
+    public static void imprimirMostrarContactos(String nombre, String apellido, String correo, String telefono) {
         if (idioma == "en") {
             System.out.println("Contact [name: " + nombre + ", last name: " + apellido + ", email: " + correo + ", phone: " + telefono + "]");
         } else {
