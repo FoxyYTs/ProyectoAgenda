@@ -1,5 +1,3 @@
-package Ingas;
-
 import java.time.LocalDateTime;
 
 public class Calendario extends Agenda {

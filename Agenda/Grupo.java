@@ -1,5 +1,3 @@
-package Ingas;
-
 public class Grupo extends Agenda {
     private String nombre;
     private static Contacto head;

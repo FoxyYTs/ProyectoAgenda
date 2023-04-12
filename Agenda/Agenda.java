@@ -1,5 +1,3 @@
-package Ingas;
-
 public class Agenda {
     public static Contacto hContacto;
     private static Grupo hGrupo;
