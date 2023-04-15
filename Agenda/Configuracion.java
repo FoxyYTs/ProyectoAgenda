@@ -86,6 +86,10 @@ public class Configuracion {
     }
 
     public static void imprimirMostrarContactos(String nombre, String apellido, String correo, String telefono) {
+        if (nombre == null || apellido == null || correo == null || telefono == null) {
+            Nulo();
+            return;
+        }
         if (idioma == "en") {
             System.out.println("Contact [name: " + nombre + ", last name: " + apellido + ", email: " + correo
                     + ", phone: " + telefono + "]");
@@ -109,13 +113,15 @@ public class Configuracion {
         } else {
             System.out.println("La lista no existe");
         }
+        leer.nextLine();
     }
 
-    public void Nulo() {
+    public static void Nulo() {
         if (idioma == "en") {
             System.out.println("Not Exist");
         } else {
             System.out.println("No Existe");
+            leer.nextLine();
         }
     }
 
