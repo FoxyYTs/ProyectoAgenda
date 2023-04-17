@@ -30,7 +30,8 @@ public class Grupo extends Agenda {
     }
 
     public void eliminarContactoGrupo(String nombre, String apellido) {
-        if (head == null) {
+        if (head == null || nombre == null || apellido == null) {
+            Agenda.configuracion.Nulo();
             return;
         }
         if (head.getNombre().equals(nombre) && head.getApellido().equals(apellido)) {
@@ -59,6 +60,9 @@ public class Grupo extends Agenda {
     }
 
     public void buscarContactoGrupo(String nombre, String apellido) {
+        if (hContacto == null || nombre == null || apellido == null) {
+            Agenda.configuracion.Nulo();
+        }
         Contacto pContacto = hContacto;
         while (pContacto != null) {
             if (pContacto.getNombre().equals(nombre) && pContacto.getApellido().equals(apellido)) {

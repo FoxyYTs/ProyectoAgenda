@@ -27,7 +27,7 @@ public class Agenda {
     }
 
     public static void eliminarContacto(String nombre, String apellido) {
-        if (hContacto == null) {
+        if (hContacto == null || nombre == null || apellido == null) {
             configuracion.Nulo();
             return;
         }
@@ -89,7 +89,7 @@ public class Agenda {
     }
 
     public static void eliminarGrupos(String nombre) {
-        if (hGrupo == null) {
+        if (hGrupo == null || nombre == null) {
             configuracion.Nulo();
             return;
         }
@@ -133,6 +133,10 @@ public class Agenda {
     }
 
     public static void eliminarDeGrupo(String nombreG, String nombreC, String apellido) {
+        if (hGrupo == null  || nombreG == null|| nombreC == null || apellido == null) {
+            configuracion.Nulo();
+            return;
+        }
         Grupo pGrupo = hGrupo;
         while (pGrupo != null) {
             if (pGrupo.getNombre().equals(nombreG)) {
