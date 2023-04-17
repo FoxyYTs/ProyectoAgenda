@@ -87,11 +87,9 @@ public class Configuracion {
 
     public static void imprimirMostrarContactos(String nombre, String apellido, String correo, String telefono) {
         if (idioma == "en") {
-            System.out.println("Contact [name: " + nombre + ", last name: " + apellido + ", email: " + correo
-                    + ", phone: " + telefono + "]");
+            System.out.println("Contact [name: " + nombre + ", last name: " + apellido + ", email: " + correo + ", phone: " + telefono + "]");
         } else {
-            System.out.println("Contacto [nombre: " + nombre + ", apellido: " + apellido + ", correo: " + correo
-                    + ", telefono: " + telefono + "]");
+            System.out.println("Contacto [nombre: " + nombre + ", apellido: " + apellido + ", correo: " + correo + ", telefono: " + telefono + "]");
         }
     }
 
@@ -238,9 +236,10 @@ public class Configuracion {
                     nombre = leer.nextLine();
                     System.out.print("Enter last name: ");
                     apellido = leer.nextLine();
-                    conta = Agenda.buscarContacto(nombre, apellido);
-                    imprimirMostrarContactos(conta.getNombre(), conta.getApellido(), conta.getCorreo(),
-                            conta.getTelefono());
+                    if (Agenda.buscarContacto(nombre, apellido) != null){
+                        conta = Agenda.buscarContacto(nombre, apellido);
+                        imprimirMostrarContactos(conta.getNombre(), conta.getApellido(), conta.getCorreo(),conta.getTelefono());
+                    }
                     leer.nextLine();
                 } else if (opcion.equals("3")) {
                     System.out.print("\033[H\033[2J");
@@ -290,8 +289,10 @@ public class Configuracion {
                     nombre = leer.nextLine();
                     System.out.print("Ingresar el apellido: ");
                     apellido = leer.nextLine();
-                    conta = Agenda.buscarContacto(nombre, apellido);
-                    imprimirMostrarContactos(conta.getNombre(), conta.getApellido(), conta.getCorreo(),conta.getTelefono());
+                    if (Agenda.buscarContacto(nombre, apellido) != null){
+                        conta = Agenda.buscarContacto(nombre, apellido);
+                        imprimirMostrarContactos(conta.getNombre(), conta.getApellido(), conta.getCorreo(),conta.getTelefono());
+                    }
                     leer.nextLine();
                 } else if (opcion.equals("3")) {
                     System.out.print("\033[H\033[2J");
@@ -324,8 +325,7 @@ public class Configuracion {
         while (seguir) {
             if (idioma == "en") {
                 System.out.print("\033[H\033[2J");
-                System.out.print(
-                        "Type the option you want\n1) Create Group\n2) Show Groups\n3) Delete Group\n4) Contact Manager\n5) Return to \nChoice: ");
+                System.out.print("Type the option you want\n1) Create Group\n2) Show Groups\n3) Delete Group\n4) Contact Manager\n5) Return to \nChoice: ");
                 opcion = leer.nextLine();
                 if (opcion.equals("1")) {
                     System.out.print("\033[H\033[2J");
@@ -357,8 +357,7 @@ public class Configuracion {
                 }
             } else {
                 System.out.print("\033[H\033[2J");
-                System.out.print(
-                        "Escribe la opcion que desea\n1) Crear Grupo\n2) Mostrar Grupos\n3) Eliminar Grupo\n4) Gestor de Contactos\n5) Regresar \nEleccion: ");
+                System.out.print("Escribe la opcion que desea\n1) Crear Grupo\n2) Mostrar Grupos\n3) Eliminar Grupo\n4) Gestor de Contactos\n5) Regresar \nEleccion: ");
                 opcion = leer.nextLine();
                 if (opcion.equals("1")) {
                     System.out.print("\033[H\033[2J");

@@ -107,6 +107,10 @@ public class Agenda {
     }
 
     public static void mostrarGrupos() {
+        if (hGrupo == null) {
+            configuracion.Nulo();
+            return;
+        }
         Grupo pGrupos = hGrupo;
         while (pGrupos != null) {
             configuracion.agendaMostrarGrupo(pGrupos.getNombre());
