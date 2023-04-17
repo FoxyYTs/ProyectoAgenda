@@ -31,7 +31,7 @@ public class Grupo extends Agenda {
 
     public void eliminarContactoGrupo(String nombre, String apellido) {
         if (head == null || nombre == null || apellido == null) {
-            Agenda.configuracion.Nulo();
+            Configuracion.Nulo();
             return;
         }
         if (head.getNombre().equals(nombre) && head.getApellido().equals(apellido)) {
@@ -61,7 +61,7 @@ public class Grupo extends Agenda {
 
     public void buscarContactoGrupo(String nombre, String apellido) {
         if (hContacto == null || nombre == null || apellido == null) {
-            Agenda.configuracion.Nulo();
+            Configuracion.Nulo();
         }
         Contacto pContacto = hContacto;
         while (pContacto != null) {

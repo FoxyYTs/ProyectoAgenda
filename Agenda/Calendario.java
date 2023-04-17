@@ -20,7 +20,7 @@ public class Calendario extends Agenda {
 
     public void eliminarEvento(String titulo) {
         if (headEvento == null || titulo == null) {
-            Agenda.configuracion.Nulo();
+            Configuracion.Nulo();
             return;
         }
         if (headEvento.getTitulo().equals(titulo)) {
@@ -61,7 +61,7 @@ public class Calendario extends Agenda {
 
     public void eliminarRecordatorios(String titulo) {
         if (headRecordatorio == null || titulo == null) {
-            Agenda.configuracion.Nulo();
+            Configuracion.Nulo();
             return;
         }
         if (headRecordatorio.getTitulo().equals(titulo)) {
