@@ -28,7 +28,7 @@ public class Agenda {
 
     public static void eliminarContacto(String nombre, String apellido) {
         if (hContacto == null || nombre == null || apellido == null) {
-            configuracion.Nulo();
+            Configuracion.Nulo();
             return;
         }
         if (hContacto.getNombre().equals(nombre) && hContacto.getApellido().equals(apellido)) {
@@ -47,7 +47,7 @@ public class Agenda {
 
     public static void mostrarContacto() {
         if (hContacto == null) {
-            configuracion.Nulo();
+            Configuracion.Nulo();
             return;
         }
         Contacto pContacto = hContacto;
@@ -60,7 +60,7 @@ public class Agenda {
 
     public static Contacto buscarContacto(String nombre, String apellido) {
         if (hContacto == null) {
-            configuracion.Nulo();
+            Configuracion.Nulo();
             return null;
         }
         Contacto pContacto = hContacto;
@@ -90,7 +90,7 @@ public class Agenda {
 
     public static void eliminarGrupos(String nombre) {
         if (hGrupo == null || nombre == null) {
-            configuracion.Nulo();
+            Configuracion.Nulo();
             return;
         }
         if (hGrupo.getNombre().equals(nombre)) {
@@ -108,7 +108,7 @@ public class Agenda {
 
     public static void mostrarGrupos() {
         if (hGrupo == null) {
-            configuracion.Nulo();
+            Configuracion.Nulo();
             return;
         }
         Grupo pGrupos = hGrupo;
@@ -134,7 +134,7 @@ public class Agenda {
 
     public static void eliminarDeGrupo(String nombreG, String nombreC, String apellido) {
         if (hGrupo == null  || nombreG == null|| nombreC == null || apellido == null) {
-            configuracion.Nulo();
+            Configuracion.Nulo();
             return;
         }
         Grupo pGrupo = hGrupo;
