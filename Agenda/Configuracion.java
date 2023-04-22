@@ -142,7 +142,7 @@ public class Configuracion {
                 System.out.print("\033[H\033[2J");
                 System.out.flush();
                 System.out.print(
-                        "Welcome to the Agenda menu\n========================================\nType the option you want\n1) Contacts Options\n2) Group Options\n3) Calendar Options\n4) Settings\n5) Close Program \nChoice: ");
+                        "Welcome to the Agenda menu\n========================================\nType the option you want and use the enter key to interact with the menus\n1) Contacts Options\n2) Group Options\n3) Calendar Options\n4) Settings\n5) Close Program \nChoice: ");
                 opcion = leer.nextLine();
                 if (opcion.equals("1")) {
                     System.out.print("\033[H\033[2J");
@@ -178,7 +178,7 @@ public class Configuracion {
                 System.out.print("\033[H\033[2J");
                 System.out.flush();
                 System.out.print(
-                        "Bienvenido al menu de Agenda\n========================================\nEscribe la opcion que desea\n1) Opciones de Contactos\n2) Opciones de Grupo\n3) Opciones de Calendario\n4) Configuracion\n5) Cerrar Programa \nEleccion: ");
+                        "Bienvenido al menu de Agenda\n========================================\nEscribe la opcion que desea y usa la tecla enter para interactuar con los menus\n1) Opciones de Contactos\n2) Opciones de Grupo\n3) Opciones de Calendario\n4) Configuracion\n5) Cerrar Programa \nEleccion: ");
                 opcion = leer.nextLine();
                 if (opcion.equals("1")) {
                     System.out.print("\033[H\033[2J");
