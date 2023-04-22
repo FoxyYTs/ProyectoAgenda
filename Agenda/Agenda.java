@@ -33,6 +33,11 @@ public class Agenda {
         }
         if (hContacto.getNombre().equals(nombre) && hContacto.getApellido().equals(apellido)) {
             hContacto = hContacto.next;
+            Grupo pGrupo = hGrupo;
+            while (pGrupo != null) {
+                pGrupo.eliminarContactoGrupo(nombre, apellido);
+                pGrupo = pGrupo.next;
+            }
             return;
         }
         Contacto pContacto = hContacto;
@@ -43,6 +48,15 @@ public class Agenda {
         if (pContacto.next != null) {
             pContacto.next = pContacto.next.next;
         }
+        if (hGrupo == null) {
+            return;
+        }
+        Grupo pGrupo = hGrupo;
+        while (pGrupo != null) {
+            pGrupo.eliminarContactoGrupo(nombre, apellido);
+            pGrupo = pGrupo.next;
+        }
+        return;
     }
 
     public static void mostrarContacto() {

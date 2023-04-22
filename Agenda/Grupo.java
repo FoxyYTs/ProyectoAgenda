@@ -46,7 +46,7 @@ public class Grupo extends Agenda {
         if (pointer.next != null) {
             pointer.next = pointer.next.next;
         }
-
+        return;
     }
 
     public void mostrarContactoGrupo() {
