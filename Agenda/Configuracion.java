@@ -61,7 +61,6 @@ public class Configuracion {
 
 
 
-    
 
     public void setIdioma(String idioma) {
         Configuracion.idioma = idioma;
