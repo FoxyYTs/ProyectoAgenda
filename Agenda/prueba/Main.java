@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter;
 
 public class Main {
     public static void main(String[] args) {
-        String a = "d/M/y H:mm";
+        String a = "d/M/y H:mm a";
         LocalDateTime fechaHoraActual = LocalDateTime.now();
         DateTimeFormatter formato = DateTimeFormatter.ofPattern(a);
         String fechaHoraActualFormateada = fechaHoraActual.format(formato);
