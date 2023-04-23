@@ -20,7 +20,7 @@ public class Configuracion {
         Configuracion.formatoFechayHora = formatoFechaHora;
     }
 
-    public String getIdioma() {
+    public String getIdoma() {
         return idioma;
     }
 
