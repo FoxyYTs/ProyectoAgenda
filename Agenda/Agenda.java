@@ -1,7 +1,7 @@
 public class Agenda {
     public static Contacto hContacto;
     public static Grupo hGrupo;
-    private static String formatoFechaHora = "d/M/y h:m a", idioma = "es";
+    private static String formatoFechaHora = "d/M/y h:mm a", idioma = "es";
     public static Configuracion configuracion = new Configuracion(formatoFechaHora, idioma);
     public static Calendario calendario = new Calendario();
 

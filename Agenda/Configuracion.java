@@ -80,23 +80,23 @@ public class Configuracion {
 
     public static String formatos(String id) {
         if (idioma.equals("en")) {
-            if (id.equals("d/M/y H:m")) {
+            if (id.equals("d/M/y H:mm")) {
                 return "day/month/year 24H:minute";
-            } else if (id.equals("M/d/y H:m")) {
+            } else if (id.equals("M/d/y H:mm")) {
                 return "month/day/year 24H:minute";
-            } else if (id.equals("d/M/y h:m a")) {
+            } else if (id.equals("d/M/y h:mm a")) {
                 return "day/month/year 12H:minute a.m./p.m.";
-            } else if (id.equals("M/d/y h:m a")) {
+            } else if (id.equals("M/d/y h:mm a")) {
                 return "month/day/year 12H:minute a.m./p.m.";
             }
         } else {
-            if (id.equals("d/M/y H:m")) {
+            if (id.equals("d/M/y H:mm")) {
                 return "dia/mes/año 24H:minuto";
-            } else if (id.equals("M/d/y H:m")) {
+            } else if (id.equals("M/d/y H:mm")) {
                 return "mes/dia/año 24H:minuto";
-            } else if (id.equals("d/M/y h:m a")) {
+            } else if (id.equals("d/M/y h:mm a")) {
                 return "dia/mes/año 12H:minuto a.m./p.m.";
-            } else if (id.equals("M/d/y h:m a")) {
+            } else if (id.equals("M/d/y h:mm a")) {
                 return "mes/dia/año 12H:minuto a.m./p.m.";
             }
         }
@@ -657,13 +657,13 @@ public class Configuracion {
                             "Which date and time format do you prefer?\n1) dd/mm/yyyy 24H\n2) mm/dd/yyyy 24H\n3) dd/mm/yyyy 12H\n4) mm/dd/yyyy 12H");
                     id = Integer.parseInt(leer.nextLine());
                     if (id == 1) {
-                        formatoFechayHora = "d/M/y H:m";
+                        formatoFechayHora = "d/M/y H:mm";
                     } else if (id == 2) {
-                        formatoFechayHora = "M/d/y H:m";
+                        formatoFechayHora = "M/d/y H:mm";
                     } else if (id == 3) {
-                        formatoFechayHora = "d/M/y h:m a";
+                        formatoFechayHora = "d/M/y h:mm a";
                     } else if (id == 4) {
-                        formatoFechayHora = "M/d/y h:m a";
+                        formatoFechayHora = "M/d/y h:mm a";
                     } else {
                         System.out.println("Invalid option");
                     }
@@ -700,13 +700,13 @@ public class Configuracion {
                             "Que formato de fecha prefieres\n1) dd/mm/yyyy 24H\n2) mm/dd/yyyy 24H\n3) dd/mm/yyyy 12H\n4) mm/dd/yyyy 12H");
                     id = Integer.parseInt(leer.nextLine());
                     if (id == 1) {
-                        formatoFechayHora = "d/M/y H:m";
+                        formatoFechayHora = "d/M/y H:mm";
                     } else if (id == 2) {
-                        formatoFechayHora = "M/d/y H:m";
+                        formatoFechayHora = "M/d/y H:mm";
                     } else if (id == 3) {
-                        formatoFechayHora = "d/M/y h:m a";
+                        formatoFechayHora = "d/M/y h:mm a";
                     } else if (id == 4) {
-                        formatoFechayHora = "M/d/y h:m a";
+                        formatoFechayHora = "M/d/y h:mm a";
                     } else {
                         System.out.println("Opcion no valida");
                     }
