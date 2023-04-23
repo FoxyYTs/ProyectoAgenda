@@ -46,12 +46,20 @@ public class Configuracion {
                 return "day/month/year 24H:minute";
             } else if (id.equals("M/d/y H:mm")) {
                 return "month/day/year 24H:minute";
+            } else if (id.equals("d/M/y h:mm a")) {
+                return "day/month/year 12H:minute a.m./p.m.";
+            } else if (id.equals("M/d/y h:mm a")) {
+                return "month/day/year 12H:minute a.m./p.m.";
             }
         } else {
             if (id.equals("d/M/y H:mm")) {
                 return "dia/mes/año 24H:minuto";
             } else if (id.equals("M/d/y H:mm")) {
                 return "mes/dia/año 24H:minuto";
+            } else if (id.equals("d/M/y h:mm a")) {
+                return "dia/mes/año 12H:minuto a.m./p.m.";
+            } else if (id.equals("M/d/y h:mm a")) {
+                return "mes/dia/año 12H:minuto a.m./p.m.";
             }
         }
         return "";
@@ -134,7 +142,7 @@ public class Configuracion {
                 System.out.print("\033[H\033[2J");
                 System.out.flush();
                 System.out.print(
-                        "Welcome to the Agenda menu\n========================================\nType the option you want and use the enter key to interact with the menus\n1) Contacts Options\n2) Group Options\n3) Calendar Options\n4) Settings\n5) Close Program \nChoice: ");
+                        "Welcome to the Agenda menu\n========================================\nType the option you want\n1) Contacts Options\n2) Group Options\n3) Calendar Options\n4) Settings\n5) Close Program \nChoice: ");
                 opcion = leer.nextLine();
                 if (opcion.equals("1")) {
                     System.out.print("\033[H\033[2J");
@@ -170,7 +178,7 @@ public class Configuracion {
                 System.out.print("\033[H\033[2J");
                 System.out.flush();
                 System.out.print(
-                        "Bienvenido al menu de Agenda\n========================================\nEscribe la opcion que desea y usa la tecla enter para interactuar con los menus\n1) Opciones de Contactos\n2) Opciones de Grupo\n3) Opciones de Calendario\n4) Configuracion\n5) Cerrar Programa \nEleccion: ");
+                        "Bienvenido al menu de Agenda\n========================================\nEscribe la opcion que desea\n1) Opciones de Contactos\n2) Opciones de Grupo\n3) Opciones de Calendario\n4) Configuracion\n5) Cerrar Programa \nEleccion: ");
                 opcion = leer.nextLine();
                 if (opcion.equals("1")) {
                     System.out.print("\033[H\033[2J");
@@ -608,12 +616,16 @@ public class Configuracion {
                 } else if (opcion.equals("2")) {
                     System.out.print("\033[H\033[2J");
                     System.out.println(
-                            "Which date and time format do you prefer?\n1) dd/mm/yyyy 24H\n2) mm/dd/yyyy 24H");
+                            "Which date and time format do you prefer?\n1) dd/mm/yyyy 24H\n2) mm/dd/yyyy 24H\n3) dd/mm/yyyy 12H\n4) mm/dd/yyyy 12H");
                     id = Integer.parseInt(leer.nextLine());
                     if (id == 1) {
-                        formatoFechayHora = "d/M/y H:m";
+                        formatoFechayHora = "d/M/y H:mm";
                     } else if (id == 2) {
-                        formatoFechayHora = "M/d/y H:m";
+                        formatoFechayHora = "M/d/y H:mm";
+                    } else if (id == 3) {
+                        formatoFechayHora = "d/M/y h:mm a";
+                    } else if (id == 4) {
+                        formatoFechayHora = "M/d/y h:mm a";
                     } else {
                         System.out.println("Invalid option");
                     }
@@ -647,12 +659,16 @@ public class Configuracion {
                 } else if (opcion.equals("2")) {
                     System.out.print("\033[H\033[2J");
                     System.out.println(
-                            "Que formato de fecha prefieres\n1) dd/mm/yyyy 24H\n2) mm/dd/yyyy 24H");
+                            "Que formato de fecha prefieres\n1) dd/mm/yyyy 24H\n2) mm/dd/yyyy 24H\n3) dd/mm/yyyy 12H\n4) mm/dd/yyyy 12H");
                     id = Integer.parseInt(leer.nextLine());
                     if (id == 1) {
-                        formatoFechayHora = "d/M/y H:m";
+                        formatoFechayHora = "d/M/y H:mm";
                     } else if (id == 2) {
-                        formatoFechayHora = "M/d/y H:m";
+                        formatoFechayHora = "M/d/y H:mm";
+                    } else if (id == 3) {
+                        formatoFechayHora = "d/M/y h:mm a";
+                    } else if (id == 4) {
+                        formatoFechayHora = "M/d/y h:mm a";
                     } else {
                         System.out.println("Opcion no valida");
                     }
