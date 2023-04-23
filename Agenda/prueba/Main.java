@@ -9,10 +9,11 @@ public class Main {
         LocalDateTime fechaHoraActual = LocalDateTime.now();
         DateTimeFormatter formato = DateTimeFormatter.ofPattern(a);
         String fechaHoraActualFormateada = fechaHoraActual.format(formato);
-        System.out.println("Fecha y hora actual: " + fechaHoraActualFormateada);
+        LocalDateTime fechaHoraFormatead = LocalDateTime.parse("23/4/2023 10:06 AM", formato);
+        String fechaHoraFormateada = fechaHoraFormatead.format(formato);
 
-        DateTimeFormatter formatoFechaHora = DateTimeFormatter.ofPattern(a);
-        LocalDateTime fechaHoraFormateada = LocalDateTime.parse("23/4/2023 10:06 a. m.", formatoFechaHora);
+        System.out.println("Fecha y hora actual: " + fechaHoraActualFormateada);
+        System.out.println("Fecha y hora actual: " + fechaHoraFormateada);
     }
 }   
 
