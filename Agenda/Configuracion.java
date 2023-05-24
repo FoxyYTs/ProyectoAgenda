@@ -24,44 +24,6 @@ public class Configuracion {
         return idioma;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public void setIdioma(String idioma) {
         Configuracion.idioma = idioma;
     }
