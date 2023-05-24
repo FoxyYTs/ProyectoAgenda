@@ -1,11 +1,12 @@
 public class Grupo extends Agenda {
     private String nombre;
-    private static Contacto head;
-    public Grupo next;
+    private static Contacto head, tail;
+    public Grupo next, back;
 
     public Grupo(String nombre) {
         this.nombre = nombre;
         this.next = null;
+        this.back = null;
     }
 
     public String getNombre() {
@@ -18,24 +19,27 @@ public class Grupo extends Agenda {
 
     public void agregarContactoGrupo(Contacto conta) {
         Contacto nuevo = new Contacto(conta.getNombre(), conta.getApellido(), conta.getTelefono(), conta.getCorreo());
-        if (head == null) {
+        if (head == null && tail == null) {
             head = nuevo;
+            tail = nuevo;
         } else {
             Contacto pointer = head;
             while (pointer.next != null) {
                 pointer = pointer.next;
             }
-            pointer.next = nuevo;
+            tail = pointer.next = nuevo;
+            nuevo.back = pointer;
         }
     }
 
     public void eliminarContactoGrupo(String nombre, String apellido) {
-        if (head == null || nombre == null || apellido == null) {
+        if ((head == null && tail == null) || nombre == null || apellido == null) {
             Configuracion.Nulo();
             return;
         }
         if (head.getNombre().equals(nombre) && head.getApellido().equals(apellido)) {
             head = head.next;
+            head.back = null;
             return;
         }
         Contacto pointer = head;
@@ -44,7 +48,8 @@ public class Grupo extends Agenda {
             pointer = pointer.next;
         }
         if (pointer.next != null) {
-            pointer.next = pointer.next.next;
+            pointer.back.next = pointer.next;
+            pointer.next.back = pointer.back;
         }
         return;
     }
@@ -60,7 +65,7 @@ public class Grupo extends Agenda {
     }
 
     public void buscarContactoGrupo(String nombre, String apellido) {
-        if (hContacto == null || nombre == null || apellido == null) {
+        if ((hContacto == null && tContacto == null) || nombre == null || apellido == null) {
             Configuracion.Nulo();
         }
         Contacto pContacto = hContacto;

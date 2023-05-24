@@ -2,29 +2,32 @@ import java.time.LocalDateTime;
 
 public class Calendario extends Agenda {
 
-    private Eventos headEvento;
-    private Recordatorios headRecordatorio;
+    private Eventos headEvento, tailEvento;
+    private Recordatorios headRecordatorio, tailRecordatirio;
 
     public void insertarEventos(String titulo, LocalDateTime fechaHoraInicio, LocalDateTime fechaHoraFin) {
         Eventos nuevo = new Eventos(titulo, fechaHoraInicio, fechaHoraFin);
-        if (headEvento == null) {
+        if (headEvento == null && tailEvento == null) {
             headEvento = nuevo;
+            tailEvento = nuevo;
         } else {
             Eventos pEventos = headEvento;
             while (pEventos.next != null) {
                 pEventos = pEventos.next;
             }
-            pEventos.next = nuevo;
+            tailEvento = pEventos.next = nuevo;
+            nuevo.back = pEventos;
         }
     }
 
     public void eliminarEvento(String titulo) {
-        if (headEvento == null || titulo == null) {
+        if ((headEvento == null && tailEvento == null) || titulo == null) {
             Configuracion.Nulo();
             return;
         }
         if (headEvento.getTitulo().equals(titulo)) {
             headEvento = headEvento.next;
+            headEvento.back = null;
             return;
         }
         Eventos pEvento = headEvento;
@@ -32,8 +35,10 @@ public class Calendario extends Agenda {
             pEvento = pEvento.next;
         }
         if (pEvento.next != null) {
-            pEvento.next = pEvento.next.next;
+            pEvento.back.next = pEvento.next;
+            pEvento.next.back = pEvento.back;
         }
+        return;
     }
 
     public void mostrarEventos() {
@@ -48,24 +53,27 @@ public class Calendario extends Agenda {
 
     public void insertarRecordatorios(String titulo, String mensaje, LocalDateTime fechaHora) {
         Recordatorios nuevo = new Recordatorios(titulo, mensaje, fechaHora);
-        if (headRecordatorio == null) {
+        if (headRecordatorio == null && tailRecordatirio == null) {
             headRecordatorio = nuevo;
+            tailRecordatirio = nuevo;
         } else {
             Recordatorios pRecordatorio = headRecordatorio;
             while (pRecordatorio.next != null) {
                 pRecordatorio = pRecordatorio.next;
             }
-            pRecordatorio.next = nuevo;
+            tailRecordatirio = pRecordatorio.next = nuevo;
+            nuevo.back = pRecordatorio;
         }
     }
 
     public void eliminarRecordatorios(String titulo) {
-        if (headRecordatorio == null || titulo == null) {
+        if ((headRecordatorio == null && tailRecordatirio == null)|| titulo == null) {
             Configuracion.Nulo();
             return;
         }
         if (headRecordatorio.getTitulo().equals(titulo)) {
             headRecordatorio = headRecordatorio.next;
+            headRecordatorio = null;
             return;
         }
         Recordatorios pRecordatorio = headRecordatorio;
@@ -73,8 +81,10 @@ public class Calendario extends Agenda {
             pRecordatorio = pRecordatorio.next;
         }
         if (pRecordatorio.next != null) {
-            pRecordatorio.next = pRecordatorio.next.next;
+            pRecordatorio.back.next = pRecordatorio.next;
+            pRecordatorio.next.back = pRecordatorio.back;
         }
+        return;
     }
 
     public void mostrarRecordatorios() {

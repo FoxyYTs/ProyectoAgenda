@@ -3,7 +3,7 @@ public class Contacto {
     private String apellido;
     private String telefono;
     private String correo;
-    public Contacto next;
+    public Contacto next, back;
 
     public Contacto(String nombre, String apellido, String correo,  String telefono) {
         this.nombre = nombre;
@@ -11,6 +11,7 @@ public class Contacto {
         this.telefono = telefono;
         this.correo = correo;
         this.next = null;
+        this.back = null;
     }
 
     public String getNombre() {

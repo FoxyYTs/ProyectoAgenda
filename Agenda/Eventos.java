@@ -4,13 +4,14 @@ public class Eventos {
     private String titulo;
     private LocalDateTime fechaHoraInicio;
     private LocalDateTime fechaHoraFin;
-    public Eventos next;
+    public Eventos next, back;
 
     public Eventos(String titulo, LocalDateTime fechaHoraInicio, LocalDateTime fechaHoraFin) {
         this.titulo = titulo;
         this.fechaHoraInicio = fechaHoraInicio;
         this.fechaHoraFin = fechaHoraFin;
         this.next = null;
+        this.back = null;
     }
 
     public String getTitulo() {

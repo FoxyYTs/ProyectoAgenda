@@ -3,13 +3,14 @@ import java.time.LocalDateTime;
 public class Recordatorios {
     private String mensaje, titulo;
     private LocalDateTime fechaHora;
-    public Recordatorios next;
+    public Recordatorios next, back;
 
     public Recordatorios(String titulo, String mensaje, LocalDateTime fechaHora) {
         this.titulo = titulo;
         this.mensaje = mensaje;
         this.fechaHora = fechaHora;
         this.next = null;
+        this.back = null;
     }
 
     public String getTitulo() {
