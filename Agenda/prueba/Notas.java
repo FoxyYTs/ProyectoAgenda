@@ -4,7 +4,6 @@ public class Notas {
     Notas next, back;
     public Notas(String titulo, String nota){
         this.titulo = titulo;
-        this.nota = nota;
         this.next = null;
         this.back = null;
     }
