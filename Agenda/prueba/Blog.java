@@ -23,10 +23,10 @@ public class Blog {
         System.out.println("Mostrar: ");
         Nota pointer = head;
         while (pointer != null) {
-            System.out.print(pointer.titulo + " ");
+            System.out.print(pointer.getTitulo() + " ");
             pointer = pointer.next;
         }
         System.out.println();
-        System.out.println("Cabeza: " + head.titulo + " Cola: " + tail.titulo);
+        System.out.println("Cabeza: " + head.getTitulo() + " Cola: " + tail.getTitulo());
     }
 }

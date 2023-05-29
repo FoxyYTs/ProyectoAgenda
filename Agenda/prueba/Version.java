@@ -8,4 +8,12 @@ public class Version {
         this.back = null;
         this.nota = nota;
     }
+
+    public String getNota(){
+        return nota;
+    }
+
+    public void setNota(String nota){
+        this.nota = nota;
+    }
 }
