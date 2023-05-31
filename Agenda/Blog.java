@@ -1,5 +1,3 @@
-package prueba;
-
 public class Blog {
     public Nota head, tail;
     public Blog(){
@@ -20,7 +18,6 @@ public class Blog {
     } 
 
     public void mostrar() {
-        System.out.println("Mostrar: ");
         Nota pointer = head;
         while (pointer != null) {
             System.out.println(pointer.getTitulo() + " ");

@@ -4,6 +4,7 @@ public class Agenda {
     private static String formatoFechaHora = "d/M/y h:mm a", idioma = "es";
     public static Configuracion configuracion = new Configuracion(formatoFechaHora, idioma);
     public static Calendario calendario = new Calendario();
+    public static Blog blog = new Blog();
 
     public Agenda() {
     }
@@ -19,10 +20,7 @@ public class Agenda {
             hContacto = nuevo;
             tContacto = nuevo;
         } else {
-            Contacto pContacto = hContacto;
-            while (pContacto.next != null) {
-                pContacto = pContacto.next;
-            }
+            Contacto pContacto = tContacto;
             tContacto = pContacto.next = nuevo;
             nuevo.back = pContacto;
         }
@@ -99,10 +97,7 @@ public class Agenda {
             hGrupo = nuevo;
             tGrupo = nuevo;
         } else {
-            Grupo pGrupos = hGrupo;
-            while (pGrupos.next != null) {
-                pGrupos = pGrupos.next;
-            }
+            Grupo pGrupos = tGrupo;
             tGrupo = pGrupos.next = nuevo;
             nuevo.back = pGrupos;
         }

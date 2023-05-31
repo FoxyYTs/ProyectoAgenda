@@ -23,10 +23,7 @@ public class Grupo extends Agenda {
             head = nuevo;
             tail = nuevo;
         } else {
-            Contacto pointer = head;
-            while (pointer.next != null) {
-                pointer = pointer.next;
-            }
+            Contacto pointer = tail;
             tail = pointer.next = nuevo;
             nuevo.back = pointer;
         }

@@ -142,7 +142,7 @@ public class Configuracion {
                 System.out.print("\033[H\033[2J");
                 System.out.flush();
                 System.out.print(
-                        "Welcome to the Agenda menu\n========================================\nType the option you want\n1) Contacts Options\n2) Group Options\n3) Calendar Options\n4) Settings\n5) Close Program \nChoice: ");
+                        "Welcome to the Agenda menu\n========================================\nType the option you want\n1) Contacts Options\n2) Group Options\n3) Calendar Options\n4) Notes Options\n5) Settings\n6) Close Program \nChoice: ");
                 opcion = leer.nextLine();
                 if (opcion.equals("1")) {
                     System.out.print("\033[H\033[2J");
@@ -178,7 +178,7 @@ public class Configuracion {
                 System.out.print("\033[H\033[2J");
                 System.out.flush();
                 System.out.print(
-                        "Bienvenido al menu de Agenda\n========================================\nEscribe la opcion que desea\n1) Opciones de Contactos\n2) Opciones de Grupo\n3) Opciones de Calendario\n4) Configuracion\n5) Cerrar Programa \nEleccion: ");
+                        "Bienvenido al menu de Agenda\n========================================\nEscribe la opcion que desea\n1) Opciones de Contactos\n2) Opciones de Grupo\n3) Opciones de Calendario\n4) Opciones de Notas\n5) Configuracion\n6) Cerrar Programa \nEleccion: ");
                 opcion = leer.nextLine();
                 if (opcion.equals("1")) {
                     System.out.print("\033[H\033[2J");
@@ -195,12 +195,17 @@ public class Configuracion {
                     System.out.println("Ingresando al menu de Calendario");
                     leer.nextLine();
                     menuCalendario();
-                } else if (opcion.equals("4")) {
+                } else if (opcion.equals("4")){
+                    System.out.print("\033[H\033[2J");
+                    System.out.println("Ingresando al menu de Calendario");
+                    leer.nextLine();
+                    menuBlog();
+                }else if (opcion.equals("5")) {
                     System.out.print("\033[H\033[2J");
                     System.out.println("Ingresando al menu de Configuracion");
                     leer.nextLine();
                     menuConfiguracion();
-                } else if (opcion.equals("5")) {
+                } else if (opcion.equals("6")) { 
                     System.out.print("\033[H\033[2J");
                     System.out.println("Cerrando...");
                     System.out.println("\nCreado por\nJose Manuel y Jose Andres");
@@ -587,6 +592,69 @@ public class Configuracion {
                 } else {
                     System.out.println("Opcion no valida");
                     leer.nextLine();
+                }
+            }
+        }
+    }
+
+    public static void menuBlog(){
+        String opcion,note;
+        Boolean seguir = true;
+        while(seguir){
+            if (idioma == "en"){
+
+            } else {
+                System.out.print("\033[H\033[2J");
+                System.out.print("Escribe la opcion que desea\n1) Crear Nota\n2) Editar Nota\n3) Regresar \nEleccion: ");
+                opcion = leer.nextLine();
+                if (opcion.equals("1")){
+                    System.out.print("\033[H\033[2J");
+                    System.out.print("Creando nota\nIngresa el nombre: ");
+                    Agenda.blog.insertar(leer.nextLine());
+                } else if (opcion .equals("2")) {
+                    System.out.print("\033[H\033[2J");
+                    System.out.println("Ingresando al editor de Notas");
+                    leer.nextLine();
+                    menuNota();
+                } else if (opcion.equals("3")) {
+                    System.out.print("\033[H\033[2J");
+                    System.out.println("Regresando...");
+                    seguir = false;
+                    leer.nextLine();
+                } else {
+                    System.out.println("opcion no valida");
+                    leer.nextLine();
+                }
+            }
+        }
+    }
+    public static void menuNota(){
+        String opcion;
+        Boolean seguir = true;
+        while(seguir){
+            if (idioma == "en") {
+                System.out.println("Work In Progress");
+            } else {
+                System.out.print("\033[H\033[2J");
+                System.out.print("Escribe la opcion que desea\n1) Agregar contenido a la nota\n2) Ver la version actual\n3) Ver la version anterior\n4) Volver a la version anterior\n5) Regresar \nEleccion: ");
+                opcion = leer.nextLine();
+                if (opcion.equals("1")){
+                    if(!nota.top.getNota().equals("")){
+                        nota.insertar(nota.top.getNota() + "\n" + leer.nextLine());
+                    }else {
+                        nota.insertar(leer.nextLine());
+                    }
+                } else if (opcion.equals("2")){
+                    System.out.println("Titulo: " + nota.getTitulo() + "\nNota\n" + nota.top.getNota());
+                } else if (opcion.equals("3")){
+                    System.out.println("Titulo: " + nota.getTitulo() + "\nNota\n" + nota.top.next.getNota());
+                } else if (opcion.equals("4")){
+                    System.out.println("Volviendo a la version anterior");
+                    nota.volver();
+                }else if (opcion.equals("5")){
+                    seguir = false;
+                } else {
+                    System.out.println("Opcion no valida");
                 }
             }
         }

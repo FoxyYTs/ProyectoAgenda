@@ -1,4 +1,3 @@
-package prueba;
 public class Nota {
     private String titulo;
     public Nota next, back;
@@ -19,15 +18,11 @@ public class Nota {
 
     public void volver(){
         if (top.next == null){
-            System.out.println("No hay mas versiones");
+            Configuracion.Nulo();
         } else {
             top = top.next;
             top.back = null;
         }
-    }
-
-    public void mostrar(){
-        System.out.println();
     }
 
     public String getTitulo(){

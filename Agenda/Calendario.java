@@ -3,7 +3,7 @@ import java.time.LocalDateTime;
 public class Calendario extends Agenda {
 
     private Eventos headEvento, tailEvento;
-    private Recordatorios headRecordatorio, tailRecordatirio;
+    private Recordatorios headRecordatorio, tailRecordatorio;
 
     public void insertarEventos(String titulo, LocalDateTime fechaHoraInicio, LocalDateTime fechaHoraFin) {
         Eventos nuevo = new Eventos(titulo, fechaHoraInicio, fechaHoraFin);
@@ -11,10 +11,7 @@ public class Calendario extends Agenda {
             headEvento = nuevo;
             tailEvento = nuevo;
         } else {
-            Eventos pEventos = headEvento;
-            while (pEventos.next != null) {
-                pEventos = pEventos.next;
-            }
+            Eventos pEventos = tailEvento;
             tailEvento = pEventos.next = nuevo;
             nuevo.back = pEventos;
         }
@@ -53,21 +50,18 @@ public class Calendario extends Agenda {
 
     public void insertarRecordatorios(String titulo, String mensaje, LocalDateTime fechaHora) {
         Recordatorios nuevo = new Recordatorios(titulo, mensaje, fechaHora);
-        if (headRecordatorio == null && tailRecordatirio == null) {
+        if (headRecordatorio == null && tailRecordatorio == null) {
             headRecordatorio = nuevo;
-            tailRecordatirio = nuevo;
+            tailRecordatorio = nuevo;
         } else {
-            Recordatorios pRecordatorio = headRecordatorio;
-            while (pRecordatorio.next != null) {
-                pRecordatorio = pRecordatorio.next;
-            }
-            tailRecordatirio = pRecordatorio.next = nuevo;
+            Recordatorios pRecordatorio = tailRecordatorio;
+            tailRecordatorio = pRecordatorio.next = nuevo;
             nuevo.back = pRecordatorio;
         }
     }
 
     public void eliminarRecordatorios(String titulo) {
-        if ((headRecordatorio == null && tailRecordatirio == null)|| titulo == null) {
+        if ((headRecordatorio == null && tailRecordatorio == null)|| titulo == null) {
             Configuracion.Nulo();
             return;
         }
