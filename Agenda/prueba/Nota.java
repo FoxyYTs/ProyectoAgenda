@@ -22,11 +22,11 @@ public class Nota {
     }
 
     public void volver(){
-        if (top.back == null){
+        if (top.next == null){
             System.out.println("No hay mas versiones");
         } else {
-            top.back = top;
-            top.next = null;
+            top.next = top;
+            top.back = null;
         }
     }
 

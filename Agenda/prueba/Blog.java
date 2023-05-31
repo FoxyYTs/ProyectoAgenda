@@ -46,16 +46,21 @@ public class Blog {
     public static void editar(Nota nota){
         boolean seguir = true;
         int opc;
-        System.out.println("Titulo: " + nota.getTitulo() + "\n" + nota.top.getNota());
+        System.out.println("Titulo: " + nota.getTitulo() + "\nNota\n" + nota.top.getNota());
 
         while (seguir == true){
-            System.out.println("1) agregar contenido a la nota\n2) Ver la version anterior\n3) Cerrar");
+            System.out.println("1) agregar contenido a la nota\n2) Ver la version actual\n3) Ver la version anterior\n4) Volver a la version anterior\n5) Cerrar");
             opc = Integer.parseInt(leer.nextLine());
             if (opc == 1){
                 nota.insertar(nota.top.getNota() + " " + leer.nextLine());
             } else if (opc == 2){
-                System.out.println("Titulo: " + nota.getTitulo() + "\n" + nota.top.getNota());
+                System.out.println("Titulo: " + nota.getTitulo() + "\nNota\n" + nota.top.getNota());
             } else if (opc == 3){
+                System.out.println("Titulo: " + nota.getTitulo() + "\nNota\n" + nota.top.next.getNota());
+            } else if (opc == 4){
+                System.out.println("Volviendo a la version anterior");
+                nota.volver();
+            }else if (opc == 5){
                 seguir = false;
             } else {
                 System.out.println("Opcion no valida");
