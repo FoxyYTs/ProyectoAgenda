@@ -3,9 +3,9 @@ package prueba;
 import java.util.Scanner;
 
 public class Main {
+    private static Blog blog = new Blog();
+    private static Scanner leer = new Scanner(System.in);
     public static void main(String[] args) {
-        Scanner leer = new Scanner(System.in);
-        Blog blog = new Blog();
         int opc;
         boolean x = true;
 
@@ -15,10 +15,11 @@ public class Main {
 
             opc = Integer.parseInt(leer.nextLine());
             if (opc == 1){
-                System.out.print("Titulo de la nota: ");
-                blog.insertar(leer.nextLine());
+                for (int i = 0; i < 5; i++) {
+                    blog.insertar("hola" + i);
+                }
             } else if (opc == 2) {
-                
+                menu2LaVenganza(opc);
             } else if (opc == 3) {
                 x = false;
             } else {
@@ -29,7 +30,11 @@ public class Main {
     }
 
     public static void menu2LaVenganza(int opc){
+        System.out.println("Las notas actuales son");
+        blog.mostrar();
 
+        System.out.println("Ingresa el nombre de la nota que quieres editar: ");
+        blog.selec(leer.nextLine());
     }
 }   
 

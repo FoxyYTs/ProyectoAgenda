@@ -7,6 +7,7 @@ public class Nota {
         this.titulo = titulo;
         this.next = null;
         this.back = null;
+        this.top = new Version("");
     }
 
     public void insertar(String texto){
