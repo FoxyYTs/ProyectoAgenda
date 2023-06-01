@@ -598,7 +598,7 @@ public class Configuracion {
     }
 
     public static void menuBlog(){
-        String opcion,note;
+        String opcion;
         Boolean seguir = true;
         while(seguir){
             if (idioma == "en"){
@@ -610,8 +610,9 @@ public class Configuracion {
                 if (opcion.equals("1")){
                     System.out.print("\033[H\033[2J");
                     System.out.print("Creando nota\nIngresa el nombre: ");
-                    Agenda.blog.insertar(leer.nextLine());
+                    Agenda.insertarNota(leer.nextLine());
                 } else if (opcion .equals("2")) {
+                    System.out.print("\033[H\033[2J");
                     System.out.print("\033[H\033[2J");
                     System.out.println("Ingresando al editor de Notas");
                     leer.nextLine();
@@ -628,30 +629,39 @@ public class Configuracion {
             }
         }
     }
+
     public static void menuNota(){
+        Nota nota;
         String opcion;
         Boolean seguir = true;
+
         while(seguir){
             if (idioma == "en") {
                 System.out.println("Work In Progress");
             } else {
                 System.out.print("\033[H\033[2J");
-                System.out.print("Escribe la opcion que desea\n1) Agregar contenido a la nota\n2) Ver la version actual\n3) Ver la version anterior\n4) Volver a la version anterior\n5) Regresar \nEleccion: ");
+                System.out.print("Escribe la opcion que desea\n1) Seleccionar la nota a modificar\n2) Agregar contenido a la nota\n3) Ver la version actual\n4) Ver la version anterior\n5) Volver a la version anterior\n6) Regresar \nEleccion: ");
                 opcion = leer.nextLine();
                 if (opcion.equals("1")){
-                    if(!nota.top.getNota().equals("")){
+                    System.out.println("Las notas actuales son");
+                    Agenda.mostrarNota();
+                    System.out.print("Ingresa el nombre de la nota a modificar: ");
+                    nota = Agenda.buscarNota(leer.nextLine());
+                } else if (opcion.equals("2")){
+                    System.out.println("Agregando contenido a la Nota");
+                    if(!Agenda.blog.nota.top.getNota().equals("")){
                         nota.insertar(nota.top.getNota() + "\n" + leer.nextLine());
                     }else {
                         nota.insertar(leer.nextLine());
                     }
-                } else if (opcion.equals("2")){
-                    System.out.println("Titulo: " + nota.getTitulo() + "\nNota\n" + nota.top.getNota());
                 } else if (opcion.equals("3")){
-                    System.out.println("Titulo: " + nota.getTitulo() + "\nNota\n" + nota.top.next.getNota());
+                    System.out.println("Titulo: " + nota.getTitulo() + "\nNota\n" + nota.top.getNota());
                 } else if (opcion.equals("4")){
+                    System.out.println("Titulo: " + nota.getTitulo() + "\nNota\n" + nota.top.next.getNota());
+                } else if (opcion.equals("5")){
                     System.out.println("Volviendo a la version anterior");
                     nota.volver();
-                }else if (opcion.equals("5")){
+                }else if (opcion.equals("6")){
                     seguir = false;
                 } else {
                     System.out.println("Opcion no valida");

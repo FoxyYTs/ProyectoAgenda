@@ -1,10 +1,10 @@
 public class Agenda {
     public static Contacto hContacto, tContacto;
     public static Grupo hGrupo, tGrupo;
+    public static Nota hNota, tNota;
     private static String formatoFechaHora = "d/M/y h:mm a", idioma = "es";
     public static Configuracion configuracion = new Configuracion(formatoFechaHora, idioma);
     public static Calendario calendario = new Calendario();
-    public static Blog blog = new Blog();
 
     public Agenda() {
     }
@@ -187,5 +187,66 @@ public class Agenda {
             pGrupo = pGrupo.next;
         }
         return;
+    }
+    // Funciones Notas
+
+    public static void insertarNota(String titulo) {
+        Nota nuevo = new Nota(titulo);
+        if (hNota == null && tNota == null) {
+            hNota = nuevo;
+            tNota = nuevo;
+        } else {
+            Nota pNota = tNota;
+            tNota = pNota.next = nuevo;
+            nuevo.back = pNota;
+        }
+    }
+
+    public static void eliminarNota(String titulo) {
+        if ((hNota == null && tNota == null) || titulo == null) {
+            Configuracion.Nulo();
+            return;
+        }
+        if (hNota.getTitulo().equals(titulo)) {
+            hNota = hNota.next;
+            hNota.back = null;
+            return;
+        }
+        Nota pNota = hNota;
+        while (!pNota.next.getTitulo().equals(titulo) && pNota.next != null) {
+            pNota = pNota.next;
+        }
+        if (pNota.next != null) {
+            pNota.back.next = pNota.next;
+            pNota.next.back = pNota.back;
+        }
+    }
+
+    public static void mostrarNota() {
+        if (hNota == null && tNota == null) {
+            Configuracion.Nulo();
+            return;
+        }
+        Nota pointer = hNota;
+        while (pointer != null) {
+            System.out.println(pointer.getTitulo() + " ");
+            pointer = pointer.next;
+        }
+        System.out.println();
+    }
+
+    public static Nota buscarNota(String titulo) {
+        if (hContacto == null && tContacto == null) {
+            Configuracion.Nulo();
+            return null;
+        }
+        Nota pNota = hNota;
+        while (pNota != null) {
+            if (pNota.getTitulo().equals(titulo)) {
+                return pNota;
+            }
+            pNota = pNota.next;
+        }
+        return null;
     }
 }
