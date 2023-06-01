@@ -631,7 +631,7 @@ public class Configuracion {
     }
 
     public static void menuNota(){
-        Nota nota;
+        Nota nota = null;
         String opcion;
         Boolean seguir = true;
 
@@ -649,7 +649,7 @@ public class Configuracion {
                     nota = Agenda.buscarNota(leer.nextLine());
                 } else if (opcion.equals("2")){
                     System.out.println("Agregando contenido a la Nota");
-                    if(!Agenda.blog.nota.top.getNota().equals("")){
+                    if(!nota.top.getNota().equals("")){
                         nota.insertar(nota.top.getNota() + "\n" + leer.nextLine());
                     }else {
                         nota.insertar(leer.nextLine());

@@ -67,11 +67,15 @@ public class Agenda {
             return;
         }
         Contacto pContacto = hContacto;
-        while (pContacto != null) {
-            Configuracion.imprimirMostrarContactos(pContacto.getNombre(), pContacto.getApellido(), pContacto.getCorreo(), pContacto.getTelefono());
-            pContacto = pContacto.next;
-        }
+        mostrarContactoRecu(pContacto);
         System.out.println();
+    }
+
+    public static void mostrarContactoRecu(Contacto pContacto){
+        if (pContacto != null){
+            mostrarContactoRecu(pContacto.next);
+            Configuracion.imprimirMostrarContactos(pContacto.getNombre(), pContacto.getApellido(), pContacto.getCorreo(), pContacto.getTelefono());
+        }
     }
 
     public static Contacto buscarContacto(String nombre, String apellido) {
