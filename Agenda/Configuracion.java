@@ -278,22 +278,22 @@ public class Configuracion {
                 System.out.print("Escribe la opcion que desea\n1) Ingresar Contacto\n2) Buscar Contacto\n3) Mostrar Contacto\n4) Eliminar Contactor\n5) Regresar \nEleccion: ");
                 opcion = leer.nextLine();
                 if (opcion.equals("1")) {
-                    System.out.print("\033[H\033[2J");
-                    System.out.print("Creando contacto\nIngresa el nombre: ");
-                    nombre = leer.nextLine();
-                    System.out.print("Ingresar el apellido: ");
-                    apellido = leer.nextLine();
-                    System.out.print("Ingresa el correo: ");
-                    correo = leer.nextLine();
-                    System.out.print("Ingresa el telefono: ");
-                    telefono = leer.nextLine();
-                    Agenda.insertarContacto(nombre, apellido, correo, telefono);
-                    /*
-                     * for (int i = 1; i <= 5; i++) {
-                     * Agenda.insertarContacto("nombre" + i, "apellido" + i, "correo" + i,
-                     * "telefono" + i);
-                     * }
-                     */
+                    // System.out.print("\033[H\033[2J");
+                    // System.out.print("Creando contacto\nIngresa el nombre: ");
+                    // nombre = leer.nextLine();
+                    // System.out.print("Ingresar el apellido: ");
+                    // apellido = leer.nextLine();
+                    // System.out.print("Ingresa el correo: ");
+                    // correo = leer.nextLine();
+                    // System.out.print("Ingresa el telefono: ");
+                    // telefono = leer.nextLine();
+                    // Agenda.insertarContacto(nombre, apellido, correo, telefono);
+                    
+                    for (int i = 1; i <= 5; i++) {
+                    Agenda.insertarContacto("nombre" + i, "apellido" + i, "correo" + i,
+                    "telefono" + i);
+                    }
+                     
                 } else if (opcion.equals("2")) {
                     System.out.print("\033[H\033[2J");
                     System.out.print("Buscando contacto\nIngresa el nombre: ");

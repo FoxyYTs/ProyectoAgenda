@@ -19,10 +19,14 @@ public class Agenda {
         if (hContacto == null && tContacto == null) {
             hContacto = nuevo;
             tContacto = nuevo;
+
+            nuevo.next = nuevo;
+            nuevo.back = nuevo;
         } else {
             Contacto pContacto = tContacto;
-            tContacto = pContacto.next = nuevo;
+            hContacto.back = tContacto = pContacto.next = nuevo;
             nuevo.back = pContacto;
+            tContacto.next = hContacto;
         }
     }
 
@@ -66,16 +70,16 @@ public class Agenda {
             Configuracion.Nulo();
             return;
         }
-        Contacto pContacto = hContacto;
+        Contacto pContacto = tContacto;
         mostrarContactoRecu(pContacto);
         System.out.println();
     }
 
     public static void mostrarContactoRecu(Contacto pContacto){
-        if (pContacto != null){
-            mostrarContactoRecu(pContacto.next);
-            Configuracion.imprimirMostrarContactos(pContacto.getNombre(), pContacto.getApellido(), pContacto.getCorreo(), pContacto.getTelefono());
+        if (pContacto.back != tContacto){
+            mostrarContactoRecu(pContacto.back);
         }
+        Configuracion.imprimirMostrarContactos(pContacto.getNombre(), pContacto.getApellido(), pContacto.getCorreo(), pContacto.getTelefono());
     }
 
     public static Contacto buscarContacto(String nombre, String apellido) {
