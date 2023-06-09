@@ -163,9 +163,9 @@ public class Configuracion {
                     menuCalendario();
                 } else if (opcion.equals("4")) {
                     System.out.print("\033[H\033[2J");
-                    System.out.println("Entering the Settings menu");
+                    System.out.println("Entering the Notes menu");
                     leer.nextLine();
-                    menuConfiguracion();
+                    menuBlog();
                 } else if (opcion.equals("5")) {
                     System.out.print("\033[H\033[2J");
                     System.out.println("Access the Configuration menu");
@@ -204,7 +204,7 @@ public class Configuracion {
                     menuCalendario();
                 } else if (opcion.equals("4")) {
                     System.out.print("\033[H\033[2J");
-                    System.out.println("Ingresando al menu de Calendario");
+                    System.out.println("Ingresando al menu de Notas");
                     leer.nextLine();
                     menuBlog();
                 } else if (opcion.equals("5")) {
