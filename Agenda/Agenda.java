@@ -19,14 +19,10 @@ public class Agenda {
         if (hContacto == null && tContacto == null) {
             hContacto = nuevo;
             tContacto = nuevo;
-
-            nuevo.next = nuevo;
-            nuevo.back = nuevo;
         } else {
             Contacto pContacto = tContacto;
-            hContacto.back = tContacto = pContacto.next = nuevo;
+            tContacto = pContacto.next = nuevo;
             nuevo.back = pContacto;
-            tContacto.next = hContacto;
         }
     }
 
@@ -203,10 +199,14 @@ public class Agenda {
         if (hNota == null && tNota == null) {
             hNota = nuevo;
             tNota = nuevo;
+
+            nuevo.next = nuevo;
+            nuevo.back = nuevo;
         } else {
             Nota pNota = tNota;
-            tNota = pNota.next = nuevo;
+            hNota.back = tNota = pNota.next = nuevo;
             nuevo.back = pNota;
+            tNota.next = hNota;
         }
     }
 
@@ -215,14 +215,15 @@ public class Agenda {
             Configuracion.Nulo();
             return;
         }
-        if (hNota.getTitulo().equals(titulo)) {
-            hNota = hNota.next;
-            hNota.back = null;
-            return;
-        }
         Nota pNota = hNota;
         while (!pNota.next.getTitulo().equals(titulo) && pNota.next != null) {
             pNota = pNota.next;
+        }
+        if (hNota.getTitulo().equals(titulo)) {
+            hNota = hNota.next;
+        }
+        if (tNota.getTitulo().equals(titulo)) {
+            tNota = tNota.back;
         }
         if (pNota.next != null) {
             pNota.back.next = pNota.next;
@@ -235,12 +236,16 @@ public class Agenda {
             Configuracion.Nulo();
             return;
         }
-        Nota pointer = hNota;
-        while (pointer != null) {
-            System.out.println(pointer.getTitulo() + " ");
-            pointer = pointer.next;
-        }
+        Nota pNota = hNota;
+        mostrarNotaRecu(pNota);
         System.out.println();
+    }
+
+    public static void mostrarNotaRecu(Nota pNota) {
+        System.out.println(pNota.getTitulo() + " ");
+        if (pNota.next != hNota){
+            mostrarNotaRecu(pNota.next);
+        }
     }
 
     public static Nota buscarNota(String titulo) {
@@ -249,11 +254,15 @@ public class Agenda {
             return null;
         }
         Nota pNota = hNota;
-        while (pNota != null) {
-            if (pNota.getTitulo().equals(titulo)) {
-                return pNota;
-            }
-            pNota = pNota.next;
+        return buscarNotaRecu(pNota, titulo);
+    }
+
+    public static Nota buscarNotaRecu(Nota pNota, String titulo) {
+        if (pNota.getTitulo().equals(titulo)) {
+            return pNota;
+        }
+        if (pNota.next != hNota) {
+            buscarNotaRecu(pNota.next, titulo);
         }
         return null;
     }

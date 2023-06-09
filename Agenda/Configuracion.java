@@ -679,7 +679,11 @@ public class Configuracion {
                     System.out.println("The current grades are");
                     Agenda.mostrarNota();
                     System.out.print("Enter the name of the note to be modified: ");
-                    nota = Agenda.buscarNota(leer.nextLine());
+                    if (Agenda.buscarNota(leer.nextLine()) != null){
+                        nota = Agenda.buscarNota(leer.nextLine());
+                    } else {
+                        Nulo();
+                    }
                 } else if (opcion.equals("2")) {
                     System.out.println("Adding content to the Note");
                     if (!nota.top.getNota().equals("")) {
@@ -708,7 +712,11 @@ public class Configuracion {
                     System.out.println("Las notas actuales son");
                     Agenda.mostrarNota();
                     System.out.print("Ingresa el nombre de la nota a modificar: ");
-                    nota = Agenda.buscarNota(leer.nextLine());
+                    if (Agenda.buscarNota(leer.nextLine()) != null){
+                        nota = Agenda.buscarNota(leer.nextLine());
+                    } else {
+                        Nulo();
+                    }
                 } else if (opcion.equals("2")) {
                     System.out.println("Agregando contenido a la Nota");
                     if (!nota.top.getNota().equals("")) {
