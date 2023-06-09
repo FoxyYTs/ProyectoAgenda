@@ -625,7 +625,6 @@ public class Configuracion {
                     Agenda.insertarNota(leer.nextLine());
                 } else if (opcion.equals("2")) {
                     System.out.print("\033[H\033[2J");
-                    System.out.print("\033[H\033[2J");
                     System.out.println("Entering the Notes editor");
                     leer.nextLine();
                     menuNota();
@@ -648,7 +647,6 @@ public class Configuracion {
                     System.out.print("Creando nota\nIngresa el nombre: ");
                     Agenda.insertarNota(leer.nextLine());
                 } else if (opcion.equals("2")) {
-                    System.out.print("\033[H\033[2J");
                     System.out.print("\033[H\033[2J");
                     System.out.println("Ingresando al editor de Notas");
                     leer.nextLine();
