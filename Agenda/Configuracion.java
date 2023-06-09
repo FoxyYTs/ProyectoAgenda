@@ -91,9 +91,11 @@ public class Configuracion {
             return;
         }
         if (idioma == "en") {
-            System.out.println("Contact [name: " + nombre + ", last name: " + apellido + ", email: " + correo + ", phone: " + telefono + "]");
+            System.out.println("Contact [name: " + nombre + ", last name: " + apellido + ", email: " + correo
+                    + ", phone: " + telefono + "]");
         } else {
-            System.out.println("Contacto [nombre: " + nombre + ", apellido: " + apellido + ", correo: " + correo + ", telefono: " + telefono + "]");
+            System.out.println("Contacto [nombre: " + nombre + ", apellido: " + apellido + ", correo: " + correo
+                    + ", telefono: " + telefono + "]");
         }
     }
 
@@ -166,6 +168,11 @@ public class Configuracion {
                     menuConfiguracion();
                 } else if (opcion.equals("5")) {
                     System.out.print("\033[H\033[2J");
+                    System.out.println("Access the Configuration menu");
+                    leer.nextLine();
+                    menuConfiguracion();
+                } else if (opcion.equals("6")) {
+                    System.out.print("\033[H\033[2J");
                     System.out.println("Closing...");
                     System.out.println("\nCreated by\nJose Manuel and Jose Andres");
                     seguir = false;
@@ -195,17 +202,17 @@ public class Configuracion {
                     System.out.println("Ingresando al menu de Calendario");
                     leer.nextLine();
                     menuCalendario();
-                } else if (opcion.equals("4")){
+                } else if (opcion.equals("4")) {
                     System.out.print("\033[H\033[2J");
                     System.out.println("Ingresando al menu de Calendario");
                     leer.nextLine();
                     menuBlog();
-                }else if (opcion.equals("5")) {
+                } else if (opcion.equals("5")) {
                     System.out.print("\033[H\033[2J");
                     System.out.println("Ingresando al menu de Configuracion");
                     leer.nextLine();
                     menuConfiguracion();
-                } else if (opcion.equals("6")) { 
+                } else if (opcion.equals("6")) {
                     System.out.print("\033[H\033[2J");
                     System.out.println("Cerrando...");
                     System.out.println("\nCreado por\nJose Manuel y Jose Andres");
@@ -217,6 +224,7 @@ public class Configuracion {
                 }
             }
         }
+
     }
 
     public static void menuContactos() {
@@ -247,9 +255,10 @@ public class Configuracion {
                     nombre = leer.nextLine();
                     System.out.print("Enter last name: ");
                     apellido = leer.nextLine();
-                    if (Agenda.buscarContacto(nombre, apellido) != null){
+                    if (Agenda.buscarContacto(nombre, apellido) != null) {
                         conta = Agenda.buscarContacto(nombre, apellido);
-                        imprimirMostrarContactos(conta.getNombre(), conta.getApellido(), conta.getCorreo(),conta.getTelefono());
+                        imprimirMostrarContactos(conta.getNombre(), conta.getApellido(), conta.getCorreo(),
+                                conta.getTelefono());
                     }
                     leer.nextLine();
                 } else if (opcion.equals("3")) {
@@ -275,7 +284,8 @@ public class Configuracion {
                 }
             } else {
                 System.out.print("\033[H\033[2J");
-                System.out.print("Escribe la opcion que desea\n1) Ingresar Contacto\n2) Buscar Contacto\n3) Mostrar Contacto\n4) Eliminar Contactor\n5) Regresar \nEleccion: ");
+                System.out.print(
+                        "Escribe la opcion que desea\n1) Ingresar Contacto\n2) Buscar Contacto\n3) Mostrar Contacto\n4) Eliminar Contactor\n5) Regresar \nEleccion: ");
                 opcion = leer.nextLine();
                 if (opcion.equals("1")) {
                     // System.out.print("\033[H\033[2J");
@@ -288,21 +298,22 @@ public class Configuracion {
                     // System.out.print("Ingresa el telefono: ");
                     // telefono = leer.nextLine();
                     // Agenda.insertarContacto(nombre, apellido, correo, telefono);
-                    
+
                     for (int i = 1; i <= 5; i++) {
-                    Agenda.insertarContacto("nombre" + i, "apellido" + i, "correo" + i,
-                    "telefono" + i);
+                        Agenda.insertarContacto("nombre" + i, "apellido" + i, "correo" + i,
+                                "telefono" + i);
                     }
-                     
+
                 } else if (opcion.equals("2")) {
                     System.out.print("\033[H\033[2J");
                     System.out.print("Buscando contacto\nIngresa el nombre: ");
                     nombre = leer.nextLine();
                     System.out.print("Ingresar el apellido: ");
                     apellido = leer.nextLine();
-                    if (Agenda.buscarContacto(nombre, apellido) != null){
+                    if (Agenda.buscarContacto(nombre, apellido) != null) {
                         conta = Agenda.buscarContacto(nombre, apellido);
-                        imprimirMostrarContactos(conta.getNombre(), conta.getApellido(), conta.getCorreo(),conta.getTelefono());
+                        imprimirMostrarContactos(conta.getNombre(), conta.getApellido(), conta.getCorreo(),
+                                conta.getTelefono());
                     }
                     leer.nextLine();
                 } else if (opcion.equals("3")) {
@@ -336,7 +347,8 @@ public class Configuracion {
         while (seguir) {
             if (idioma == "en") {
                 System.out.print("\033[H\033[2J");
-                System.out.print("Type the option you want\n1) Create Group\n2) Show Groups\n3) Delete Group\n4) Contact Manager\n5) Return to \nChoice: ");
+                System.out.print(
+                        "Type the option you want\n1) Create Group\n2) Show Groups\n3) Delete Group\n4) Contact Manager\n5) Return to \nChoice: ");
                 opcion = leer.nextLine();
                 if (opcion.equals("1")) {
                     System.out.print("\033[H\033[2J");
@@ -368,7 +380,8 @@ public class Configuracion {
                 }
             } else {
                 System.out.print("\033[H\033[2J");
-                System.out.print("Escribe la opcion que desea\n1) Crear Grupo\n2) Mostrar Grupos\n3) Eliminar Grupo\n4) Gestor de Contactos\n5) Regresar \nEleccion: ");
+                System.out.print(
+                        "Escribe la opcion que desea\n1) Crear Grupo\n2) Mostrar Grupos\n3) Eliminar Grupo\n4) Gestor de Contactos\n5) Regresar \nEleccion: ");
                 opcion = leer.nextLine();
                 if (opcion.equals("1")) {
                     System.out.print("\033[H\033[2J");
@@ -597,21 +610,44 @@ public class Configuracion {
         }
     }
 
-    public static void menuBlog(){
+    public static void menuBlog() {
         String opcion;
         Boolean seguir = true;
-        while(seguir){
-            if (idioma == "en"){
-
+        while (seguir) {
+            if (idioma == "en") {
+                System.out.print("\033[H\033[2J");
+                System.out
+                        .print("Type the option you want\n1) Create Note\n2) Edit Note\n3) Return to \nElection: ");
+                opcion = leer.nextLine();
+                if (opcion.equals("1")) {
+                    System.out.print("\033[H\033[2J");
+                    System.out.print("Creating a note\nEnter the name: ");
+                    Agenda.insertarNota(leer.nextLine());
+                } else if (opcion.equals("2")) {
+                    System.out.print("\033[H\033[2J");
+                    System.out.print("\033[H\033[2J");
+                    System.out.println("Entering the Notes editor");
+                    leer.nextLine();
+                    menuNota();
+                } else if (opcion.equals("3")) {
+                    System.out.print("\033[H\033[2J");
+                    System.out.println("Returning...");
+                    seguir = false;
+                    leer.nextLine();
+                } else {
+                    System.out.println("invalid option");
+                    leer.nextLine();
+                }
             } else {
                 System.out.print("\033[H\033[2J");
-                System.out.print("Escribe la opcion que desea\n1) Crear Nota\n2) Editar Nota\n3) Regresar \nEleccion: ");
+                System.out
+                        .print("Escribe la opcion que desea\n1) Crear Nota\n2) Editar Nota\n3) Regresar \nEleccion: ");
                 opcion = leer.nextLine();
-                if (opcion.equals("1")){
+                if (opcion.equals("1")) {
                     System.out.print("\033[H\033[2J");
                     System.out.print("Creando nota\nIngresa el nombre: ");
                     Agenda.insertarNota(leer.nextLine());
-                } else if (opcion .equals("2")) {
+                } else if (opcion.equals("2")) {
                     System.out.print("\033[H\033[2J");
                     System.out.print("\033[H\033[2J");
                     System.out.println("Ingresando al editor de Notas");
@@ -630,38 +666,66 @@ public class Configuracion {
         }
     }
 
-    public static void menuNota(){
+    public static void menuNota() {
         Nota nota = null;
         String opcion;
         Boolean seguir = true;
 
-        while(seguir){
+        while (seguir) {
             if (idioma == "en") {
-                System.out.println("Work In Progress");
+                System.out.print("\033[H\033[2J");
+                System.out.print(
+                        "Type the option you want\n1) Select the note to be modified\n2) Add content to the note\n3) View current version\n4) View previous version\n5) Back to previous version\n6) Return to \nElection: ");
+                opcion = leer.nextLine();
+                if (opcion.equals("1")) {
+                    System.out.println("The current grades are");
+                    Agenda.mostrarNota();
+                    System.out.print("Enter the name of the note to be modified: ");
+                    nota = Agenda.buscarNota(leer.nextLine());
+                } else if (opcion.equals("2")) {
+                    System.out.println("Adding content to the Note");
+                    if (!nota.top.getNota().equals("")) {
+                        nota.insertar(nota.top.getNota() + "\n" + leer.nextLine());
+                    } else {
+                        nota.insertar(leer.nextLine());
+                    }
+                } else if (opcion.equals("3")) {
+                    System.out.println("Title: " + nota.getTitulo() + "\nNote\n" + nota.top.getNota());
+                } else if (opcion.equals("4")) {
+                    System.out.println("Title: " + nota.getTitulo() + "\nNote\n" + nota.top.next.getNota());
+                } else if (opcion.equals("5")) {
+                    System.out.println("Back to the previous version");
+                    nota.volver();
+                } else if (opcion.equals("6")) {
+                    seguir = false;
+                } else {
+                    System.out.println("Invalid option");
+                }
             } else {
                 System.out.print("\033[H\033[2J");
-                System.out.print("Escribe la opcion que desea\n1) Seleccionar la nota a modificar\n2) Agregar contenido a la nota\n3) Ver la version actual\n4) Ver la version anterior\n5) Volver a la version anterior\n6) Regresar \nEleccion: ");
+                System.out.print(
+                        "Escribe la opcion que desea\n1) Seleccionar la nota a modificar\n2) Agregar contenido a la nota\n3) Ver la version actual\n4) Ver la version anterior\n5) Volver a la version anterior\n6) Regresar \nEleccion: ");
                 opcion = leer.nextLine();
-                if (opcion.equals("1")){
+                if (opcion.equals("1")) {
                     System.out.println("Las notas actuales son");
                     Agenda.mostrarNota();
                     System.out.print("Ingresa el nombre de la nota a modificar: ");
                     nota = Agenda.buscarNota(leer.nextLine());
-                } else if (opcion.equals("2")){
+                } else if (opcion.equals("2")) {
                     System.out.println("Agregando contenido a la Nota");
-                    if(!nota.top.getNota().equals("")){
+                    if (!nota.top.getNota().equals("")) {
                         nota.insertar(nota.top.getNota() + "\n" + leer.nextLine());
-                    }else {
+                    } else {
                         nota.insertar(leer.nextLine());
                     }
-                } else if (opcion.equals("3")){
+                } else if (opcion.equals("3")) {
                     System.out.println("Titulo: " + nota.getTitulo() + "\nNota\n" + nota.top.getNota());
-                } else if (opcion.equals("4")){
+                } else if (opcion.equals("4")) {
                     System.out.println("Titulo: " + nota.getTitulo() + "\nNota\n" + nota.top.next.getNota());
-                } else if (opcion.equals("5")){
+                } else if (opcion.equals("5")) {
                     System.out.println("Volviendo a la version anterior");
                     nota.volver();
-                }else if (opcion.equals("6")){
+                } else if (opcion.equals("6")) {
                     seguir = false;
                 } else {
                     System.out.println("Opcion no valida");
