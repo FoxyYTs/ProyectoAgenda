@@ -5,6 +5,7 @@ public class Agenda {
     private static String formatoFechaHora = "d/M/y h:mm a", idioma = "es";
     public static Configuracion configuracion = new Configuracion(formatoFechaHora, idioma);
     public static Calendario calendario = new Calendario();
+    public static Buzon buzon = new Buzon();
 
     public Agenda() {
     }

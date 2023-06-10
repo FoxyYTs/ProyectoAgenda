@@ -125,6 +125,14 @@ public class Configuracion {
         }
     }
 
+    public static void mensaje(String destino ,String mensaje){
+        if (idioma.equals("en")) {
+            System.out.println("Destiny <3: " + destino + "\n" + mensaje);
+        } else {
+            System.out.println("Destino: " + destino + "\n" + mensaje);
+        }
+    }
+
     public void menu() {
         if (idioma == "en") {
             System.out.print("\033[H\033[2J");
@@ -185,7 +193,7 @@ public class Configuracion {
                 System.out.print("\033[H\033[2J");
                 System.out.flush();
                 System.out.print(
-                        "Bienvenido al menu de Agenda\n========================================\nEscribe la opcion que desea\n1) Opciones de Contactos\n2) Opciones de Grupo\n3) Opciones de Calendario\n4) Opciones de Notas\n5) Configuracion\n6) Cerrar Programa \nEleccion: ");
+                    "Bienvenido al menu de Agenda\n========================================\nEscribe la opcion que desea\n1) Opciones de Contactos\n2) Opciones de Grupo\n3) Opciones de Calendario\n4) Opciones de Notas\n5) Buzon de Mensajes\n6) Configuracion\n7) Cerrar Programa \nEleccion: ");
                 opcion = leer.nextLine();
                 if (opcion.equals("1")) {
                     System.out.print("\033[H\033[2J");
@@ -209,10 +217,15 @@ public class Configuracion {
                     menuBlog();
                 } else if (opcion.equals("5")) {
                     System.out.print("\033[H\033[2J");
+                    System.out.println("Ingresando al buzon de mensajes");
+                    leer.nextLine();
+                    menuBuzon();
+                } else if (opcion.equals("6")) {
+                    System.out.print("\033[H\033[2J");
                     System.out.println("Ingresando al menu de Configuracion");
                     leer.nextLine();
                     menuConfiguracion();
-                } else if (opcion.equals("6")) {
+                } else if (opcion.equals("7")) {
                     System.out.print("\033[H\033[2J");
                     System.out.println("Cerrando...");
                     System.out.println("\nCreado por\nJose Manuel y Jose Andres");
@@ -735,6 +748,42 @@ public class Configuracion {
                     seguir = false;
                 } else {
                     System.out.println("Opcion no valida");
+                }
+            }
+        }
+    }
+
+    public static void menuBuzon() {
+        String destino, mensaje;
+        String opcion;
+        Boolean seguir = true;
+        while (seguir) {
+            if (idioma.equals("en")){
+
+            } else {
+                System.out.println("\033[H\033[2J");
+                System.out.println("Escribe la opcion que desea\n1) Escribir mensaje\n2) Leer mensaje\n3) Regresar \nEleccion: ");
+                opcion = leer.nextLine();
+                if (opcion.equals("1")){
+                    System.out.println("\033[H\033[2J");
+                    System.out.print("Donde enviara el mensaje: ");
+                    destino = leer.nextLine();
+                    System.out.println("Que mensaje quiere enviar: ");
+                    mensaje = leer.nextLine();
+                    Agenda.buzon.insertar(destino, mensaje);
+                } else if (opcion.equals("2")){
+                    System.out.println("\033[H\033[2J");
+                    System.out.println("El ultimo mensaje es");
+                    Agenda.buzon.leer();
+                    leer.nextLine();
+                } else if (opcion.equals("3")){
+                    System.out.print("\033[H\033[2J");
+                    System.out.println("Regresando...");
+                    seguir = false;
+                    leer.nextLine();
+                } else {
+                    System.out.println("Opcion no valida");
+                    leer.nextLine();
                 }
             }
         }
