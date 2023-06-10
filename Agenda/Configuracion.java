@@ -777,7 +777,7 @@ public class Configuracion {
                     Agenda.buzon.insertar(destino, mensaje);
                 } else if (opcion.equals("2")) {
                     System.out.println("\033[H\033[2J");
-                    System.out.println("The last message is");
+                    System.out.println("The last message is: ");
                     Agenda.buzon.leer();
                     leer.nextLine();
                 } else if (opcion.equals("3")) {
@@ -803,7 +803,7 @@ public class Configuracion {
                     Agenda.buzon.insertar(destino, mensaje);
                 } else if (opcion.equals("2")) {
                     System.out.println("\033[H\033[2J");
-                    System.out.println("El ultimo mensaje es");
+                    System.out.println("El ultimo mensaje es: ");
                     Agenda.buzon.leer();
                     leer.nextLine();
                 } else if (opcion.equals("3")) {
