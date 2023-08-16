@@ -107,7 +107,7 @@ public class Configuracion {
         }
     }
 
-    public void listaNulo() {
+    public void listaNfulo() {
         if (idioma == "en") {
             System.out.println("The list not exist");
         } else {
@@ -682,7 +682,7 @@ public class Configuracion {
         }
     }
 
-    public static void menuNota() {
+    public static void menuNota() { 
         Nota nota = null;
         String opcion;
         Boolean seguir = true;

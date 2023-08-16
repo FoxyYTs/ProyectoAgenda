@@ -13,12 +13,14 @@ public class Buzon {
     }
 
     public void leer(){
-        Configuracion.mensaje(tail.getDestino(), tail.getMensaje());
+        
         if (tail.back == null){
             Configuracion.Nulo();
         } else {
             tail = tail.back;
             tail.next = null;
         }
+
+        Configuracion.mensaje(tail.getDestino(), tail.getMensaje());
     }
 }
